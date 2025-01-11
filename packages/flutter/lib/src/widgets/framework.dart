@@ -569,6 +569,17 @@ abstract class StatelessWidget extends Widget {
   Widget build(BuildContext context);
 }
 
+
+// abstract class SimpleWidget extends Widget{
+//     const SimpleWidget({super.key})
+
+//     @overide
+//     StatelessElement createElement => StatelessElement(this);
+
+//     @protected
+//     Widget build(BuildContext context);
+// }
+
 /// A widget that has mutable state.
 ///
 /// State is information that (1) can be read synchronously when the widget is

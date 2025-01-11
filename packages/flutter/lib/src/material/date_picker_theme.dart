@@ -53,6 +53,7 @@ class DatePickerThemeData with Diagnosticable {
     this.dayBackgroundColor,
     this.dayOverlayColor,
     this.dayShape,
+    this.subheaderColor,
     this.todayForegroundColor,
     this.todayBackgroundColor,
     this.todayBorder,
@@ -81,6 +82,8 @@ class DatePickerThemeData with Diagnosticable {
   /// Overrides the default value of [Dialog.backgroundColor].
   final Color? backgroundColor;
 
+  /// Overrides the default value of [Dialog.subheaderColor].
+  final Color? subheaderColor;
   /// Overrides the default value of [Dialog.elevation].
   ///
   /// See also:
@@ -356,6 +359,7 @@ class DatePickerThemeData with Diagnosticable {
   /// new values.
   DatePickerThemeData copyWith({
     Color? backgroundColor,
+    Color? subheaderColor ,
     double? elevation,
     Color? shadowColor,
     Color? surfaceTintColor,
@@ -397,6 +401,7 @@ class DatePickerThemeData with Diagnosticable {
     return DatePickerThemeData(
       backgroundColor: backgroundColor ?? this.backgroundColor,
       elevation: elevation ?? this.elevation,
+      subheaderColor: subheaderColor ?? this.subheaderColor,
       shadowColor: shadowColor ?? this.shadowColor,
       surfaceTintColor: surfaceTintColor ?? this.surfaceTintColor,
       shape: shape ?? this.shape,
@@ -443,6 +448,7 @@ class DatePickerThemeData with Diagnosticable {
     }
     return DatePickerThemeData(
       backgroundColor: Color.lerp(a?.backgroundColor, b?.backgroundColor, t),
+      subheaderColor: Color.lerp(a?.subheaderColor, b?.subheaderColor, t),
       elevation: lerpDouble(a?.elevation, b?.elevation, t),
       shadowColor: Color.lerp(a?.shadowColor, b?.shadowColor, t),
       surfaceTintColor: Color.lerp(a?.surfaceTintColor, b?.surfaceTintColor, t),
@@ -496,6 +502,7 @@ class DatePickerThemeData with Diagnosticable {
   @override
   int get hashCode => Object.hashAll(<Object?>[
     backgroundColor,
+    subheaderColor,
     elevation,
     shadowColor,
     surfaceTintColor,
@@ -542,6 +549,7 @@ class DatePickerThemeData with Diagnosticable {
     }
     return other is DatePickerThemeData
       && other.backgroundColor == backgroundColor
+      && other.subheaderColor == subheaderColor
       && other.elevation == elevation
       && other.shadowColor == shadowColor
       && other.surfaceTintColor == surfaceTintColor
@@ -586,6 +594,7 @@ class DatePickerThemeData with Diagnosticable {
     super.debugFillProperties(properties);
     properties.add(ColorProperty('backgroundColor', backgroundColor, defaultValue: null));
     properties.add(DoubleProperty('elevation', elevation, defaultValue: null));
+    properties.add(ColorProperty('subheaderColor', subheaderColor , defaultValue: null));
     properties.add(ColorProperty('shadowColor', shadowColor, defaultValue: null));
     properties.add(ColorProperty('surfaceTintColor', surfaceTintColor, defaultValue: null));
     properties.add(DiagnosticsProperty<ShapeBorder>('shape', shape, defaultValue: null));
@@ -914,6 +923,8 @@ class _DatePickerDefaultsM3 extends DatePickerThemeData {
   @override
   Color? get backgroundColor => _colors.surfaceContainerHigh;
 
+  @override 
+  Color? get subheaderColor => Colors.transparent;
   @override
   ButtonStyle get cancelButtonStyle {
     return TextButton.styleFrom();
