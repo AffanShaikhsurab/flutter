@@ -256,7 +256,7 @@ class MaterialPage<T> extends Page<T> {
 // the content is up to date after page updates.
 class _PageBasedMaterialPageRoute<T> extends PageRoute<T> with MaterialRouteTransitionMixin<T> {
   _PageBasedMaterialPageRoute({required MaterialPage<T> page, super.allowSnapshotting})
-    : super(settings: page) {
+      : super(settings: page) {
     assert(opaque);
   }
 

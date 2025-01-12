@@ -126,9 +126,9 @@ class Autocomplete<T extends Object> extends StatelessWidget {
       initialValue: initialValue,
       optionsBuilder: optionsBuilder,
       optionsViewOpenDirection: optionsViewOpenDirection,
-      optionsViewBuilder:
-          optionsViewBuilder ??
-          (BuildContext context, AutocompleteOnSelected<T> onSelected, Iterable<T> options) {
+      optionsViewBuilder: optionsViewBuilder ??
+          (BuildContext context, AutocompleteOnSelected<T> onSelected,
+              Iterable<T> options) {
             return _AutocompleteOptions<T>(
               displayStringForOption: displayStringForOption,
               onSelected: onSelected,
@@ -211,9 +211,11 @@ class _AutocompleteOptions<T extends Object> extends StatelessWidget {
                 },
                 child: Builder(
                   builder: (BuildContext context) {
-                    final bool highlight = AutocompleteHighlightedOption.of(context) == index;
+                    final bool highlight =
+                        AutocompleteHighlightedOption.of(context) == index;
                     if (highlight) {
-                      SchedulerBinding.instance.addPostFrameCallback((Duration timeStamp) {
+                      SchedulerBinding.instance.addPostFrameCallback(
+                          (Duration timeStamp) {
                         Scrollable.ensureVisible(context, alignment: 0.5);
                       }, debugLabel: 'AutocompleteOptions.ensureVisible');
                     }

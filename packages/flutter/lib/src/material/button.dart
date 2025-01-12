@@ -78,12 +78,13 @@ class RawMaterialButton extends StatefulWidget {
     MaterialTapTargetSize? materialTapTargetSize,
     this.child,
     this.enableFeedback = true,
-  }) : materialTapTargetSize = materialTapTargetSize ?? MaterialTapTargetSize.padded,
-       assert(elevation >= 0.0),
-       assert(focusElevation >= 0.0),
-       assert(hoverElevation >= 0.0),
-       assert(highlightElevation >= 0.0),
-       assert(disabledElevation >= 0.0);
+  })  : materialTapTargetSize =
+            materialTapTargetSize ?? MaterialTapTargetSize.padded,
+        assert(elevation >= 0.0),
+        assert(focusElevation >= 0.0),
+        assert(hoverElevation >= 0.0),
+        assert(highlightElevation >= 0.0),
+        assert(disabledElevation >= 0.0);
 
   /// Called when the button is tapped or otherwise activated.
   ///
@@ -310,7 +311,8 @@ class RawMaterialButton extends StatefulWidget {
   State<RawMaterialButton> createState() => _RawMaterialButtonState();
 }
 
-class _RawMaterialButtonState extends State<RawMaterialButton> with MaterialStateMixin {
+class _RawMaterialButtonState extends State<RawMaterialButton>
+    with MaterialStateMixin {
   @override
   void initState() {
     super.initState();
@@ -354,15 +356,18 @@ class _RawMaterialButtonState extends State<RawMaterialButton> with MaterialStat
       widget.textStyle?.color,
       materialStates,
     );
-    final ShapeBorder? effectiveShape = MaterialStateProperty.resolveAs<ShapeBorder?>(
+    final ShapeBorder? effectiveShape =
+        MaterialStateProperty.resolveAs<ShapeBorder?>(
       widget.shape,
       materialStates,
     );
     final Offset densityAdjustment = widget.visualDensity.baseSizeAdjustment;
-    final BoxConstraints effectiveConstraints = widget.visualDensity.effectiveConstraints(
+    final BoxConstraints effectiveConstraints =
+        widget.visualDensity.effectiveConstraints(
       widget.constraints,
     );
-    final MouseCursor? effectiveMouseCursor = MaterialStateProperty.resolveAs<MouseCursor?>(
+    final MouseCursor? effectiveMouseCursor =
+        MaterialStateProperty.resolveAs<MouseCursor?>(
       widget.mouseCursor ?? MaterialStateMouseCursor.clickable,
       materialStates,
     );
@@ -385,8 +390,12 @@ class _RawMaterialButtonState extends State<RawMaterialButton> with MaterialStat
         shape: effectiveShape,
         color: widget.fillColor,
         // For compatibility during the M3 migration the default shadow needs to be passed.
-        shadowColor: Theme.of(context).useMaterial3 ? Theme.of(context).shadowColor : null,
-        type: widget.fillColor == null ? MaterialType.transparency : MaterialType.button,
+        shadowColor: Theme.of(context).useMaterial3
+            ? Theme.of(context).shadowColor
+            : null,
+        type: widget.fillColor == null
+            ? MaterialType.transparency
+            : MaterialType.button,
         animationDuration: widget.animationDuration,
         clipBehavior: widget.clipBehavior,
         child: InkWell(
@@ -412,7 +421,8 @@ class _RawMaterialButtonState extends State<RawMaterialButton> with MaterialStat
             data: IconThemeData(color: effectiveTextColor),
             child: Padding(
               padding: padding,
-              child: Center(widthFactor: 1.0, heightFactor: 1.0, child: widget.child),
+              child: Center(
+                  widthFactor: 1.0, heightFactor: 1.0, child: widget.child),
             ),
           ),
         ),
@@ -456,7 +466,8 @@ class _InputPadding extends SingleChildRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, covariant _RenderInputPadding renderObject) {
+  void updateRenderObject(
+      BuildContext context, covariant _RenderInputPadding renderObject) {
     renderObject.minSize = minSize;
   }
 }
@@ -506,7 +517,9 @@ class _RenderInputPadding extends RenderShiftedBox {
     return 0.0;
   }
 
-  Size _computeSize({required BoxConstraints constraints, required ChildLayouter layoutChild}) {
+  Size _computeSize(
+      {required BoxConstraints constraints,
+      required ChildLayouter layoutChild}) {
     if (child != null) {
       final Size childSize = layoutChild(child!, constraints);
       final double height = math.max(childSize.width, minSize.width);
@@ -518,11 +531,14 @@ class _RenderInputPadding extends RenderShiftedBox {
 
   @override
   Size computeDryLayout(BoxConstraints constraints) {
-    return _computeSize(constraints: constraints, layoutChild: ChildLayoutHelper.dryLayoutChild);
+    return _computeSize(
+        constraints: constraints,
+        layoutChild: ChildLayoutHelper.dryLayoutChild);
   }
 
   @override
-  double? computeDryBaseline(covariant BoxConstraints constraints, TextBaseline baseline) {
+  double? computeDryBaseline(
+      covariant BoxConstraints constraints, TextBaseline baseline) {
     final RenderBox? child = this.child;
     if (child == null) {
       return null;
@@ -533,15 +549,19 @@ class _RenderInputPadding extends RenderShiftedBox {
     }
     final Size childSize = child.getDryLayout(constraints);
     return result +
-        Alignment.center.alongOffset(getDryLayout(constraints) - childSize as Offset).dy;
+        Alignment.center
+            .alongOffset(getDryLayout(constraints) - childSize as Offset)
+            .dy;
   }
 
   @override
   void performLayout() {
-    size = _computeSize(constraints: constraints, layoutChild: ChildLayoutHelper.layoutChild);
+    size = _computeSize(
+        constraints: constraints, layoutChild: ChildLayoutHelper.layoutChild);
     if (child != null) {
       final BoxParentData childParentData = child!.parentData! as BoxParentData;
-      childParentData.offset = Alignment.center.alongOffset(size - child!.size as Offset);
+      childParentData.offset =
+          Alignment.center.alongOffset(size - child!.size as Offset);
     }
   }
 

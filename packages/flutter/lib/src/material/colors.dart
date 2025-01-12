@@ -574,7 +574,8 @@ abstract final class Colors {
   ///  * [deepOrangeAccent] and [pinkAccent], similar colors.
   ///  * [Theme.of], which allows you to select colors from the current theme
   ///    rather than hard-coding colors in your build methods.
-  static const MaterialAccentColor redAccent = MaterialAccentColor(_redAccentValue, <int, Color>{
+  static const MaterialAccentColor redAccent =
+      MaterialAccentColor(_redAccentValue, <int, Color>{
     100: Color(0xFFFF8A80),
     200: Color(_redAccentValue),
     400: Color(0xFFFF1744),
@@ -609,7 +610,8 @@ abstract final class Colors {
   ///  * [red] and [purple], similar colors.
   ///  * [Theme.of], which allows you to select colors from the current theme
   ///    rather than hard-coding colors in your build methods.
-  static const MaterialColor pink = MaterialColor(_pinkPrimaryValue, <int, Color>{
+  static const MaterialColor pink =
+      MaterialColor(_pinkPrimaryValue, <int, Color>{
     50: Color(0xFFFCE4EC),
     100: Color(0xFFF8BBD0),
     200: Color(0xFFF48FB1),
@@ -652,11 +654,11 @@ abstract final class Colors {
   ///    rather than hard-coding colors in your build methods.
   static const MaterialAccentColor pinkAccent =
       MaterialAccentColor(_pinkAccentPrimaryValue, <int, Color>{
-        100: Color(0xFFFF80AB),
-        200: Color(_pinkAccentPrimaryValue),
-        400: Color(0xFFF50057),
-        700: Color(0xFFC51162),
-      });
+    100: Color(0xFFFF80AB),
+    200: Color(_pinkAccentPrimaryValue),
+    400: Color(0xFFF50057),
+    700: Color(0xFFC51162),
+  });
   static const int _pinkAccentPrimaryValue = 0xFFFF4081;
 
   /// The purple primary color and swatch.
@@ -686,7 +688,8 @@ abstract final class Colors {
   ///  * [deepPurple] and [pink], similar colors.
   ///  * [Theme.of], which allows you to select colors from the current theme
   ///    rather than hard-coding colors in your build methods.
-  static const MaterialColor purple = MaterialColor(_purplePrimaryValue, <int, Color>{
+  static const MaterialColor purple =
+      MaterialColor(_purplePrimaryValue, <int, Color>{
     50: Color(0xFFF3E5F5),
     100: Color(0xFFE1BEE7),
     200: Color(0xFFCE93D8),
@@ -729,11 +732,11 @@ abstract final class Colors {
   ///    rather than hard-coding colors in your build methods.
   static const MaterialAccentColor purpleAccent =
       MaterialAccentColor(_purpleAccentPrimaryValue, <int, Color>{
-        100: Color(0xFFEA80FC),
-        200: Color(_purpleAccentPrimaryValue),
-        400: Color(0xFFD500F9),
-        700: Color(0xFFAA00FF),
-      });
+    100: Color(0xFFEA80FC),
+    200: Color(_purpleAccentPrimaryValue),
+    400: Color(0xFFD500F9),
+    700: Color(0xFFAA00FF),
+  });
   static const int _purpleAccentPrimaryValue = 0xFFE040FB;
 
   /// The deep purple primary color and swatch.
@@ -763,7 +766,8 @@ abstract final class Colors {
   ///  * [purple] and [indigo], similar colors.
   ///  * [Theme.of], which allows you to select colors from the current theme
   ///    rather than hard-coding colors in your build methods.
-  static const MaterialColor deepPurple = MaterialColor(_deepPurplePrimaryValue, <int, Color>{
+  static const MaterialColor deepPurple =
+      MaterialColor(_deepPurplePrimaryValue, <int, Color>{
     50: Color(0xFFEDE7F6),
     100: Color(0xFFD1C4E9),
     200: Color(0xFFB39DDB),
@@ -806,11 +810,11 @@ abstract final class Colors {
   ///    rather than hard-coding colors in your build methods.
   static const MaterialAccentColor deepPurpleAccent =
       MaterialAccentColor(_deepPurpleAccentPrimaryValue, <int, Color>{
-        100: Color(0xFFB388FF),
-        200: Color(_deepPurpleAccentPrimaryValue),
-        400: Color(0xFF651FFF),
-        700: Color(0xFF6200EA),
-      });
+    100: Color(0xFFB388FF),
+    200: Color(_deepPurpleAccentPrimaryValue),
+    400: Color(0xFF651FFF),
+    700: Color(0xFF6200EA),
+  });
   static const int _deepPurpleAccentPrimaryValue = 0xFF7C4DFF;
 
   /// The indigo primary color and swatch.
@@ -840,7 +844,8 @@ abstract final class Colors {
   ///  * [blue] and [deepPurple], similar colors.
   ///  * [Theme.of], which allows you to select colors from the current theme
   ///    rather than hard-coding colors in your build methods.
-  static const MaterialColor indigo = MaterialColor(_indigoPrimaryValue, <int, Color>{
+  static const MaterialColor indigo =
+      MaterialColor(_indigoPrimaryValue, <int, Color>{
     50: Color(0xFFE8EAF6),
     100: Color(0xFFC5CAE9),
     200: Color(0xFF9FA8DA),
@@ -883,11 +888,11 @@ abstract final class Colors {
   ///    rather than hard-coding colors in your build methods.
   static const MaterialAccentColor indigoAccent =
       MaterialAccentColor(_indigoAccentPrimaryValue, <int, Color>{
-        100: Color(0xFF8C9EFF),
-        200: Color(_indigoAccentPrimaryValue),
-        400: Color(0xFF3D5AFE),
-        700: Color(0xFF304FFE),
-      });
+    100: Color(0xFF8C9EFF),
+    200: Color(_indigoAccentPrimaryValue),
+    400: Color(0xFF3D5AFE),
+    700: Color(0xFF304FFE),
+  });
   static const int _indigoAccentPrimaryValue = 0xFF536DFE;
 
   /// The blue primary color and swatch.
@@ -919,7 +924,8 @@ abstract final class Colors {
   ///  * [indigo], [lightBlue], and [blueGrey], similar colors.
   ///  * [Theme.of], which allows you to select colors from the current theme
   ///    rather than hard-coding colors in your build methods.
-  static const MaterialColor blue = MaterialColor(_bluePrimaryValue, <int, Color>{
+  static const MaterialColor blue =
+      MaterialColor(_bluePrimaryValue, <int, Color>{
     50: Color(0xFFE3F2FD),
     100: Color(0xFFBBDEFB),
     200: Color(0xFF90CAF9),
@@ -962,11 +968,11 @@ abstract final class Colors {
   ///    rather than hard-coding colors in your build methods.
   static const MaterialAccentColor blueAccent =
       MaterialAccentColor(_blueAccentPrimaryValue, <int, Color>{
-        100: Color(0xFF82B1FF),
-        200: Color(_blueAccentPrimaryValue),
-        400: Color(0xFF2979FF),
-        700: Color(0xFF2962FF),
-      });
+    100: Color(0xFF82B1FF),
+    200: Color(_blueAccentPrimaryValue),
+    400: Color(0xFF2979FF),
+    700: Color(0xFF2962FF),
+  });
   static const int _blueAccentPrimaryValue = 0xFF448AFF;
 
   /// The light blue primary color and swatch.
@@ -996,7 +1002,8 @@ abstract final class Colors {
   ///  * [blue] and [cyan], similar colors.
   ///  * [Theme.of], which allows you to select colors from the current theme
   ///    rather than hard-coding colors in your build methods.
-  static const MaterialColor lightBlue = MaterialColor(_lightBluePrimaryValue, <int, Color>{
+  static const MaterialColor lightBlue =
+      MaterialColor(_lightBluePrimaryValue, <int, Color>{
     50: Color(0xFFE1F5FE),
     100: Color(0xFFB3E5FC),
     200: Color(0xFF81D4FA),
@@ -1039,11 +1046,11 @@ abstract final class Colors {
   ///    rather than hard-coding colors in your build methods.
   static const MaterialAccentColor lightBlueAccent =
       MaterialAccentColor(_lightBlueAccentPrimaryValue, <int, Color>{
-        100: Color(0xFF80D8FF),
-        200: Color(_lightBlueAccentPrimaryValue),
-        400: Color(0xFF00B0FF),
-        700: Color(0xFF0091EA),
-      });
+    100: Color(0xFF80D8FF),
+    200: Color(_lightBlueAccentPrimaryValue),
+    400: Color(0xFF00B0FF),
+    700: Color(0xFF0091EA),
+  });
   static const int _lightBlueAccentPrimaryValue = 0xFF40C4FF;
 
   /// The cyan primary color and swatch.
@@ -1075,7 +1082,8 @@ abstract final class Colors {
   ///  * [lightBlue], [teal], and [blueGrey], similar colors.
   ///  * [Theme.of], which allows you to select colors from the current theme
   ///    rather than hard-coding colors in your build methods.
-  static const MaterialColor cyan = MaterialColor(_cyanPrimaryValue, <int, Color>{
+  static const MaterialColor cyan =
+      MaterialColor(_cyanPrimaryValue, <int, Color>{
     50: Color(0xFFE0F7FA),
     100: Color(0xFFB2EBF2),
     200: Color(0xFF80DEEA),
@@ -1118,11 +1126,11 @@ abstract final class Colors {
   ///    rather than hard-coding colors in your build methods.
   static const MaterialAccentColor cyanAccent =
       MaterialAccentColor(_cyanAccentPrimaryValue, <int, Color>{
-        100: Color(0xFF84FFFF),
-        200: Color(_cyanAccentPrimaryValue),
-        400: Color(0xFF00E5FF),
-        700: Color(0xFF00B8D4),
-      });
+    100: Color(0xFF84FFFF),
+    200: Color(_cyanAccentPrimaryValue),
+    400: Color(0xFF00E5FF),
+    700: Color(0xFF00B8D4),
+  });
   static const int _cyanAccentPrimaryValue = 0xFF18FFFF;
 
   /// The teal primary color and swatch.
@@ -1152,7 +1160,8 @@ abstract final class Colors {
   ///  * [green] and [cyan], similar colors.
   ///  * [Theme.of], which allows you to select colors from the current theme
   ///    rather than hard-coding colors in your build methods.
-  static const MaterialColor teal = MaterialColor(_tealPrimaryValue, <int, Color>{
+  static const MaterialColor teal =
+      MaterialColor(_tealPrimaryValue, <int, Color>{
     50: Color(0xFFE0F2F1),
     100: Color(0xFFB2DFDB),
     200: Color(0xFF80CBC4),
@@ -1195,11 +1204,11 @@ abstract final class Colors {
   ///    rather than hard-coding colors in your build methods.
   static const MaterialAccentColor tealAccent =
       MaterialAccentColor(_tealAccentPrimaryValue, <int, Color>{
-        100: Color(0xFFA7FFEB),
-        200: Color(_tealAccentPrimaryValue),
-        400: Color(0xFF1DE9B6),
-        700: Color(0xFF00BFA5),
-      });
+    100: Color(0xFFA7FFEB),
+    200: Color(_tealAccentPrimaryValue),
+    400: Color(0xFF1DE9B6),
+    700: Color(0xFF00BFA5),
+  });
   static const int _tealAccentPrimaryValue = 0xFF64FFDA;
 
   /// The green primary color and swatch.
@@ -1232,7 +1241,8 @@ abstract final class Colors {
   ///  * [teal], [lightGreen], and [lime], similar colors.
   ///  * [Theme.of], which allows you to select colors from the current theme
   ///    rather than hard-coding colors in your build methods.
-  static const MaterialColor green = MaterialColor(_greenPrimaryValue, <int, Color>{
+  static const MaterialColor green =
+      MaterialColor(_greenPrimaryValue, <int, Color>{
     50: Color(0xFFE8F5E9),
     100: Color(0xFFC8E6C9),
     200: Color(0xFFA5D6A7),
@@ -1278,11 +1288,11 @@ abstract final class Colors {
   ///    rather than hard-coding colors in your build methods.
   static const MaterialAccentColor greenAccent =
       MaterialAccentColor(_greenAccentPrimaryValue, <int, Color>{
-        100: Color(0xFFB9F6CA),
-        200: Color(_greenAccentPrimaryValue),
-        400: Color(0xFF00E676),
-        700: Color(0xFF00C853),
-      });
+    100: Color(0xFFB9F6CA),
+    200: Color(_greenAccentPrimaryValue),
+    400: Color(0xFF00E676),
+    700: Color(0xFF00C853),
+  });
   static const int _greenAccentPrimaryValue = 0xFF69F0AE;
 
   /// The light green primary color and swatch.
@@ -1312,7 +1322,8 @@ abstract final class Colors {
   ///  * [green] and [lime], similar colors.
   ///  * [Theme.of], which allows you to select colors from the current theme
   ///    rather than hard-coding colors in your build methods.
-  static const MaterialColor lightGreen = MaterialColor(_lightGreenPrimaryValue, <int, Color>{
+  static const MaterialColor lightGreen =
+      MaterialColor(_lightGreenPrimaryValue, <int, Color>{
     50: Color(0xFFF1F8E9),
     100: Color(0xFFDCEDC8),
     200: Color(0xFFC5E1A5),
@@ -1355,11 +1366,11 @@ abstract final class Colors {
   ///    rather than hard-coding colors in your build methods.
   static const MaterialAccentColor lightGreenAccent =
       MaterialAccentColor(_lightGreenAccentPrimaryValue, <int, Color>{
-        100: Color(0xFFCCFF90),
-        200: Color(_lightGreenAccentPrimaryValue),
-        400: Color(0xFF76FF03),
-        700: Color(0xFF64DD17),
-      });
+    100: Color(0xFFCCFF90),
+    200: Color(_lightGreenAccentPrimaryValue),
+    400: Color(0xFF76FF03),
+    700: Color(0xFF64DD17),
+  });
   static const int _lightGreenAccentPrimaryValue = 0xFFB2FF59;
 
   /// The lime primary color and swatch.
@@ -1389,7 +1400,8 @@ abstract final class Colors {
   ///  * [lightGreen] and [yellow], similar colors.
   ///  * [Theme.of], which allows you to select colors from the current theme
   ///    rather than hard-coding colors in your build methods.
-  static const MaterialColor lime = MaterialColor(_limePrimaryValue, <int, Color>{
+  static const MaterialColor lime =
+      MaterialColor(_limePrimaryValue, <int, Color>{
     50: Color(0xFFF9FBE7),
     100: Color(0xFFF0F4C3),
     200: Color(0xFFE6EE9C),
@@ -1432,11 +1444,11 @@ abstract final class Colors {
   ///    rather than hard-coding colors in your build methods.
   static const MaterialAccentColor limeAccent =
       MaterialAccentColor(_limeAccentPrimaryValue, <int, Color>{
-        100: Color(0xFFF4FF81),
-        200: Color(_limeAccentPrimaryValue),
-        400: Color(0xFFC6FF00),
-        700: Color(0xFFAEEA00),
-      });
+    100: Color(0xFFF4FF81),
+    200: Color(_limeAccentPrimaryValue),
+    400: Color(0xFFC6FF00),
+    700: Color(0xFFAEEA00),
+  });
   static const int _limeAccentPrimaryValue = 0xFFEEFF41;
 
   /// The yellow primary color and swatch.
@@ -1466,7 +1478,8 @@ abstract final class Colors {
   ///  * [lime] and [amber], similar colors.
   ///  * [Theme.of], which allows you to select colors from the current theme
   ///    rather than hard-coding colors in your build methods.
-  static const MaterialColor yellow = MaterialColor(_yellowPrimaryValue, <int, Color>{
+  static const MaterialColor yellow =
+      MaterialColor(_yellowPrimaryValue, <int, Color>{
     50: Color(0xFFFFFDE7),
     100: Color(0xFFFFF9C4),
     200: Color(0xFFFFF59D),
@@ -1509,11 +1522,11 @@ abstract final class Colors {
   ///    rather than hard-coding colors in your build methods.
   static const MaterialAccentColor yellowAccent =
       MaterialAccentColor(_yellowAccentPrimaryValue, <int, Color>{
-        100: Color(0xFFFFFF8D),
-        200: Color(_yellowAccentPrimaryValue),
-        400: Color(0xFFFFEA00),
-        700: Color(0xFFFFD600),
-      });
+    100: Color(0xFFFFFF8D),
+    200: Color(_yellowAccentPrimaryValue),
+    400: Color(0xFFFFEA00),
+    700: Color(0xFFFFD600),
+  });
   static const int _yellowAccentPrimaryValue = 0xFFFFFF00;
 
   /// The amber primary color and swatch.
@@ -1543,7 +1556,8 @@ abstract final class Colors {
   ///  * [yellow] and [orange], similar colors.
   ///  * [Theme.of], which allows you to select colors from the current theme
   ///    rather than hard-coding colors in your build methods.
-  static const MaterialColor amber = MaterialColor(_amberPrimaryValue, <int, Color>{
+  static const MaterialColor amber =
+      MaterialColor(_amberPrimaryValue, <int, Color>{
     50: Color(0xFFFFF8E1),
     100: Color(0xFFFFECB3),
     200: Color(0xFFFFE082),
@@ -1586,11 +1600,11 @@ abstract final class Colors {
   ///    rather than hard-coding colors in your build methods.
   static const MaterialAccentColor amberAccent =
       MaterialAccentColor(_amberAccentPrimaryValue, <int, Color>{
-        100: Color(0xFFFFE57F),
-        200: Color(_amberAccentPrimaryValue),
-        400: Color(0xFFFFC400),
-        700: Color(0xFFFFAB00),
-      });
+    100: Color(0xFFFFE57F),
+    200: Color(_amberAccentPrimaryValue),
+    400: Color(0xFFFFC400),
+    700: Color(0xFFFFAB00),
+  });
   static const int _amberAccentPrimaryValue = 0xFFFFD740;
 
   /// The orange primary color and swatch.
@@ -1622,7 +1636,8 @@ abstract final class Colors {
   ///  * [amber], [deepOrange], and [brown], similar colors.
   ///  * [Theme.of], which allows you to select colors from the current theme
   ///    rather than hard-coding colors in your build methods.
-  static const MaterialColor orange = MaterialColor(_orangePrimaryValue, <int, Color>{
+  static const MaterialColor orange =
+      MaterialColor(_orangePrimaryValue, <int, Color>{
     50: Color(0xFFFFF3E0),
     100: Color(0xFFFFE0B2),
     200: Color(0xFFFFCC80),
@@ -1665,11 +1680,11 @@ abstract final class Colors {
   ///    rather than hard-coding colors in your build methods.
   static const MaterialAccentColor orangeAccent =
       MaterialAccentColor(_orangeAccentPrimaryValue, <int, Color>{
-        100: Color(0xFFFFD180),
-        200: Color(_orangeAccentPrimaryValue),
-        400: Color(0xFFFF9100),
-        700: Color(0xFFFF6D00),
-      });
+    100: Color(0xFFFFD180),
+    200: Color(_orangeAccentPrimaryValue),
+    400: Color(0xFFFF9100),
+    700: Color(0xFFFF6D00),
+  });
   static const int _orangeAccentPrimaryValue = 0xFFFFAB40;
 
   /// The deep orange primary color and swatch.
@@ -1701,7 +1716,8 @@ abstract final class Colors {
   ///  * [orange], [red], and [brown], similar colors.
   ///  * [Theme.of], which allows you to select colors from the current theme
   ///    rather than hard-coding colors in your build methods.
-  static const MaterialColor deepOrange = MaterialColor(_deepOrangePrimaryValue, <int, Color>{
+  static const MaterialColor deepOrange =
+      MaterialColor(_deepOrangePrimaryValue, <int, Color>{
     50: Color(0xFFFBE9E7),
     100: Color(0xFFFFCCBC),
     200: Color(0xFFFFAB91),
@@ -1744,11 +1760,11 @@ abstract final class Colors {
   ///    rather than hard-coding colors in your build methods.
   static const MaterialAccentColor deepOrangeAccent =
       MaterialAccentColor(_deepOrangeAccentPrimaryValue, <int, Color>{
-        100: Color(0xFFFF9E80),
-        200: Color(_deepOrangeAccentPrimaryValue),
-        400: Color(0xFFFF3D00),
-        700: Color(0xFFDD2C00),
-      });
+    100: Color(0xFFFF9E80),
+    200: Color(_deepOrangeAccentPrimaryValue),
+    400: Color(0xFFFF3D00),
+    700: Color(0xFFDD2C00),
+  });
   static const int _deepOrangeAccentPrimaryValue = 0xFFFF6E40;
 
   /// The brown primary color and swatch.
@@ -1776,7 +1792,8 @@ abstract final class Colors {
   ///  * [orange] and [blueGrey], vaguely similar colors.
   ///  * [Theme.of], which allows you to select colors from the current theme
   ///    rather than hard-coding colors in your build methods.
-  static const MaterialColor brown = MaterialColor(_brownPrimaryValue, <int, Color>{
+  static const MaterialColor brown =
+      MaterialColor(_brownPrimaryValue, <int, Color>{
     50: Color(0xFFEFEBE9),
     100: Color(0xFFD7CCC8),
     200: Color(0xFFBCAAA4),
@@ -1822,12 +1839,14 @@ abstract final class Colors {
   ///    provide a different approach to showing shades of grey.
   ///  * [Theme.of], which allows you to select colors from the current theme
   ///    rather than hard-coding colors in your build methods.
-  static const MaterialColor grey = MaterialColor(_greyPrimaryValue, <int, Color>{
+  static const MaterialColor grey =
+      MaterialColor(_greyPrimaryValue, <int, Color>{
     50: Color(0xFFFAFAFA),
     100: Color(0xFFF5F5F5),
     200: Color(0xFFEEEEEE),
     300: Color(0xFFE0E0E0),
-    350: Color(0xFFD6D6D6), // only for raised button while pressed in light theme
+    350: Color(
+        0xFFD6D6D6), // only for raised button while pressed in light theme
     400: Color(0xFFBDBDBD),
     500: Color(_greyPrimaryValue),
     600: Color(0xFF757575),
@@ -1865,7 +1884,8 @@ abstract final class Colors {
   ///  * [grey], [cyan], and [blue], similar colors.
   ///  * [Theme.of], which allows you to select colors from the current theme
   ///    rather than hard-coding colors in your build methods.
-  static const MaterialColor blueGrey = MaterialColor(_blueGreyPrimaryValue, <int, Color>{
+  static const MaterialColor blueGrey =
+      MaterialColor(_blueGreyPrimaryValue, <int, Color>{
     50: Color(0xFFECEFF1),
     100: Color(0xFFCFD8DC),
     200: Color(0xFFB0BEC5),

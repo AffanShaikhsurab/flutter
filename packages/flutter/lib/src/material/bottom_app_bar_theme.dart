@@ -97,7 +97,8 @@ class BottomAppBarTheme with Diagnosticable {
   /// Linearly interpolate between two BAB themes.
   ///
   /// {@macro dart.ui.shadow.lerp}
-  static BottomAppBarTheme lerp(BottomAppBarTheme? a, BottomAppBarTheme? b, double t) {
+  static BottomAppBarTheme lerp(
+      BottomAppBarTheme? a, BottomAppBarTheme? b, double t) {
     if (identical(a, b) && a != null) {
       return a;
     }
@@ -113,8 +114,8 @@ class BottomAppBarTheme with Diagnosticable {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(color, elevation, shape, height, surfaceTintColor, shadowColor, padding);
+  int get hashCode => Object.hash(
+      color, elevation, shape, height, surfaceTintColor, shadowColor, padding);
 
   @override
   bool operator ==(Object other) {
@@ -138,11 +139,17 @@ class BottomAppBarTheme with Diagnosticable {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(ColorProperty('color', color, defaultValue: null));
-    properties.add(DiagnosticsProperty<double>('elevation', elevation, defaultValue: null));
-    properties.add(DiagnosticsProperty<NotchedShape>('shape', shape, defaultValue: null));
-    properties.add(DiagnosticsProperty<double>('height', height, defaultValue: null));
-    properties.add(ColorProperty('surfaceTintColor', surfaceTintColor, defaultValue: null));
-    properties.add(ColorProperty('shadowColor', shadowColor, defaultValue: null));
-    properties.add(DiagnosticsProperty<EdgeInsetsGeometry>('padding', padding, defaultValue: null));
+    properties.add(DiagnosticsProperty<double>('elevation', elevation,
+        defaultValue: null));
+    properties.add(
+        DiagnosticsProperty<NotchedShape>('shape', shape, defaultValue: null));
+    properties
+        .add(DiagnosticsProperty<double>('height', height, defaultValue: null));
+    properties.add(ColorProperty('surfaceTintColor', surfaceTintColor,
+        defaultValue: null));
+    properties
+        .add(ColorProperty('shadowColor', shadowColor, defaultValue: null));
+    properties.add(DiagnosticsProperty<EdgeInsetsGeometry>('padding', padding,
+        defaultValue: null));
   }
 }

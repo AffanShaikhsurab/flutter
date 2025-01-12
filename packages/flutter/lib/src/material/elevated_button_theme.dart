@@ -59,7 +59,8 @@ class ElevatedButtonThemeData with Diagnosticable {
     if (identical(a, b)) {
       return a;
     }
-    return ElevatedButtonThemeData(style: ButtonStyle.lerp(a?.style, b?.style, t));
+    return ElevatedButtonThemeData(
+        style: ButtonStyle.lerp(a?.style, b?.style, t));
   }
 
   @override
@@ -79,7 +80,8 @@ class ElevatedButtonThemeData with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<ButtonStyle>('style', style, defaultValue: null));
+    properties.add(
+        DiagnosticsProperty<ButtonStyle>('style', style, defaultValue: null));
   }
 }
 
@@ -96,7 +98,8 @@ class ElevatedButtonThemeData with Diagnosticable {
 ///    [ButtonStyle] for [ElevatedButton]s below the overall [Theme].
 class ElevatedButtonTheme extends InheritedTheme {
   /// Create a [ElevatedButtonTheme].
-  const ElevatedButtonTheme({super.key, required this.data, required super.child});
+  const ElevatedButtonTheme(
+      {super.key, required this.data, required super.child});
 
   /// The configuration of this theme.
   final ElevatedButtonThemeData data;
@@ -123,5 +126,6 @@ class ElevatedButtonTheme extends InheritedTheme {
   }
 
   @override
-  bool updateShouldNotify(ElevatedButtonTheme oldWidget) => data != oldWidget.data;
+  bool updateShouldNotify(ElevatedButtonTheme oldWidget) =>
+      data != oldWidget.data;
 }

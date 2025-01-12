@@ -129,7 +129,8 @@ class SearchViewThemeData with Diagnosticable {
   }
 
   /// Linearly interpolate between two [SearchViewThemeData]s.
-  static SearchViewThemeData? lerp(SearchViewThemeData? a, SearchViewThemeData? b, double t) {
+  static SearchViewThemeData? lerp(
+      SearchViewThemeData? a, SearchViewThemeData? b, double t) {
     if (identical(a, b)) {
       return a;
     }
@@ -140,8 +141,10 @@ class SearchViewThemeData with Diagnosticable {
       side: _lerpSides(a?.side, b?.side, t),
       shape: OutlinedBorder.lerp(a?.shape, b?.shape, t),
       headerHeight: lerpDouble(a?.headerHeight, b?.headerHeight, t),
-      headerTextStyle: TextStyle.lerp(a?.headerTextStyle, b?.headerTextStyle, t),
-      headerHintStyle: TextStyle.lerp(a?.headerTextStyle, b?.headerTextStyle, t),
+      headerTextStyle:
+          TextStyle.lerp(a?.headerTextStyle, b?.headerTextStyle, t),
+      headerHintStyle:
+          TextStyle.lerp(a?.headerTextStyle, b?.headerTextStyle, t),
       constraints: BoxConstraints.lerp(a?.constraints, b?.constraints, t),
       padding: EdgeInsetsGeometry.lerp(a?.padding, b?.padding, t),
       barPadding: EdgeInsetsGeometry.lerp(a?.barPadding, b?.barPadding, t),
@@ -152,20 +155,20 @@ class SearchViewThemeData with Diagnosticable {
 
   @override
   int get hashCode => Object.hash(
-    backgroundColor,
-    elevation,
-    surfaceTintColor,
-    side,
-    shape,
-    headerHeight,
-    headerTextStyle,
-    headerHintStyle,
-    constraints,
-    padding,
-    barPadding,
-    shrinkWrap,
-    dividerColor,
-  );
+        backgroundColor,
+        elevation,
+        surfaceTintColor,
+        side,
+        shape,
+        headerHeight,
+        headerTextStyle,
+        headerHintStyle,
+        constraints,
+        padding,
+        barPadding,
+        shrinkWrap,
+        dividerColor,
+      );
 
   @override
   bool operator ==(Object other) {
@@ -195,32 +198,45 @@ class SearchViewThemeData with Diagnosticable {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(
-      DiagnosticsProperty<Color?>('backgroundColor', backgroundColor, defaultValue: null),
+      DiagnosticsProperty<Color?>('backgroundColor', backgroundColor,
+          defaultValue: null),
     );
-    properties.add(DiagnosticsProperty<double?>('elevation', elevation, defaultValue: null));
+    properties.add(DiagnosticsProperty<double?>('elevation', elevation,
+        defaultValue: null));
     properties.add(
-      DiagnosticsProperty<Color?>('surfaceTintColor', surfaceTintColor, defaultValue: null),
-    );
-    properties.add(DiagnosticsProperty<BorderSide?>('side', side, defaultValue: null));
-    properties.add(DiagnosticsProperty<OutlinedBorder?>('shape', shape, defaultValue: null));
-    properties.add(DiagnosticsProperty<double?>('headerHeight', headerHeight, defaultValue: null));
-    properties.add(
-      DiagnosticsProperty<TextStyle?>('headerTextStyle', headerTextStyle, defaultValue: null),
+      DiagnosticsProperty<Color?>('surfaceTintColor', surfaceTintColor,
+          defaultValue: null),
     );
     properties.add(
-      DiagnosticsProperty<TextStyle?>('headerHintStyle', headerHintStyle, defaultValue: null),
+        DiagnosticsProperty<BorderSide?>('side', side, defaultValue: null));
+    properties.add(DiagnosticsProperty<OutlinedBorder?>('shape', shape,
+        defaultValue: null));
+    properties.add(DiagnosticsProperty<double?>('headerHeight', headerHeight,
+        defaultValue: null));
+    properties.add(
+      DiagnosticsProperty<TextStyle?>('headerTextStyle', headerTextStyle,
+          defaultValue: null),
     );
     properties.add(
-      DiagnosticsProperty<BoxConstraints>('constraints', constraints, defaultValue: null),
+      DiagnosticsProperty<TextStyle?>('headerHintStyle', headerHintStyle,
+          defaultValue: null),
     );
     properties.add(
-      DiagnosticsProperty<EdgeInsetsGeometry?>('padding', padding, defaultValue: null),
+      DiagnosticsProperty<BoxConstraints>('constraints', constraints,
+          defaultValue: null),
     );
     properties.add(
-      DiagnosticsProperty<EdgeInsetsGeometry?>('barPadding', barPadding, defaultValue: null),
+      DiagnosticsProperty<EdgeInsetsGeometry?>('padding', padding,
+          defaultValue: null),
     );
-    properties.add(DiagnosticsProperty<bool?>('shrinkWrap', shrinkWrap, defaultValue: null));
-    properties.add(DiagnosticsProperty<Color?>('dividerColor', dividerColor, defaultValue: null));
+    properties.add(
+      DiagnosticsProperty<EdgeInsetsGeometry?>('barPadding', barPadding,
+          defaultValue: null),
+    );
+    properties.add(DiagnosticsProperty<bool?>('shrinkWrap', shrinkWrap,
+        defaultValue: null));
+    properties.add(DiagnosticsProperty<Color?>('dividerColor', dividerColor,
+        defaultValue: null));
   }
 
   // Special case because BorderSide.lerp() doesn't support null arguments

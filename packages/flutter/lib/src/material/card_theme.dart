@@ -45,27 +45,27 @@ class CardTheme extends InheritedWidget with Diagnosticable {
     ShapeBorder? shape,
     CardThemeData? data,
     Widget? child,
-  }) : assert(
-         data == null ||
-             (clipBehavior ??
-                     color ??
-                     surfaceTintColor ??
-                     shadowColor ??
-                     elevation ??
-                     margin ??
-                     shape) ==
-                 null,
-       ),
-       assert(elevation == null || elevation >= 0.0),
-       _data = data,
-       _clipBehavior = clipBehavior,
-       _color = color,
-       _surfaceTintColor = surfaceTintColor,
-       _shadowColor = shadowColor,
-       _elevation = elevation,
-       _margin = margin,
-       _shape = shape,
-       super(child: child ?? const SizedBox());
+  })  : assert(
+          data == null ||
+              (clipBehavior ??
+                      color ??
+                      surfaceTintColor ??
+                      shadowColor ??
+                      elevation ??
+                      margin ??
+                      shape) ==
+                  null,
+        ),
+        assert(elevation == null || elevation >= 0.0),
+        _data = data,
+        _clipBehavior = clipBehavior,
+        _color = color,
+        _surfaceTintColor = surfaceTintColor,
+        _shadowColor = shadowColor,
+        _elevation = elevation,
+        _margin = margin,
+        _shape = shape,
+        super(child: child ?? const SizedBox());
 
   final CardThemeData? _data;
   final Clip? _clipBehavior;
@@ -92,7 +92,8 @@ class CardTheme extends InheritedWidget with Diagnosticable {
   ///
   /// This property is obsolete and will be deprecated in a future release:
   /// please use the [CardThemeData.surfaceTintColor] property in [data] instead.
-  Color? get surfaceTintColor => _data != null ? _data.surfaceTintColor : _surfaceTintColor;
+  Color? get surfaceTintColor =>
+      _data != null ? _data.surfaceTintColor : _surfaceTintColor;
 
   /// Overrides the default value for [Card.shadowColor].
   ///
@@ -159,7 +160,8 @@ class CardTheme extends InheritedWidget with Diagnosticable {
 
   /// The [ThemeData.cardTheme] property of the ambient [Theme].
   static CardThemeData of(BuildContext context) {
-    final CardTheme? cardTheme = context.dependOnInheritedWidgetOfExactType<CardTheme>();
+    final CardTheme? cardTheme =
+        context.dependOnInheritedWidgetOfExactType<CardTheme>();
     return cardTheme?.data ?? Theme.of(context).cardTheme;
   }
 
@@ -190,13 +192,19 @@ class CardTheme extends InheritedWidget with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<Clip>('clipBehavior', clipBehavior, defaultValue: null));
+    properties.add(DiagnosticsProperty<Clip>('clipBehavior', clipBehavior,
+        defaultValue: null));
     properties.add(ColorProperty('color', color, defaultValue: null));
-    properties.add(ColorProperty('shadowColor', shadowColor, defaultValue: null));
-    properties.add(ColorProperty('surfaceTintColor', surfaceTintColor, defaultValue: null));
-    properties.add(DiagnosticsProperty<double>('elevation', elevation, defaultValue: null));
-    properties.add(DiagnosticsProperty<EdgeInsetsGeometry>('margin', margin, defaultValue: null));
-    properties.add(DiagnosticsProperty<ShapeBorder>('shape', shape, defaultValue: null));
+    properties
+        .add(ColorProperty('shadowColor', shadowColor, defaultValue: null));
+    properties.add(ColorProperty('surfaceTintColor', surfaceTintColor,
+        defaultValue: null));
+    properties.add(DiagnosticsProperty<double>('elevation', elevation,
+        defaultValue: null));
+    properties.add(DiagnosticsProperty<EdgeInsetsGeometry>('margin', margin,
+        defaultValue: null));
+    properties.add(
+        DiagnosticsProperty<ShapeBorder>('shape', shape, defaultValue: null));
   }
 }
 
@@ -294,8 +302,8 @@ class CardThemeData with Diagnosticable {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(clipBehavior, color, shadowColor, surfaceTintColor, elevation, margin, shape);
+  int get hashCode => Object.hash(clipBehavior, color, shadowColor,
+      surfaceTintColor, elevation, margin, shape);
 
   @override
   bool operator ==(Object other) {
@@ -318,12 +326,18 @@ class CardThemeData with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<Clip>('clipBehavior', clipBehavior, defaultValue: null));
+    properties.add(DiagnosticsProperty<Clip>('clipBehavior', clipBehavior,
+        defaultValue: null));
     properties.add(ColorProperty('color', color, defaultValue: null));
-    properties.add(ColorProperty('shadowColor', shadowColor, defaultValue: null));
-    properties.add(ColorProperty('surfaceTintColor', surfaceTintColor, defaultValue: null));
-    properties.add(DiagnosticsProperty<double>('elevation', elevation, defaultValue: null));
-    properties.add(DiagnosticsProperty<EdgeInsetsGeometry>('margin', margin, defaultValue: null));
-    properties.add(DiagnosticsProperty<ShapeBorder>('shape', shape, defaultValue: null));
+    properties
+        .add(ColorProperty('shadowColor', shadowColor, defaultValue: null));
+    properties.add(ColorProperty('surfaceTintColor', surfaceTintColor,
+        defaultValue: null));
+    properties.add(DiagnosticsProperty<double>('elevation', elevation,
+        defaultValue: null));
+    properties.add(DiagnosticsProperty<EdgeInsetsGeometry>('margin', margin,
+        defaultValue: null));
+    properties.add(
+        DiagnosticsProperty<ShapeBorder>('shape', shape, defaultValue: null));
   }
 }

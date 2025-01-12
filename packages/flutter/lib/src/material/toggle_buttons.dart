@@ -544,38 +544,45 @@ class ToggleButtons extends StatelessWidget {
 
     if (length == 1) {
       return BorderRadius.only(
-        topLeft: resultingBorderRadius.topLeft - Radius.circular(resultingBorderWidth / 2.0),
-        bottomLeft: resultingBorderRadius.bottomLeft - Radius.circular(resultingBorderWidth / 2.0),
-        topRight: resultingBorderRadius.topRight - Radius.circular(resultingBorderWidth / 2.0),
-        bottomRight:
-            resultingBorderRadius.bottomRight - Radius.circular(resultingBorderWidth / 2.0),
+        topLeft: resultingBorderRadius.topLeft -
+            Radius.circular(resultingBorderWidth / 2.0),
+        bottomLeft: resultingBorderRadius.bottomLeft -
+            Radius.circular(resultingBorderWidth / 2.0),
+        topRight: resultingBorderRadius.topRight -
+            Radius.circular(resultingBorderWidth / 2.0),
+        bottomRight: resultingBorderRadius.bottomRight -
+            Radius.circular(resultingBorderWidth / 2.0),
       );
     } else if (direction == Axis.horizontal) {
       if (_isFirstButton(index, length, textDirection)) {
         return BorderRadius.only(
-          topLeft: resultingBorderRadius.topLeft - Radius.circular(resultingBorderWidth / 2.0),
-          bottomLeft:
-              resultingBorderRadius.bottomLeft - Radius.circular(resultingBorderWidth / 2.0),
+          topLeft: resultingBorderRadius.topLeft -
+              Radius.circular(resultingBorderWidth / 2.0),
+          bottomLeft: resultingBorderRadius.bottomLeft -
+              Radius.circular(resultingBorderWidth / 2.0),
         );
       } else if (_isLastButton(index, length, textDirection)) {
         return BorderRadius.only(
-          topRight: resultingBorderRadius.topRight - Radius.circular(resultingBorderWidth / 2.0),
-          bottomRight:
-              resultingBorderRadius.bottomRight - Radius.circular(resultingBorderWidth / 2.0),
+          topRight: resultingBorderRadius.topRight -
+              Radius.circular(resultingBorderWidth / 2.0),
+          bottomRight: resultingBorderRadius.bottomRight -
+              Radius.circular(resultingBorderWidth / 2.0),
         );
       }
     } else {
       if (_isFirstButton(index, length, textDirection)) {
         return BorderRadius.only(
-          topLeft: resultingBorderRadius.topLeft - Radius.circular(resultingBorderWidth / 2.0),
-          topRight: resultingBorderRadius.topRight - Radius.circular(resultingBorderWidth / 2.0),
+          topLeft: resultingBorderRadius.topLeft -
+              Radius.circular(resultingBorderWidth / 2.0),
+          topRight: resultingBorderRadius.topRight -
+              Radius.circular(resultingBorderWidth / 2.0),
         );
       } else if (_isLastButton(index, length, textDirection)) {
         return BorderRadius.only(
-          bottomLeft:
-              resultingBorderRadius.bottomLeft - Radius.circular(resultingBorderWidth / 2.0),
-          bottomRight:
-              resultingBorderRadius.bottomRight - Radius.circular(resultingBorderWidth / 2.0),
+          bottomLeft: resultingBorderRadius.bottomLeft -
+              Radius.circular(resultingBorderWidth / 2.0),
+          bottomRight: resultingBorderRadius.bottomRight -
+              Radius.circular(resultingBorderWidth / 2.0),
         );
       }
     }
@@ -593,26 +600,24 @@ class ToggleButtons extends StatelessWidget {
 
     final double resultingBorderWidth =
         borderWidth ?? toggleButtonsTheme.borderWidth ?? _defaultBorderWidth;
-    if (onPressed != null && (isSelected[index] || (index != 0 && isSelected[index - 1]))) {
+    if (onPressed != null &&
+        (isSelected[index] || (index != 0 && isSelected[index - 1]))) {
       return BorderSide(
-        color:
-            selectedBorderColor ??
+        color: selectedBorderColor ??
             toggleButtonsTheme.selectedBorderColor ??
             theme.colorScheme.onSurface.withOpacity(0.12),
         width: resultingBorderWidth,
       );
     } else if (onPressed != null && !isSelected[index]) {
       return BorderSide(
-        color:
-            borderColor ??
+        color: borderColor ??
             toggleButtonsTheme.borderColor ??
             theme.colorScheme.onSurface.withOpacity(0.12),
         width: resultingBorderWidth,
       );
     } else {
       return BorderSide(
-        color:
-            disabledBorderColor ??
+        color: disabledBorderColor ??
             toggleButtonsTheme.disabledBorderColor ??
             theme.colorScheme.onSurface.withOpacity(0.12),
         width: resultingBorderWidth,
@@ -620,7 +625,8 @@ class ToggleButtons extends StatelessWidget {
     }
   }
 
-  BorderSide _getBorderSide(int index, ThemeData theme, ToggleButtonsThemeData toggleButtonsTheme) {
+  BorderSide _getBorderSide(
+      int index, ThemeData theme, ToggleButtonsThemeData toggleButtonsTheme) {
     if (!renderBorder) {
       return BorderSide.none;
     }
@@ -629,24 +635,21 @@ class ToggleButtons extends StatelessWidget {
         borderWidth ?? toggleButtonsTheme.borderWidth ?? _defaultBorderWidth;
     if (onPressed != null && isSelected[index]) {
       return BorderSide(
-        color:
-            selectedBorderColor ??
+        color: selectedBorderColor ??
             toggleButtonsTheme.selectedBorderColor ??
             theme.colorScheme.onSurface.withOpacity(0.12),
         width: resultingBorderWidth,
       );
     } else if (onPressed != null && !isSelected[index]) {
       return BorderSide(
-        color:
-            borderColor ??
+        color: borderColor ??
             toggleButtonsTheme.borderColor ??
             theme.colorScheme.onSurface.withOpacity(0.12),
         width: resultingBorderWidth,
       );
     } else {
       return BorderSide(
-        color:
-            disabledBorderColor ??
+        color: disabledBorderColor ??
             toggleButtonsTheme.disabledBorderColor ??
             theme.colorScheme.onSurface.withOpacity(0.12),
         width: resultingBorderWidth,
@@ -671,24 +674,21 @@ class ToggleButtons extends StatelessWidget {
         borderWidth ?? toggleButtonsTheme.borderWidth ?? _defaultBorderWidth;
     if (onPressed != null && (isSelected[index])) {
       return BorderSide(
-        color:
-            selectedBorderColor ??
+        color: selectedBorderColor ??
             toggleButtonsTheme.selectedBorderColor ??
             theme.colorScheme.onSurface.withOpacity(0.12),
         width: resultingBorderWidth,
       );
     } else if (onPressed != null && !isSelected[index]) {
       return BorderSide(
-        color:
-            borderColor ??
+        color: borderColor ??
             toggleButtonsTheme.borderColor ??
             theme.colorScheme.onSurface.withOpacity(0.12),
         width: resultingBorderWidth,
       );
     } else {
       return BorderSide(
-        color:
-            disabledBorderColor ??
+        color: disabledBorderColor ??
             toggleButtonsTheme.disabledBorderColor ??
             theme.colorScheme.onSurface.withOpacity(0.12),
         width: resultingBorderWidth,
@@ -710,10 +710,12 @@ class ToggleButtons extends StatelessWidget {
       'there are ${children.length} children.',
     );
     final ThemeData theme = Theme.of(context);
-    final ToggleButtonsThemeData toggleButtonsTheme = ToggleButtonsTheme.of(context);
+    final ToggleButtonsThemeData toggleButtonsTheme =
+        ToggleButtonsTheme.of(context);
     final TextDirection textDirection = Directionality.of(context);
 
-    final List<Widget> buttons = List<Widget>.generate(children.length, (int index) {
+    final List<Widget> buttons =
+        List<Widget>.generate(children.length, (int index) {
       final BorderRadius edgeBorderRadius = _getEdgeBorderRadius(
         index,
         children.length,
@@ -727,8 +729,10 @@ class ToggleButtons extends StatelessWidget {
         toggleButtonsTheme,
       );
 
-      final BorderSide leadingBorderSide = _getLeadingBorderSide(index, theme, toggleButtonsTheme);
-      final BorderSide borderSide = _getBorderSide(index, theme, toggleButtonsTheme);
+      final BorderSide leadingBorderSide =
+          _getLeadingBorderSide(index, theme, toggleButtonsTheme);
+      final BorderSide borderSide =
+          _getBorderSide(index, theme, toggleButtonsTheme);
       final BorderSide trailingBorderSide = _getTrailingBorderSide(
         index,
         theme,
@@ -740,26 +744,30 @@ class ToggleButtons extends StatelessWidget {
         if (onPressed == null) MaterialState.disabled,
       };
       final Color effectiveFillColor =
-          _ResolveFillColor(fillColor ?? toggleButtonsTheme.fillColor).resolve(states) ??
-          _DefaultFillColor(theme.colorScheme).resolve(states);
+          _ResolveFillColor(fillColor ?? toggleButtonsTheme.fillColor)
+                  .resolve(states) ??
+              _DefaultFillColor(theme.colorScheme).resolve(states);
       final Color currentColor;
       if (onPressed != null && isSelected[index]) {
-        currentColor =
-            selectedColor ?? toggleButtonsTheme.selectedColor ?? theme.colorScheme.primary;
+        currentColor = selectedColor ??
+            toggleButtonsTheme.selectedColor ??
+            theme.colorScheme.primary;
       } else if (onPressed != null && !isSelected[index]) {
-        currentColor =
-            color ?? toggleButtonsTheme.color ?? theme.colorScheme.onSurface.withOpacity(0.87);
+        currentColor = color ??
+            toggleButtonsTheme.color ??
+            theme.colorScheme.onSurface.withOpacity(0.87);
       } else {
-        currentColor =
-            disabledColor ??
+        currentColor = disabledColor ??
             toggleButtonsTheme.disabledColor ??
             theme.colorScheme.onSurface.withOpacity(0.38);
       }
-      final TextStyle currentTextStyle =
-          textStyle ?? toggleButtonsTheme.textStyle ?? theme.textTheme.bodyMedium!;
-      final BoxConstraints? currentConstraints = constraints ?? toggleButtonsTheme.constraints;
-      final Size minimumSize =
-          currentConstraints?.smallest ?? const Size.square(kMinInteractiveDimension);
+      final TextStyle currentTextStyle = textStyle ??
+          toggleButtonsTheme.textStyle ??
+          theme.textTheme.bodyMedium!;
+      final BoxConstraints? currentConstraints =
+          constraints ?? toggleButtonsTheme.constraints;
+      final Size minimumSize = currentConstraints?.smallest ??
+          const Size.square(kMinInteractiveDimension);
       final Size? maximumSize = currentConstraints?.biggest;
       final Size minPaddingSize;
       switch (tapTargetSize ?? theme.materialTapTargetSize) {
@@ -788,7 +796,8 @@ class ToggleButtons extends StatelessWidget {
           child: TextButton(
             focusNode: focusNodes != null ? focusNodes![index] : null,
             style: ButtonStyle(
-              backgroundColor: MaterialStatePropertyAll<Color?>(effectiveFillColor),
+              backgroundColor:
+                  MaterialStatePropertyAll<Color?>(effectiveFillColor),
               foregroundColor: MaterialStatePropertyAll<Color?>(currentColor),
               iconSize: const MaterialStatePropertyAll<double>(24.0),
               iconColor: MaterialStatePropertyAll<Color?>(currentColor),
@@ -796,9 +805,11 @@ class ToggleButtons extends StatelessWidget {
                 selected: onPressed != null && isSelected[index],
                 unselected: onPressed != null && !isSelected[index],
                 colorScheme: theme.colorScheme,
-                disabledColor: disabledColor ?? toggleButtonsTheme.disabledColor,
+                disabledColor:
+                    disabledColor ?? toggleButtonsTheme.disabledColor,
                 focusColor: focusColor ?? toggleButtonsTheme.focusColor,
-                highlightColor: highlightColor ?? toggleButtonsTheme.highlightColor,
+                highlightColor:
+                    highlightColor ?? toggleButtonsTheme.highlightColor,
                 hoverColor: hoverColor ?? toggleButtonsTheme.hoverColor,
                 splashColor: splashColor ?? toggleButtonsTheme.splashColor,
               ),
@@ -806,10 +817,12 @@ class ToggleButtons extends StatelessWidget {
               textStyle: MaterialStatePropertyAll<TextStyle?>(
                 currentTextStyle.copyWith(color: currentColor),
               ),
-              padding: const MaterialStatePropertyAll<EdgeInsetsGeometry>(EdgeInsets.zero),
+              padding: const MaterialStatePropertyAll<EdgeInsetsGeometry>(
+                  EdgeInsets.zero),
               minimumSize: MaterialStatePropertyAll<Size?>(minimumSize),
               maximumSize: MaterialStatePropertyAll<Size?>(maximumSize),
-              shape: const MaterialStatePropertyAll<OutlinedBorder>(RoundedRectangleBorder()),
+              shape: const MaterialStatePropertyAll<OutlinedBorder>(
+                  RoundedRectangleBorder()),
               mouseCursor: MaterialStatePropertyAll<MouseCursor?>(mouseCursor),
               visualDensity: VisualDensity.standard,
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -818,12 +831,11 @@ class ToggleButtons extends StatelessWidget {
               alignment: Alignment.center,
               splashFactory: InkRipple.splashFactory,
             ),
-            onPressed:
-                onPressed != null
-                    ? () {
-                      onPressed!(index);
-                    }
-                    : null,
+            onPressed: onPressed != null
+                ? () {
+                    onPressed!(index);
+                  }
+                : null,
             child: children[index],
           ),
         ),
@@ -838,7 +850,8 @@ class ToggleButtons extends StatelessWidget {
           container: true,
           checked: isSelected[index],
           enabled: onPressed != null,
-          child: _InputPadding(minSize: minPaddingSize, direction: direction, child: button),
+          child: _InputPadding(
+              minSize: minPaddingSize, direction: direction, child: button),
         ),
       );
     });
@@ -876,22 +889,32 @@ class ToggleButtons extends StatelessWidget {
     );
     textStyle?.debugFillProperties(properties, prefix: 'textStyle.');
     properties.add(ColorProperty('color', color, defaultValue: null));
-    properties.add(ColorProperty('selectedColor', selectedColor, defaultValue: null));
-    properties.add(ColorProperty('disabledColor', disabledColor, defaultValue: null));
+    properties
+        .add(ColorProperty('selectedColor', selectedColor, defaultValue: null));
+    properties
+        .add(ColorProperty('disabledColor', disabledColor, defaultValue: null));
     properties.add(ColorProperty('fillColor', fillColor, defaultValue: null));
     properties.add(ColorProperty('focusColor', focusColor, defaultValue: null));
-    properties.add(ColorProperty('highlightColor', highlightColor, defaultValue: null));
+    properties.add(
+        ColorProperty('highlightColor', highlightColor, defaultValue: null));
     properties.add(ColorProperty('hoverColor', hoverColor, defaultValue: null));
-    properties.add(ColorProperty('splashColor', splashColor, defaultValue: null));
-    properties.add(ColorProperty('borderColor', borderColor, defaultValue: null));
-    properties.add(ColorProperty('selectedBorderColor', selectedBorderColor, defaultValue: null));
-    properties.add(ColorProperty('disabledBorderColor', disabledBorderColor, defaultValue: null));
+    properties
+        .add(ColorProperty('splashColor', splashColor, defaultValue: null));
+    properties
+        .add(ColorProperty('borderColor', borderColor, defaultValue: null));
+    properties.add(ColorProperty('selectedBorderColor', selectedBorderColor,
+        defaultValue: null));
+    properties.add(ColorProperty('disabledBorderColor', disabledBorderColor,
+        defaultValue: null));
     properties.add(
-      DiagnosticsProperty<BorderRadius>('borderRadius', borderRadius, defaultValue: null),
+      DiagnosticsProperty<BorderRadius>('borderRadius', borderRadius,
+          defaultValue: null),
     );
-    properties.add(DoubleProperty('borderWidth', borderWidth, defaultValue: null));
+    properties
+        .add(DoubleProperty('borderWidth', borderWidth, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<Axis>('direction', direction, defaultValue: Axis.horizontal),
+      DiagnosticsProperty<Axis>('direction', direction,
+          defaultValue: Axis.horizontal),
     );
     properties.add(
       DiagnosticsProperty<VerticalDirection>(
@@ -904,7 +927,8 @@ class ToggleButtons extends StatelessWidget {
 }
 
 @immutable
-class _ResolveFillColor extends MaterialStateProperty<Color?> with Diagnosticable {
+class _ResolveFillColor extends MaterialStateProperty<Color?>
+    with Diagnosticable {
   _ResolveFillColor(this.primary);
 
   final Color? primary;
@@ -919,7 +943,8 @@ class _ResolveFillColor extends MaterialStateProperty<Color?> with Diagnosticabl
 }
 
 @immutable
-class _DefaultFillColor extends MaterialStateProperty<Color> with Diagnosticable {
+class _DefaultFillColor extends MaterialStateProperty<Color>
+    with Diagnosticable {
   _DefaultFillColor(this.colorScheme);
 
   final ColorScheme colorScheme;
@@ -969,7 +994,9 @@ class _ToggleButtonDefaultOverlay extends MaterialStateProperty<Color?> {
       }
     } else if (unselected) {
       if (states.contains(MaterialState.pressed)) {
-        return splashColor ?? highlightColor ?? colorScheme?.onSurface.withOpacity(0.16);
+        return splashColor ??
+            highlightColor ??
+            colorScheme?.onSurface.withOpacity(0.16);
       }
       if (states.contains(MaterialState.hovered)) {
         return hoverColor ?? colorScheme?.onSurface.withOpacity(0.04);
@@ -1058,7 +1085,8 @@ class _SelectToggleButton extends SingleChildRenderObjectWidget {
       );
 
   @override
-  void updateRenderObject(BuildContext context, _SelectToggleButtonRenderObject renderObject) {
+  void updateRenderObject(
+      BuildContext context, _SelectToggleButtonRenderObject renderObject) {
     renderObject
       ..leadingBorderSide = leadingBorderSide
       ..borderSide = borderSide
@@ -1202,44 +1230,56 @@ class _SelectToggleButtonRenderObject extends RenderShiftedBox {
   @override
   double? computeDistanceToActualBaseline(TextBaseline baseline) {
     // The baseline of this widget is the baseline of its child
-    final BaselineOffset childOffset = BaselineOffset(child?.getDistanceToActualBaseline(baseline));
+    final BaselineOffset childOffset =
+        BaselineOffset(child?.getDistanceToActualBaseline(baseline));
     return switch (direction) {
       Axis.horizontal => childOffset + borderSide.width,
       Axis.vertical => childOffset + leadingBorderSide.width,
-    }.offset;
+    }
+        .offset;
   }
 
   @override
   double computeMaxIntrinsicHeight(double width) {
     return direction == Axis.horizontal
         ? borderSide.width * 2.0 + _maxHeight(child, width)
-        : leadingBorderSide.width + _maxHeight(child, width) + trailingBorderSide.width;
+        : leadingBorderSide.width +
+            _maxHeight(child, width) +
+            trailingBorderSide.width;
   }
 
   @override
   double computeMinIntrinsicHeight(double width) {
     return direction == Axis.horizontal
         ? borderSide.width * 2.0 + _minHeight(child, width)
-        : leadingBorderSide.width + _maxHeight(child, width) + trailingBorderSide.width;
+        : leadingBorderSide.width +
+            _maxHeight(child, width) +
+            trailingBorderSide.width;
   }
 
   @override
   double computeMaxIntrinsicWidth(double height) {
     return direction == Axis.horizontal
-        ? leadingBorderSide.width + _maxWidth(child, height) + trailingBorderSide.width
+        ? leadingBorderSide.width +
+            _maxWidth(child, height) +
+            trailingBorderSide.width
         : borderSide.width * 2.0 + _maxWidth(child, height);
   }
 
   @override
   double computeMinIntrinsicWidth(double height) {
     return direction == Axis.horizontal
-        ? leadingBorderSide.width + _minWidth(child, height) + trailingBorderSide.width
+        ? leadingBorderSide.width +
+            _minWidth(child, height) +
+            trailingBorderSide.width
         : borderSide.width * 2.0 + _minWidth(child, height);
   }
 
   @override
   Size computeDryLayout(BoxConstraints constraints) {
-    return _computeSize(constraints: constraints, layoutChild: ChildLayoutHelper.dryLayoutChild);
+    return _computeSize(
+        constraints: constraints,
+        layoutChild: ChildLayoutHelper.dryLayoutChild);
   }
 
   EdgeInsetsDirectional get _childPadding {
@@ -1249,22 +1289,23 @@ class _SelectToggleButtonRenderObject extends RenderShiftedBox {
     // and the returned size accounts for the width of both sides.
     return switch (direction) {
       Axis.horizontal => EdgeInsetsDirectional.only(
-        start: leadingBorderSide.width,
-        end: trailingBorderSide.width,
-        top: borderSide.width,
-        bottom: borderSide.width,
-      ),
+          start: leadingBorderSide.width,
+          end: trailingBorderSide.width,
+          top: borderSide.width,
+          bottom: borderSide.width,
+        ),
       Axis.vertical => EdgeInsetsDirectional.only(
-        start: borderSide.width,
-        end: borderSide.width,
-        top: leadingBorderSide.width,
-        bottom: trailingBorderSide.width,
-      ),
+          start: borderSide.width,
+          end: borderSide.width,
+          top: leadingBorderSide.width,
+          bottom: trailingBorderSide.width,
+        ),
     };
   }
 
   @override
-  double? computeDryBaseline(BoxConstraints constraints, TextBaseline baseline) {
+  double? computeDryBaseline(
+      BoxConstraints constraints, TextBaseline baseline) {
     final double? childBaseline = child?.getDryBaseline(
       constraints.deflate(_childPadding),
       baseline,
@@ -1276,15 +1317,16 @@ class _SelectToggleButtonRenderObject extends RenderShiftedBox {
         switch (direction) {
           Axis.horizontal => borderSide.width,
           Axis.vertical => switch (verticalDirection) {
-            VerticalDirection.down => leadingBorderSide.width,
-            VerticalDirection.up => trailingBorderSide.width,
-          },
+              VerticalDirection.down => leadingBorderSide.width,
+              VerticalDirection.up => trailingBorderSide.width,
+            },
         };
   }
 
   @override
   void performLayout() {
-    size = _computeSize(constraints: constraints, layoutChild: ChildLayoutHelper.layoutChild);
+    size = _computeSize(
+        constraints: constraints, layoutChild: ChildLayoutHelper.layoutChild);
     if (child == null) {
       return;
     }
@@ -1296,13 +1338,17 @@ class _SelectToggleButtonRenderObject extends RenderShiftedBox {
       };
     } else {
       childParentData.offset = switch (verticalDirection) {
-        VerticalDirection.down => Offset(borderSide.width, leadingBorderSide.width),
-        VerticalDirection.up => Offset(borderSide.width, trailingBorderSide.width),
+        VerticalDirection.down =>
+          Offset(borderSide.width, leadingBorderSide.width),
+        VerticalDirection.up =>
+          Offset(borderSide.width, trailingBorderSide.width),
       };
     }
   }
 
-  Size _computeSize({required BoxConstraints constraints, required ChildLayouter layoutChild}) {
+  Size _computeSize(
+      {required BoxConstraints constraints,
+      required ChildLayouter layoutChild}) {
     final RenderBox? child = this.child;
     if (child == null) {
       final Size horizontalSize = Size(
@@ -1317,36 +1363,34 @@ class _SelectToggleButtonRenderObject extends RenderShiftedBox {
 
     final EdgeInsetsDirectional childPadding = _childPadding;
     final BoxConstraints innerConstraints = constraints.deflate(childPadding);
-    return constraints.constrain(childPadding.inflateSize(layoutChild(child, innerConstraints)));
+    return constraints.constrain(
+        childPadding.inflateSize(layoutChild(child, innerConstraints)));
   }
 
   @override
   void paint(PaintingContext context, Offset offset) {
     super.paint(context, offset);
     final Offset bottomRight = size.bottomRight(offset);
-    final Rect outer = Rect.fromLTRB(offset.dx, offset.dy, bottomRight.dx, bottomRight.dy);
+    final Rect outer =
+        Rect.fromLTRB(offset.dx, offset.dy, bottomRight.dx, bottomRight.dy);
     final Rect center = outer.deflate(borderSide.width / 2.0);
     const double sweepAngle = math.pi / 2.0;
-    final RRect rrect =
-        RRect.fromRectAndCorners(
-          center,
-          topLeft:
-              (borderRadius.topLeft.x * borderRadius.topLeft.y != 0.0)
-                  ? borderRadius.topLeft
-                  : Radius.zero,
-          topRight:
-              (borderRadius.topRight.x * borderRadius.topRight.y != 0.0)
-                  ? borderRadius.topRight
-                  : Radius.zero,
-          bottomLeft:
-              (borderRadius.bottomLeft.x * borderRadius.bottomLeft.y != 0.0)
-                  ? borderRadius.bottomLeft
-                  : Radius.zero,
-          bottomRight:
-              (borderRadius.bottomRight.x * borderRadius.bottomRight.y != 0.0)
-                  ? borderRadius.bottomRight
-                  : Radius.zero,
-        ).scaleRadii();
+    final RRect rrect = RRect.fromRectAndCorners(
+      center,
+      topLeft: (borderRadius.topLeft.x * borderRadius.topLeft.y != 0.0)
+          ? borderRadius.topLeft
+          : Radius.zero,
+      topRight: (borderRadius.topRight.x * borderRadius.topRight.y != 0.0)
+          ? borderRadius.topRight
+          : Radius.zero,
+      bottomLeft: (borderRadius.bottomLeft.x * borderRadius.bottomLeft.y != 0.0)
+          ? borderRadius.bottomLeft
+          : Radius.zero,
+      bottomRight:
+          (borderRadius.bottomRight.x * borderRadius.bottomRight.y != 0.0)
+              ? borderRadius.bottomRight
+              : Radius.zero,
+    ).scaleRadii();
 
     final Rect tlCorner = Rect.fromLTWH(
       rrect.left,
@@ -1377,7 +1421,9 @@ class _SelectToggleButtonRenderObject extends RenderShiftedBox {
     // Only one button.
     if (isFirstButton && isLastButton) {
       final Path leadingPath = Path();
-      final double startX = (rrect.brRadiusX == 0.0) ? outer.right : rrect.right - rrect.brRadiusX;
+      final double startX = (rrect.brRadiusX == 0.0)
+          ? outer.right
+          : rrect.right - rrect.brRadiusX;
       leadingPath
         ..moveTo(startX, rrect.bottom)
         ..lineTo(rrect.left + rrect.blRadiusX, rrect.bottom)
@@ -1434,7 +1480,8 @@ class _SelectToggleButtonRenderObject extends RenderShiftedBox {
             horizontalPaths
               ..moveTo(rrect.left + borderSide.width / 2.0, rrect.top)
               ..lineTo(outer.right - rrect.trRadiusX, rrect.top)
-              ..moveTo(rrect.left + borderSide.width / 2.0 + rrect.tlRadiusX, rrect.bottom)
+              ..moveTo(rrect.left + borderSide.width / 2.0 + rrect.tlRadiusX,
+                  rrect.bottom)
               ..lineTo(outer.right - rrect.trRadiusX, rrect.bottom);
             context.canvas.drawPath(horizontalPaths, horizontalPaint);
           }
@@ -1478,7 +1525,8 @@ class _SelectToggleButtonRenderObject extends RenderShiftedBox {
             horizontalPaths
               ..moveTo(rrect.right - borderSide.width / 2.0, rrect.top)
               ..lineTo(outer.left - rrect.tlRadiusX, rrect.top)
-              ..moveTo(rrect.right - borderSide.width / 2.0 + rrect.trRadiusX, rrect.bottom)
+              ..moveTo(rrect.right - borderSide.width / 2.0 + rrect.trRadiusX,
+                  rrect.bottom)
               ..lineTo(outer.left - rrect.tlRadiusX, rrect.bottom);
             context.canvas.drawPath(horizontalPaths, horizontalPaint);
           }
@@ -1534,7 +1582,8 @@ class _SelectToggleButtonRenderObject extends RenderShiftedBox {
             final Path bottomPath = Path();
             bottomPath
               ..moveTo(outer.left, outer.bottom - leadingBorderSide.width / 2.0)
-              ..lineTo(outer.right, outer.bottom - leadingBorderSide.width / 2.0);
+              ..lineTo(
+                  outer.right, outer.bottom - leadingBorderSide.width / 2.0);
             context.canvas.drawPath(bottomPath, leadingPaint);
 
             final Paint endingPaint = trailingBorderSide.toPaint();
@@ -1545,7 +1594,8 @@ class _SelectToggleButtonRenderObject extends RenderShiftedBox {
               ..addArc(tlCorner, math.pi, sweepAngle)
               ..lineTo(rrect.right - rrect.trRadiusX, rrect.top)
               ..addArc(trCorner, math.pi * 3.0 / 2.0, sweepAngle)
-              ..lineTo(rrect.right, rrect.bottom - leadingBorderSide.width / 2.0);
+              ..lineTo(
+                  rrect.right, rrect.bottom - leadingBorderSide.width / 2.0);
             context.canvas.drawPath(endingPath, endingPaint);
           } else if (isFirstButton) {
             final Path leadingPath = Path();
@@ -1561,7 +1611,8 @@ class _SelectToggleButtonRenderObject extends RenderShiftedBox {
             final Path bottomPath = Path();
             bottomPath
               ..moveTo(outer.left, outer.bottom - leadingBorderSide.width / 2.0)
-              ..lineTo(outer.right, outer.bottom - leadingBorderSide.width / 2.0);
+              ..lineTo(
+                  outer.right, outer.bottom - leadingBorderSide.width / 2.0);
             context.canvas.drawPath(bottomPath, leadingPaint);
 
             final Paint paint = borderSide.toPaint();
@@ -1588,7 +1639,8 @@ class _SelectToggleButtonRenderObject extends RenderShiftedBox {
 /// parameter to ensure adequate tap target size, while keeping the widget
 /// visually smaller to the user.
 class _InputPadding extends SingleChildRenderObjectWidget {
-  const _InputPadding({super.child, required this.minSize, required this.direction});
+  const _InputPadding(
+      {super.child, required this.minSize, required this.direction});
 
   final Size minSize;
   final Axis direction;
@@ -1599,14 +1651,16 @@ class _InputPadding extends SingleChildRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, covariant _RenderInputPadding renderObject) {
+  void updateRenderObject(
+      BuildContext context, covariant _RenderInputPadding renderObject) {
     renderObject.minSize = minSize;
     renderObject.direction = direction;
   }
 }
 
 class _RenderInputPadding extends RenderShiftedBox {
-  _RenderInputPadding(this._minSize, this._direction, [RenderBox? child]) : super(child);
+  _RenderInputPadding(this._minSize, this._direction, [RenderBox? child])
+      : super(child);
 
   Size get minSize => _minSize;
   Size _minSize;
@@ -1660,7 +1714,9 @@ class _RenderInputPadding extends RenderShiftedBox {
     return 0.0;
   }
 
-  Size _computeSize({required BoxConstraints constraints, required ChildLayouter layoutChild}) {
+  Size _computeSize(
+      {required BoxConstraints constraints,
+      required ChildLayouter layoutChild}) {
     if (child != null) {
       final Size childSize = layoutChild(child!, constraints);
       final double height = math.max(childSize.width, minSize.width);
@@ -1672,11 +1728,14 @@ class _RenderInputPadding extends RenderShiftedBox {
 
   @override
   Size computeDryLayout(BoxConstraints constraints) {
-    return _computeSize(constraints: constraints, layoutChild: ChildLayoutHelper.dryLayoutChild);
+    return _computeSize(
+        constraints: constraints,
+        layoutChild: ChildLayoutHelper.dryLayoutChild);
   }
 
   @override
-  double? computeDryBaseline(covariant BoxConstraints constraints, TextBaseline baseline) {
+  double? computeDryBaseline(
+      covariant BoxConstraints constraints, TextBaseline baseline) {
     final RenderBox? child = this.child;
     if (child == null) {
       return null;
@@ -1687,15 +1746,19 @@ class _RenderInputPadding extends RenderShiftedBox {
     }
     final Size childSize = child.getDryLayout(constraints);
     return result +
-        Alignment.center.alongOffset(getDryLayout(constraints) - childSize as Offset).dy;
+        Alignment.center
+            .alongOffset(getDryLayout(constraints) - childSize as Offset)
+            .dy;
   }
 
   @override
   void performLayout() {
-    size = _computeSize(constraints: constraints, layoutChild: ChildLayoutHelper.layoutChild);
+    size = _computeSize(
+        constraints: constraints, layoutChild: ChildLayoutHelper.layoutChild);
     if (child != null) {
       final BoxParentData childParentData = child!.parentData! as BoxParentData;
-      childParentData.offset = Alignment.center.alongOffset(size - child!.size as Offset);
+      childParentData.offset =
+          Alignment.center.alongOffset(size - child!.size as Offset);
     }
   }
 

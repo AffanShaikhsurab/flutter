@@ -156,9 +156,11 @@ class Scrollbar extends StatelessWidget {
       return CupertinoScrollbar(
         thumbVisibility: thumbVisibility ?? false,
         thickness: thickness ?? CupertinoScrollbar.defaultThickness,
-        thicknessWhileDragging: thickness ?? CupertinoScrollbar.defaultThicknessWhileDragging,
+        thicknessWhileDragging:
+            thickness ?? CupertinoScrollbar.defaultThicknessWhileDragging,
         radius: radius ?? CupertinoScrollbar.defaultRadius,
-        radiusWhileDragging: radius ?? CupertinoScrollbar.defaultRadiusWhileDragging,
+        radiusWhileDragging:
+            radius ?? CupertinoScrollbar.defaultRadiusWhileDragging,
         controller: controller,
         notificationPredicate: notificationPredicate,
         scrollbarOrientation: scrollbarOrientation,
@@ -191,11 +193,12 @@ class _MaterialScrollbar extends RawScrollbar {
     super.interactive,
     super.scrollbarOrientation,
   }) : super(
-         fadeDuration: _kScrollbarFadeDuration,
-         timeToFade: _kScrollbarTimeToFade,
-         pressDuration: Duration.zero,
-         notificationPredicate: notificationPredicate ?? defaultScrollNotificationPredicate,
-       );
+          fadeDuration: _kScrollbarFadeDuration,
+          timeToFade: _kScrollbarTimeToFade,
+          pressDuration: Duration.zero,
+          notificationPredicate:
+              notificationPredicate ?? defaultScrollNotificationPredicate,
+        );
 
   @override
   _MaterialScrollbarState createState() => _MaterialScrollbarState();
@@ -212,21 +215,27 @@ class _MaterialScrollbarState extends RawScrollbarState<_MaterialScrollbar> {
 
   @override
   bool get showScrollbar =>
-      widget.thumbVisibility ?? _scrollbarTheme.thumbVisibility?.resolve(_states) ?? false;
+      widget.thumbVisibility ??
+      _scrollbarTheme.thumbVisibility?.resolve(_states) ??
+      false;
 
   @override
   bool get enableGestures =>
-      widget.interactive ?? _scrollbarTheme.interactive ?? !_useAndroidScrollbar;
+      widget.interactive ??
+      _scrollbarTheme.interactive ??
+      !_useAndroidScrollbar;
 
   MaterialStateProperty<bool> get _trackVisibility =>
       MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-        return widget.trackVisibility ?? _scrollbarTheme.trackVisibility?.resolve(states) ?? false;
+        return widget.trackVisibility ??
+            _scrollbarTheme.trackVisibility?.resolve(states) ??
+            false;
       });
 
   Set<MaterialState> get _states => <MaterialState>{
-    if (_dragIsActive) MaterialState.dragged,
-    if (_hoverIsActive) MaterialState.hovered,
-  };
+        if (_dragIsActive) MaterialState.dragged,
+        if (_hoverIsActive) MaterialState.hovered,
+      };
 
   MaterialStateProperty<Color> get _thumbColor {
     final Color onSurface = _colorScheme.onSurface;
@@ -238,17 +247,15 @@ class _MaterialScrollbarState extends RawScrollbarState<_MaterialScrollbar> {
       case Brightness.light:
         dragColor = onSurface.withOpacity(0.6);
         hoverColor = onSurface.withOpacity(0.5);
-        idleColor =
-            _useAndroidScrollbar
-                ? Theme.of(context).highlightColor.withOpacity(1.0)
-                : onSurface.withOpacity(0.1);
+        idleColor = _useAndroidScrollbar
+            ? Theme.of(context).highlightColor.withOpacity(1.0)
+            : onSurface.withOpacity(0.1);
       case Brightness.dark:
         dragColor = onSurface.withOpacity(0.75);
         hoverColor = onSurface.withOpacity(0.65);
-        idleColor =
-            _useAndroidScrollbar
-                ? Theme.of(context).highlightColor.withOpacity(1.0)
-                : onSurface.withOpacity(0.3);
+        idleColor = _useAndroidScrollbar
+            ? Theme.of(context).highlightColor.withOpacity(1.0)
+            : onSurface.withOpacity(0.3);
     }
 
     return MaterialStateProperty.resolveWith((Set<MaterialState> states) {
@@ -302,7 +309,8 @@ class _MaterialScrollbarState extends RawScrollbarState<_MaterialScrollbar> {
 
   MaterialStateProperty<double> get _thickness {
     return MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-      if (states.contains(MaterialState.hovered) && _trackVisibility.resolve(states)) {
+      if (states.contains(MaterialState.hovered) &&
+          _trackVisibility.resolve(states)) {
         return widget.thickness ??
             _scrollbarTheme.thickness?.resolve(states) ??
             _kScrollbarThicknessWithTrack;
@@ -352,12 +360,11 @@ class _MaterialScrollbarState extends RawScrollbarState<_MaterialScrollbar> {
       ..trackBorderColor = _trackBorderColor.resolve(_states)
       ..textDirection = Directionality.of(context)
       ..thickness = _thickness.resolve(_states)
-      ..radius =
-          widget.radius ??
+      ..radius = widget.radius ??
           _scrollbarTheme.radius ??
           (_useAndroidScrollbar ? null : _kScrollbarRadius)
-      ..crossAxisMargin =
-          _scrollbarTheme.crossAxisMargin ?? (_useAndroidScrollbar ? 0.0 : _kScrollbarMargin)
+      ..crossAxisMargin = _scrollbarTheme.crossAxisMargin ??
+          (_useAndroidScrollbar ? 0.0 : _kScrollbarMargin)
       ..mainAxisMargin = _scrollbarTheme.mainAxisMargin ?? 0.0
       ..minLength = _scrollbarTheme.minThumbLength ?? _kScrollbarMinLength
       ..padding = MediaQuery.paddingOf(context)

@@ -44,7 +44,8 @@ double _getTargetRadius(
   Offset position,
 ) {
   if (containedInkWell) {
-    final Size size = rectCallback != null ? rectCallback().size : referenceBox.size;
+    final Size size =
+        rectCallback != null ? rectCallback().size : referenceBox.size;
     return _getSplashRadiusForPositionInSize(size, position);
   }
   return Material.defaultSplashRadius;
@@ -141,25 +142,27 @@ class InkSplash extends InteractiveInkFeature {
     super.customBorder,
     double? radius,
     super.onRemoved,
-  }) : _position = position,
-       _borderRadius = borderRadius ?? BorderRadius.zero,
-       _targetRadius =
-           radius ?? _getTargetRadius(referenceBox, containedInkWell, rectCallback, position!),
-       _clipCallback = _getClipCallback(referenceBox, containedInkWell, rectCallback),
-       _repositionToReferenceBox = !containedInkWell,
-       _textDirection = textDirection,
-       super(controller: controller, color: color) {
-    _radiusController =
-        AnimationController(duration: _kUnconfirmedSplashDuration, vsync: controller.vsync)
-          ..addListener(controller.markNeedsPaint)
-          ..forward();
+  })  : _position = position,
+        _borderRadius = borderRadius ?? BorderRadius.zero,
+        _targetRadius = radius ??
+            _getTargetRadius(
+                referenceBox, containedInkWell, rectCallback, position!),
+        _clipCallback =
+            _getClipCallback(referenceBox, containedInkWell, rectCallback),
+        _repositionToReferenceBox = !containedInkWell,
+        _textDirection = textDirection,
+        super(controller: controller, color: color) {
+    _radiusController = AnimationController(
+        duration: _kUnconfirmedSplashDuration, vsync: controller.vsync)
+      ..addListener(controller.markNeedsPaint)
+      ..forward();
     _radius = _radiusController.drive(
       Tween<double>(begin: _kSplashInitialSize, end: _targetRadius),
     );
-    _alphaController =
-        AnimationController(duration: _kSplashFadeDuration, vsync: controller.vsync)
-          ..addListener(controller.markNeedsPaint)
-          ..addStatusListener(_handleAlphaStatusChanged);
+    _alphaController = AnimationController(
+        duration: _kSplashFadeDuration, vsync: controller.vsync)
+      ..addListener(controller.markNeedsPaint)
+      ..addStatusListener(_handleAlphaStatusChanged);
     _alpha = _alphaController!.drive(IntTween(begin: color.alpha, end: 0));
 
     controller.addInkFeature(this);
@@ -215,7 +218,8 @@ class InkSplash extends InteractiveInkFeature {
     final Paint paint = Paint()..color = color.withAlpha(_alpha.value);
     Offset? center = _position;
     if (_repositionToReferenceBox) {
-      center = Offset.lerp(center, referenceBox.size.center(Offset.zero), _radiusController.value);
+      center = Offset.lerp(center, referenceBox.size.center(Offset.zero),
+          _radiusController.value);
     }
     paintInkCircle(
       canvas: canvas,

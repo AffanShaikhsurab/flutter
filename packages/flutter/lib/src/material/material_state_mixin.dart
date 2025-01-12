@@ -109,7 +109,8 @@ mixin MaterialStateMixin<T extends StatefulWidget> on State<T> {
   /// ```
   /// {@end-tool}
   @protected
-  ValueChanged<bool> updateMaterialState(MaterialState key, {ValueChanged<bool>? onChanged}) {
+  ValueChanged<bool> updateMaterialState(MaterialState key,
+      {ValueChanged<bool>? onChanged}) {
     return (bool value) {
       if (materialStates.contains(key) == value) {
         return;
@@ -160,7 +161,8 @@ mixin MaterialStateMixin<T extends StatefulWidget> on State<T> {
   bool get isPressed => materialStates.contains(MaterialState.pressed);
 
   /// Getter for whether this class considers [MaterialState.scrolledUnder] to be active.
-  bool get isScrolledUnder => materialStates.contains(MaterialState.scrolledUnder);
+  bool get isScrolledUnder =>
+      materialStates.contains(MaterialState.scrolledUnder);
 
   /// Getter for whether this class considers [MaterialState.selected] to be active.
   bool get isSelected => materialStates.contains(MaterialState.selected);

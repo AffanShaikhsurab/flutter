@@ -66,8 +66,9 @@ class AdaptiveTextSelectionToolbar extends StatelessWidget {
   /// * [AdaptiveTextSelectionToolbar.selectable], which builds the default
   ///   children for content that is selectable but not editable.
   /// {@endtemplate}
-  const AdaptiveTextSelectionToolbar({super.key, required this.children, required this.anchors})
-    : buttonItems = null;
+  const AdaptiveTextSelectionToolbar(
+      {super.key, required this.children, required this.anchors})
+      : buttonItems = null;
 
   /// Create an instance of [AdaptiveTextSelectionToolbar] whose children will
   /// be built from the given [buttonItems].
@@ -110,18 +111,18 @@ class AdaptiveTextSelectionToolbar extends StatelessWidget {
     required VoidCallback? onShare,
     required VoidCallback? onLiveTextInput,
     required this.anchors,
-  }) : children = null,
-       buttonItems = EditableText.getEditableButtonItems(
-         clipboardStatus: clipboardStatus,
-         onCopy: onCopy,
-         onCut: onCut,
-         onPaste: onPaste,
-         onSelectAll: onSelectAll,
-         onLookUp: onLookUp,
-         onSearchWeb: onSearchWeb,
-         onShare: onShare,
-         onLiveTextInput: onLiveTextInput,
-       );
+  })  : children = null,
+        buttonItems = EditableText.getEditableButtonItems(
+          clipboardStatus: clipboardStatus,
+          onCopy: onCopy,
+          onCut: onCut,
+          onPaste: onPaste,
+          onSelectAll: onSelectAll,
+          onLookUp: onLookUp,
+          onSearchWeb: onSearchWeb,
+          onShare: onShare,
+          onLiveTextInput: onLiveTextInput,
+        );
 
   /// Create an instance of [AdaptiveTextSelectionToolbar] with the default
   /// children for an [EditableText].
@@ -135,9 +136,9 @@ class AdaptiveTextSelectionToolbar extends StatelessWidget {
   AdaptiveTextSelectionToolbar.editableText({
     super.key,
     required EditableTextState editableTextState,
-  }) : children = null,
-       buttonItems = editableTextState.contextMenuButtonItems,
-       anchors = editableTextState.contextMenuAnchors;
+  })  : children = null,
+        buttonItems = editableTextState.contextMenuButtonItems,
+        anchors = editableTextState.contextMenuAnchors;
 
   /// Create an instance of [AdaptiveTextSelectionToolbar] with the default
   /// children for selectable, but not editable, content.
@@ -155,13 +156,13 @@ class AdaptiveTextSelectionToolbar extends StatelessWidget {
     required VoidCallback? onShare,
     required SelectionGeometry selectionGeometry,
     required this.anchors,
-  }) : children = null,
-       buttonItems = SelectableRegion.getSelectableButtonItems(
-         selectionGeometry: selectionGeometry,
-         onCopy: onCopy,
-         onSelectAll: onSelectAll,
-         onShare: onShare,
-       );
+  })  : children = null,
+        buttonItems = SelectableRegion.getSelectableButtonItems(
+          selectionGeometry: selectionGeometry,
+          onCopy: onCopy,
+          onSelectAll: onSelectAll,
+          onShare: onShare,
+        );
 
   /// Create an instance of [AdaptiveTextSelectionToolbar] with the default
   /// children for a [SelectableRegion].
@@ -176,9 +177,9 @@ class AdaptiveTextSelectionToolbar extends StatelessWidget {
   AdaptiveTextSelectionToolbar.selectableRegion({
     super.key,
     required SelectableRegionState selectableRegionState,
-  }) : children = null,
-       buttonItems = selectableRegionState.contextMenuButtonItems,
-       anchors = selectableRegionState.contextMenuAnchors;
+  })  : children = null,
+        buttonItems = selectableRegionState.contextMenuButtonItems,
+        anchors = selectableRegionState.contextMenuAnchors;
 
   /// {@template flutter.material.AdaptiveTextSelectionToolbar.buttonItems}
   /// The [ContextMenuButtonItem]s that will be turned into the correct button
@@ -196,7 +197,8 @@ class AdaptiveTextSelectionToolbar extends StatelessWidget {
 
   /// Returns the default button label String for the button of the given
   /// [ContextMenuButtonType] on any platform.
-  static String getButtonLabel(BuildContext context, ContextMenuButtonItem buttonItem) {
+  static String getButtonLabel(
+      BuildContext context, ContextMenuButtonItem buttonItem) {
     if (buttonItem.label != null) {
       return buttonItem.label!;
     }
@@ -204,23 +206,27 @@ class AdaptiveTextSelectionToolbar extends StatelessWidget {
     switch (Theme.of(context).platform) {
       case TargetPlatform.iOS:
       case TargetPlatform.macOS:
-        return CupertinoTextSelectionToolbarButton.getButtonLabel(context, buttonItem);
+        return CupertinoTextSelectionToolbarButton.getButtonLabel(
+            context, buttonItem);
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
       case TargetPlatform.windows:
         assert(debugCheckHasMaterialLocalizations(context));
-        final MaterialLocalizations localizations = MaterialLocalizations.of(context);
+        final MaterialLocalizations localizations =
+            MaterialLocalizations.of(context);
         return switch (buttonItem.type) {
           ContextMenuButtonType.cut => localizations.cutButtonLabel,
           ContextMenuButtonType.copy => localizations.copyButtonLabel,
           ContextMenuButtonType.paste => localizations.pasteButtonLabel,
           ContextMenuButtonType.selectAll => localizations.selectAllButtonLabel,
-          ContextMenuButtonType.delete => localizations.deleteButtonTooltip.toUpperCase(),
+          ContextMenuButtonType.delete =>
+            localizations.deleteButtonTooltip.toUpperCase(),
           ContextMenuButtonType.lookUp => localizations.lookUpButtonLabel,
           ContextMenuButtonType.searchWeb => localizations.searchWebButtonLabel,
           ContextMenuButtonType.share => localizations.shareButtonLabel,
-          ContextMenuButtonType.liveTextInput => localizations.scanTextButtonLabel,
+          ContextMenuButtonType.liveTextInput =>
+            localizations.scanTextButtonLabel,
           ContextMenuButtonType.custom => '',
         };
     }
@@ -252,7 +258,8 @@ class AdaptiveTextSelectionToolbar extends StatelessWidget {
     switch (Theme.of(context).platform) {
       case TargetPlatform.iOS:
         return buttonItems.map((ContextMenuButtonItem buttonItem) {
-          return CupertinoTextSelectionToolbarButton.buttonItem(buttonItem: buttonItem);
+          return CupertinoTextSelectionToolbarButton.buttonItem(
+              buttonItem: buttonItem);
         });
       case TargetPlatform.fuchsia:
       case TargetPlatform.android:
@@ -261,7 +268,8 @@ class AdaptiveTextSelectionToolbar extends StatelessWidget {
           final ContextMenuButtonItem buttonItem = buttonItems[i];
           buttons.add(
             TextSelectionToolbarTextButton(
-              padding: TextSelectionToolbarTextButton.getPadding(i, buttonItems.length),
+              padding: TextSelectionToolbarTextButton.getPadding(
+                  i, buttonItems.length),
               onPressed: buttonItem.onPressed,
               alignment: AlignmentDirectional.centerStart,
               child: Text(getButtonLabel(context, buttonItem)),
@@ -291,32 +299,37 @@ class AdaptiveTextSelectionToolbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // If there aren't any buttons to build, build an empty toolbar.
-    if ((children != null && children!.isEmpty) || (buttonItems != null && buttonItems!.isEmpty)) {
+    if ((children != null && children!.isEmpty) ||
+        (buttonItems != null && buttonItems!.isEmpty)) {
       return const SizedBox.shrink();
     }
 
-    final List<Widget> resultChildren =
-        children != null ? children! : getAdaptiveButtons(context, buttonItems!).toList();
+    final List<Widget> resultChildren = children != null
+        ? children!
+        : getAdaptiveButtons(context, buttonItems!).toList();
 
     switch (Theme.of(context).platform) {
       case TargetPlatform.iOS:
         return CupertinoTextSelectionToolbar(
           anchorAbove: anchors.primaryAnchor,
-          anchorBelow:
-              anchors.secondaryAnchor == null ? anchors.primaryAnchor : anchors.secondaryAnchor!,
+          anchorBelow: anchors.secondaryAnchor == null
+              ? anchors.primaryAnchor
+              : anchors.secondaryAnchor!,
           children: resultChildren,
         );
       case TargetPlatform.android:
         return TextSelectionToolbar(
           anchorAbove: anchors.primaryAnchor,
-          anchorBelow:
-              anchors.secondaryAnchor == null ? anchors.primaryAnchor : anchors.secondaryAnchor!,
+          anchorBelow: anchors.secondaryAnchor == null
+              ? anchors.primaryAnchor
+              : anchors.secondaryAnchor!,
           children: resultChildren,
         );
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
       case TargetPlatform.windows:
-        return DesktopTextSelectionToolbar(anchor: anchors.primaryAnchor, children: resultChildren);
+        return DesktopTextSelectionToolbar(
+            anchor: anchors.primaryAnchor, children: resultChildren);
       case TargetPlatform.macOS:
         return CupertinoDesktopTextSelectionToolbar(
           anchor: anchors.primaryAnchor,

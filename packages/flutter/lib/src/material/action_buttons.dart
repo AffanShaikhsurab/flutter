@@ -63,10 +63,11 @@ abstract class _ActionButton extends IconButton {
   }
 }
 
-typedef _ActionIconBuilderCallback = WidgetBuilder? Function(ActionIconThemeData? actionIconTheme);
+typedef _ActionIconBuilderCallback = WidgetBuilder? Function(
+    ActionIconThemeData? actionIconTheme);
 typedef _ActionIconDataCallback = IconData Function(BuildContext context);
-typedef _AndroidSemanticsLabelCallback =
-    String Function(MaterialLocalizations materialLocalization);
+typedef _AndroidSemanticsLabelCallback = String Function(
+    MaterialLocalizations materialLocalization);
 
 class _ActionIcon extends StatelessWidget {
   const _ActionIcon({
@@ -93,7 +94,8 @@ class _ActionIcon extends StatelessWidget {
     // expects the duplicated tooltip and label.
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        semanticsLabel = getAndroidSemanticsLabel(MaterialLocalizations.of(context));
+        semanticsLabel =
+            getAndroidSemanticsLabel(MaterialLocalizations.of(context));
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
       case TargetPlatform.windows:
@@ -190,7 +192,9 @@ class BackButton extends _ActionButton {
   /// Creates an [IconButton] with the appropriate "back" icon for the current
   /// target platform.
   const BackButton({super.key, super.color, super.style, super.onPressed})
-    : super(icon: const BackButtonIcon(), standardComponent: StandardComponentType.backButton);
+      : super(
+            icon: const BackButtonIcon(),
+            standardComponent: StandardComponentType.backButton);
 
   @override
   void _onPressedCallback(BuildContext context) => Navigator.maybePop(context);
@@ -259,7 +263,9 @@ class CloseButtonIcon extends StatelessWidget {
 class CloseButton extends _ActionButton {
   /// Creates a Material Design close icon button.
   const CloseButton({super.key, super.color, super.onPressed, super.style})
-    : super(icon: const CloseButtonIcon(), standardComponent: StandardComponentType.closeButton);
+      : super(
+            icon: const CloseButtonIcon(),
+            standardComponent: StandardComponentType.closeButton);
 
   @override
   void _onPressedCallback(BuildContext context) => Navigator.maybePop(context);
@@ -321,10 +327,13 @@ class DrawerButtonIcon extends StatelessWidget {
 class DrawerButton extends _ActionButton {
   /// Creates a Material Design drawer icon button.
   const DrawerButton({super.key, super.color, super.style, super.onPressed})
-    : super(icon: const DrawerButtonIcon(), standardComponent: StandardComponentType.drawerButton);
+      : super(
+            icon: const DrawerButtonIcon(),
+            standardComponent: StandardComponentType.drawerButton);
 
   @override
-  void _onPressedCallback(BuildContext context) => Scaffold.of(context).openDrawer();
+  void _onPressedCallback(BuildContext context) =>
+      Scaffold.of(context).openDrawer();
 
   @override
   String _getTooltip(BuildContext context) {
@@ -383,10 +392,11 @@ class EndDrawerButtonIcon extends StatelessWidget {
 class EndDrawerButton extends _ActionButton {
   /// Creates a Material Design end drawer icon button.
   const EndDrawerButton({super.key, super.color, super.style, super.onPressed})
-    : super(icon: const EndDrawerButtonIcon());
+      : super(icon: const EndDrawerButtonIcon());
 
   @override
-  void _onPressedCallback(BuildContext context) => Scaffold.of(context).openEndDrawer();
+  void _onPressedCallback(BuildContext context) =>
+      Scaffold.of(context).openEndDrawer();
 
   @override
   String _getTooltip(BuildContext context) {

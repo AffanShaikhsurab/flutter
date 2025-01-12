@@ -202,9 +202,9 @@ class RadioListTile<T> extends StatelessWidget {
     this.enableFeedback,
     this.radioScaleFactor = 1.0,
     this.internalAddSemanticForOnTap = false,
-  }) : _radioType = _RadioType.material,
-       useCupertinoCheckmarkStyle = false,
-       assert(!isThreeLine || subtitle != null);
+  })  : _radioType = _RadioType.material,
+        useCupertinoCheckmarkStyle = false,
+        assert(!isThreeLine || subtitle != null);
 
   /// Creates a combination of a list tile and a platform adaptive radio.
   ///
@@ -244,8 +244,8 @@ class RadioListTile<T> extends StatelessWidget {
     this.radioScaleFactor = 1.0,
     this.useCupertinoCheckmarkStyle = false,
     this.internalAddSemanticForOnTap = false,
-  }) : _radioType = _RadioType.adaptive,
-       assert(!isThreeLine || subtitle != null);
+  })  : _radioType = _RadioType.adaptive,
+        assert(!isThreeLine || subtitle != null);
 
   /// The value represented by this radio button.
   final T value;
@@ -487,7 +487,8 @@ class RadioListTile<T> extends StatelessWidget {
             onChanged: onChanged,
             toggleable: toggleable,
             activeColor: activeColor,
-            materialTapTargetSize: materialTapTargetSize ?? MaterialTapTargetSize.shrinkWrap,
+            materialTapTargetSize:
+                materialTapTargetSize ?? MaterialTapTargetSize.shrinkWrap,
             autofocus: autofocus,
             fillColor: fillColor,
             mouseCursor: mouseCursor,
@@ -504,7 +505,8 @@ class RadioListTile<T> extends StatelessWidget {
             onChanged: onChanged,
             toggleable: toggleable,
             activeColor: activeColor,
-            materialTapTargetSize: materialTapTargetSize ?? MaterialTapTargetSize.shrinkWrap,
+            materialTapTargetSize:
+                materialTapTargetSize ?? MaterialTapTargetSize.shrinkWrap,
             autofocus: autofocus,
             fillColor: fillColor,
             mouseCursor: mouseCursor,
@@ -521,19 +523,26 @@ class RadioListTile<T> extends StatelessWidget {
     }
 
     final ListTileThemeData listTileTheme = ListTileTheme.of(context);
-    final ListTileControlAffinity effectiveControlAffinity =
-        controlAffinity ?? listTileTheme.controlAffinity ?? ListTileControlAffinity.platform;
+    final ListTileControlAffinity effectiveControlAffinity = controlAffinity ??
+        listTileTheme.controlAffinity ??
+        ListTileControlAffinity.platform;
     Widget? leading, trailing;
     (leading, trailing) = switch (effectiveControlAffinity) {
-      ListTileControlAffinity.leading || ListTileControlAffinity.platform => (control, secondary),
+      ListTileControlAffinity.leading || ListTileControlAffinity.platform => (
+          control,
+          secondary
+        ),
       ListTileControlAffinity.trailing => (secondary, control),
     };
 
     final ThemeData theme = Theme.of(context);
     final RadioThemeData radioThemeData = RadioTheme.of(context);
-    final Set<MaterialState> states = <MaterialState>{if (selected) MaterialState.selected};
-    final Color effectiveActiveColor =
-        activeColor ?? radioThemeData.fillColor?.resolve(states) ?? theme.colorScheme.secondary;
+    final Set<MaterialState> states = <MaterialState>{
+      if (selected) MaterialState.selected
+    };
+    final Color effectiveActiveColor = activeColor ??
+        radioThemeData.fillColor?.resolve(states) ??
+        theme.colorScheme.secondary;
     return MergeSemantics(
       child: ListTile(
         selectedColor: effectiveActiveColor,
@@ -547,18 +556,17 @@ class RadioListTile<T> extends StatelessWidget {
         shape: shape,
         tileColor: tileColor,
         selectedTileColor: selectedTileColor,
-        onTap:
-            onChanged != null
-                ? () {
-                  if (toggleable && checked) {
-                    onChanged!(null);
-                    return;
-                  }
-                  if (!checked) {
-                    onChanged!(value);
-                  }
+        onTap: onChanged != null
+            ? () {
+                if (toggleable && checked) {
+                  onChanged!(null);
+                  return;
                 }
-                : null,
+                if (!checked) {
+                  onChanged!(value);
+                }
+              }
+            : null,
         selected: selected,
         autofocus: autofocus,
         contentPadding: contentPadding,

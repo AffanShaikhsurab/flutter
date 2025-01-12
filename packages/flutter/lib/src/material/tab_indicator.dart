@@ -83,7 +83,9 @@ class UnderlineTabIndicator extends Decoration {
   @override
   Path getClipPath(Rect rect, TextDirection textDirection) {
     if (borderRadius != null) {
-      return Path()..addRRect(borderRadius!.toRRect(_indicatorRectFor(rect, textDirection)));
+      return Path()
+        ..addRRect(
+            borderRadius!.toRRect(_indicatorRectFor(rect, textDirection)));
     }
     return Path()..addRect(_indicatorRectFor(rect, textDirection));
   }

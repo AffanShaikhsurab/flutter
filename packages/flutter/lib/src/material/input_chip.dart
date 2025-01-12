@@ -133,8 +133,8 @@ class InputChip extends StatelessWidget
     this.deleteIconBoxConstraints,
     this.chipAnimationStyle,
     this.mouseCursor,
-  }) : assert(pressElevation == null || pressElevation >= 0.0),
-       assert(elevation == null || elevation >= 0.0);
+  })  : assert(pressElevation == null || pressElevation >= 0.0),
+        assert(elevation == null || elevation >= 0.0);
 
   @override
   final Widget? avatar;
@@ -216,10 +216,13 @@ class InputChip extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     assert(debugCheckHasMaterial(context));
-    final ChipThemeData? defaults =
-        Theme.of(context).useMaterial3 ? _InputChipDefaultsM3(context, isEnabled, selected) : null;
-    final Widget? resolvedDeleteIcon =
-        deleteIcon ?? (Theme.of(context).useMaterial3 ? const Icon(Icons.clear, size: 18) : null);
+    final ChipThemeData? defaults = Theme.of(context).useMaterial3
+        ? _InputChipDefaultsM3(context, isEnabled, selected)
+        : null;
+    final Widget? resolvedDeleteIcon = deleteIcon ??
+        (Theme.of(context).useMaterial3
+            ? const Icon(Icons.clear, size: 18)
+            : null);
     return RawChip(
       defaultProperties: defaults,
       avatar: avatar,
@@ -253,7 +256,8 @@ class InputChip extends StatelessWidget
       selectedShadowColor: selectedShadowColor,
       showCheckmark: showCheckmark,
       checkmarkColor: checkmarkColor,
-      isEnabled: isEnabled && (onSelected != null || onDeleted != null || onPressed != null),
+      isEnabled: isEnabled &&
+          (onSelected != null || onDeleted != null || onPressed != null),
       avatarBorder: avatarBorder,
       iconTheme: iconTheme,
       avatarBoxConstraints: avatarBoxConstraints,
@@ -274,11 +278,12 @@ class InputChip extends StatelessWidget
 // dart format off
 class _InputChipDefaultsM3 extends ChipThemeData {
   _InputChipDefaultsM3(this.context, this.isEnabled, this.isSelected)
-    : super(
-        elevation: 0.0,
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8.0))),
-        showCheckmark: true,
-      );
+      : super(
+          elevation: 0.0,
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8.0))),
+          showCheckmark: true,
+        );
 
   final BuildContext context;
   final bool isEnabled;
@@ -288,27 +293,28 @@ class _InputChipDefaultsM3 extends ChipThemeData {
 
   @override
   TextStyle? get labelStyle => _textTheme.labelLarge?.copyWith(
-    color: isEnabled
-      ? isSelected
-        ? _colors.onSecondaryContainer
-        : _colors.onSurfaceVariant
-      : _colors.onSurface,
-  );
+        color: isEnabled
+            ? isSelected
+                ? _colors.onSecondaryContainer
+                : _colors.onSurfaceVariant
+            : _colors.onSurface,
+      );
 
   @override
   MaterialStateProperty<Color?>? get color =>
-    MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-      if (states.contains(MaterialState.selected) && states.contains(MaterialState.disabled)) {
-        return _colors.onSurface.withOpacity(0.12);
-      }
-      if (states.contains(MaterialState.disabled)) {
+      MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+        if (states.contains(MaterialState.selected) &&
+            states.contains(MaterialState.disabled)) {
+          return _colors.onSurface.withOpacity(0.12);
+        }
+        if (states.contains(MaterialState.disabled)) {
+          return null;
+        }
+        if (states.contains(MaterialState.selected)) {
+          return _colors.secondaryContainer;
+        }
         return null;
-      }
-      if (states.contains(MaterialState.selected)) {
-        return _colors.secondaryContainer;
-      }
-      return null;
-    });
+      });
 
   @override
   Color? get shadowColor => Colors.transparent;
@@ -318,34 +324,34 @@ class _InputChipDefaultsM3 extends ChipThemeData {
 
   @override
   Color? get checkmarkColor => isEnabled
-    ? isSelected
-      ? _colors.primary
-      : _colors.onSurfaceVariant
-    : _colors.onSurface;
+      ? isSelected
+          ? _colors.primary
+          : _colors.onSurfaceVariant
+      : _colors.onSurface;
 
   @override
   Color? get deleteIconColor => isEnabled
-    ? isSelected
-      ? _colors.onSecondaryContainer
-      : _colors.onSurfaceVariant
-    : _colors.onSurface;
+      ? isSelected
+          ? _colors.onSecondaryContainer
+          : _colors.onSurfaceVariant
+      : _colors.onSurface;
 
   @override
   BorderSide? get side => !isSelected
-    ? isEnabled
-      ? BorderSide(color: _colors.outlineVariant)
-      : BorderSide(color: _colors.onSurface.withOpacity(0.12))
-    : const BorderSide(color: Colors.transparent);
+      ? isEnabled
+          ? BorderSide(color: _colors.outlineVariant)
+          : BorderSide(color: _colors.onSurface.withOpacity(0.12))
+      : const BorderSide(color: Colors.transparent);
 
   @override
   IconThemeData? get iconTheme => IconThemeData(
-    color: isEnabled
-      ? isSelected
-        ? _colors.primary
-        : _colors.onSurfaceVariant
-      : _colors.onSurface,
-    size: 18.0,
-  );
+        color: isEnabled
+            ? isSelected
+                ? _colors.primary
+                : _colors.onSurfaceVariant
+            : _colors.onSurface,
+        size: 18.0,
+      );
 
   @override
   EdgeInsetsGeometry? get padding => const EdgeInsets.all(8.0);
@@ -361,7 +367,8 @@ class _InputChipDefaultsM3 extends ChipThemeData {
   @override
   EdgeInsetsGeometry? get labelPadding {
     final double fontSize = labelStyle?.fontSize ?? 14.0;
-    final double fontSizeRatio = MediaQuery.textScalerOf(context).scale(fontSize) / 14.0;
+    final double fontSizeRatio =
+        MediaQuery.textScalerOf(context).scale(fontSize) / 14.0;
     return EdgeInsets.lerp(
       const EdgeInsets.symmetric(horizontal: 8.0),
       const EdgeInsets.symmetric(horizontal: 4.0),

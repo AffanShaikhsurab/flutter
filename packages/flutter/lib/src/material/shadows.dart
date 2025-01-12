@@ -54,8 +54,12 @@ const Map<int, List<BoxShadow>> _elevationToShadow = <int, List<BoxShadow>>{
       spreadRadius: -1.0,
       color: _kKeyUmbraOpacity,
     ),
-    BoxShadow(offset: Offset(0.0, 1.0), blurRadius: 1.0, color: _kKeyPenumbraOpacity),
-    BoxShadow(offset: Offset(0.0, 1.0), blurRadius: 3.0, color: _kAmbientShadowOpacity),
+    BoxShadow(
+        offset: Offset(0.0, 1.0), blurRadius: 1.0, color: _kKeyPenumbraOpacity),
+    BoxShadow(
+        offset: Offset(0.0, 1.0),
+        blurRadius: 3.0,
+        color: _kAmbientShadowOpacity),
   ],
 
   2: <BoxShadow>[
@@ -65,8 +69,12 @@ const Map<int, List<BoxShadow>> _elevationToShadow = <int, List<BoxShadow>>{
       spreadRadius: -2.0,
       color: _kKeyUmbraOpacity,
     ),
-    BoxShadow(offset: Offset(0.0, 2.0), blurRadius: 2.0, color: _kKeyPenumbraOpacity),
-    BoxShadow(offset: Offset(0.0, 1.0), blurRadius: 5.0, color: _kAmbientShadowOpacity),
+    BoxShadow(
+        offset: Offset(0.0, 2.0), blurRadius: 2.0, color: _kKeyPenumbraOpacity),
+    BoxShadow(
+        offset: Offset(0.0, 1.0),
+        blurRadius: 5.0,
+        color: _kAmbientShadowOpacity),
   ],
 
   3: <BoxShadow>[
@@ -76,8 +84,12 @@ const Map<int, List<BoxShadow>> _elevationToShadow = <int, List<BoxShadow>>{
       spreadRadius: -2.0,
       color: _kKeyUmbraOpacity,
     ),
-    BoxShadow(offset: Offset(0.0, 3.0), blurRadius: 4.0, color: _kKeyPenumbraOpacity),
-    BoxShadow(offset: Offset(0.0, 1.0), blurRadius: 8.0, color: _kAmbientShadowOpacity),
+    BoxShadow(
+        offset: Offset(0.0, 3.0), blurRadius: 4.0, color: _kKeyPenumbraOpacity),
+    BoxShadow(
+        offset: Offset(0.0, 1.0),
+        blurRadius: 8.0,
+        color: _kAmbientShadowOpacity),
   ],
 
   4: <BoxShadow>[
@@ -87,8 +99,12 @@ const Map<int, List<BoxShadow>> _elevationToShadow = <int, List<BoxShadow>>{
       spreadRadius: -1.0,
       color: _kKeyUmbraOpacity,
     ),
-    BoxShadow(offset: Offset(0.0, 4.0), blurRadius: 5.0, color: _kKeyPenumbraOpacity),
-    BoxShadow(offset: Offset(0.0, 1.0), blurRadius: 10.0, color: _kAmbientShadowOpacity),
+    BoxShadow(
+        offset: Offset(0.0, 4.0), blurRadius: 5.0, color: _kKeyPenumbraOpacity),
+    BoxShadow(
+        offset: Offset(0.0, 1.0),
+        blurRadius: 10.0,
+        color: _kAmbientShadowOpacity),
   ],
 
   6: <BoxShadow>[
@@ -98,8 +114,14 @@ const Map<int, List<BoxShadow>> _elevationToShadow = <int, List<BoxShadow>>{
       spreadRadius: -1.0,
       color: _kKeyUmbraOpacity,
     ),
-    BoxShadow(offset: Offset(0.0, 6.0), blurRadius: 10.0, color: _kKeyPenumbraOpacity),
-    BoxShadow(offset: Offset(0.0, 1.0), blurRadius: 18.0, color: _kAmbientShadowOpacity),
+    BoxShadow(
+        offset: Offset(0.0, 6.0),
+        blurRadius: 10.0,
+        color: _kKeyPenumbraOpacity),
+    BoxShadow(
+        offset: Offset(0.0, 1.0),
+        blurRadius: 18.0,
+        color: _kAmbientShadowOpacity),
   ],
 
   8: <BoxShadow>[

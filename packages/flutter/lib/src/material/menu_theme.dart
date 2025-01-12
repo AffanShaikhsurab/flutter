@@ -75,13 +75,16 @@ class MenuThemeData with Diagnosticable {
     if (other.runtimeType != runtimeType) {
       return false;
     }
-    return other is MenuThemeData && other.style == style && other.submenuIcon == submenuIcon;
+    return other is MenuThemeData &&
+        other.style == style &&
+        other.submenuIcon == submenuIcon;
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<MenuStyle>('style', style, defaultValue: null));
+    properties.add(
+        DiagnosticsProperty<MenuStyle>('style', style, defaultValue: null));
     properties.add(
       DiagnosticsProperty<MaterialStateProperty<Widget?>>(
         'submenuIcon',
@@ -137,7 +140,8 @@ class MenuTheme extends InheritedTheme {
   /// }
   /// ```
   static MenuThemeData of(BuildContext context) {
-    final MenuTheme? menuTheme = context.dependOnInheritedWidgetOfExactType<MenuTheme>();
+    final MenuTheme? menuTheme =
+        context.dependOnInheritedWidgetOfExactType<MenuTheme>();
     return menuTheme?.data ?? Theme.of(context).menuTheme;
   }
 

@@ -109,7 +109,8 @@ class _NoInputBorder extends InputBorder {
   }
 
   @override
-  void paintInterior(Canvas canvas, Rect rect, Paint paint, {TextDirection? textDirection}) {
+  void paintInterior(Canvas canvas, Rect rect, Paint paint,
+      {TextDirection? textDirection}) {
     canvas.drawRect(rect, paint);
   }
 
@@ -173,7 +174,8 @@ class UnderlineInputBorder extends InputBorder {
   bool get isOutline => false;
 
   @override
-  UnderlineInputBorder copyWith({BorderSide? borderSide, BorderRadius? borderRadius}) {
+  UnderlineInputBorder copyWith(
+      {BorderSide? borderSide, BorderRadius? borderRadius}) {
     return UnderlineInputBorder(
       borderSide: borderSide ?? this.borderSide,
       borderRadius: borderRadius ?? this.borderRadius,
@@ -192,9 +194,11 @@ class UnderlineInputBorder extends InputBorder {
 
   @override
   Path getInnerPath(Rect rect, {TextDirection? textDirection}) {
-    return Path()..addRect(
-      Rect.fromLTWH(rect.left, rect.top, rect.width, math.max(0.0, rect.height - borderSide.width)),
-    );
+    return Path()
+      ..addRect(
+        Rect.fromLTWH(rect.left, rect.top, rect.width,
+            math.max(0.0, rect.height - borderSide.width)),
+      );
   }
 
   @override
@@ -203,7 +207,8 @@ class UnderlineInputBorder extends InputBorder {
   }
 
   @override
-  void paintInterior(Canvas canvas, Rect rect, Paint paint, {TextDirection? textDirection}) {
+  void paintInterior(Canvas canvas, Rect rect, Paint paint,
+      {TextDirection? textDirection}) {
     canvas.drawRRect(borderRadius.resolve(textDirection).toRRect(rect), paint);
   }
 
@@ -249,11 +254,14 @@ class UnderlineInputBorder extends InputBorder {
       return;
     }
 
-    if (borderRadius.bottomLeft != Radius.zero || borderRadius.bottomRight != Radius.zero) {
+    if (borderRadius.bottomLeft != Radius.zero ||
+        borderRadius.bottomRight != Radius.zero) {
       // This prevents the border from leaking the color due to anti-aliasing rounding errors.
       final BorderRadius updatedBorderRadius = BorderRadius.only(
-        bottomLeft: borderRadius.bottomLeft.clamp(maximum: Radius.circular(rect.height / 2)),
-        bottomRight: borderRadius.bottomRight.clamp(maximum: Radius.circular(rect.height / 2)),
+        bottomLeft: borderRadius.bottomLeft
+            .clamp(maximum: Radius.circular(rect.height / 2)),
+        bottomRight: borderRadius.bottomRight
+            .clamp(maximum: Radius.circular(rect.height / 2)),
       );
 
       BoxBorder.paintNonUniformBorder(
@@ -416,7 +424,10 @@ class OutlineInputBorder extends InputBorder {
   @override
   Path getInnerPath(Rect rect, {TextDirection? textDirection}) {
     return Path()
-      ..addRRect(borderRadius.resolve(textDirection).toRRect(rect).deflate(borderSide.width));
+      ..addRRect(borderRadius
+          .resolve(textDirection)
+          .toRRect(rect)
+          .deflate(borderSide.width));
   }
 
   @override
@@ -425,14 +436,16 @@ class OutlineInputBorder extends InputBorder {
   }
 
   @override
-  void paintInterior(Canvas canvas, Rect rect, Paint paint, {TextDirection? textDirection}) {
+  void paintInterior(Canvas canvas, Rect rect, Paint paint,
+      {TextDirection? textDirection}) {
     canvas.drawRRect(borderRadius.resolve(textDirection).toRRect(rect), paint);
   }
 
   @override
   bool get preferPaintInterior => true;
 
-  Path _gapBorderPath(Canvas canvas, RRect center, double outerWidth, double start, double extent) {
+  Path _gapBorderPath(Canvas canvas, RRect center, double outerWidth,
+      double start, double extent) {
     // When the corner radii on any side add up to be greater than the
     // given height, each radius has to be scaled to not exceed the
     // size of the width/height of the RRect.
@@ -496,7 +509,8 @@ class OutlineInputBorder extends InputBorder {
       }
     } else if (start + extent < outerWidth) {
       final double dx = outerWidth - (start + extent);
-      final double sweep = math.asin(clampDouble(1 - dx / scaledRRect.trRadiusX, 0.0, 1.0));
+      final double sweep =
+          math.asin(clampDouble(1 - dx / scaledRRect.trRadiusX, 0.0, 1.0));
       path.addArc(trCorner, trCornerArcStart + sweep, trCornerArcSweep - sweep);
     }
 
@@ -547,12 +561,14 @@ class OutlineInputBorder extends InputBorder {
     if (gapStart == null || gapExtent <= 0.0 || gapPercentage == 0.0) {
       canvas.drawRRect(center, paint);
     } else {
-      final double extent = lerpDouble(0.0, gapExtent + gapPadding * 2.0, gapPercentage)!;
+      final double extent =
+          lerpDouble(0.0, gapExtent + gapPadding * 2.0, gapPercentage)!;
       final double start = switch (textDirection!) {
         TextDirection.rtl => gapStart + gapPadding - extent,
         TextDirection.ltr => gapStart - gapPadding,
       };
-      final Path path = _gapBorderPath(canvas, center, outer.width, math.max(0.0, start), extent);
+      final Path path = _gapBorderPath(
+          canvas, center, outer.width, math.max(0.0, start), extent);
       canvas.drawPath(path, paint);
     }
   }

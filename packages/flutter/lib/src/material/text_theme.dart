@@ -362,12 +362,18 @@ class TextTheme with Diagnosticable {
       return this;
     }
     return copyWith(
-      displayLarge: displayLarge?.merge(other.displayLarge) ?? other.displayLarge,
-      displayMedium: displayMedium?.merge(other.displayMedium) ?? other.displayMedium,
-      displaySmall: displaySmall?.merge(other.displaySmall) ?? other.displaySmall,
-      headlineLarge: headlineLarge?.merge(other.headlineLarge) ?? other.headlineLarge,
-      headlineMedium: headlineMedium?.merge(other.headlineMedium) ?? other.headlineMedium,
-      headlineSmall: headlineSmall?.merge(other.headlineSmall) ?? other.headlineSmall,
+      displayLarge:
+          displayLarge?.merge(other.displayLarge) ?? other.displayLarge,
+      displayMedium:
+          displayMedium?.merge(other.displayMedium) ?? other.displayMedium,
+      displaySmall:
+          displaySmall?.merge(other.displaySmall) ?? other.displaySmall,
+      headlineLarge:
+          headlineLarge?.merge(other.headlineLarge) ?? other.headlineLarge,
+      headlineMedium:
+          headlineMedium?.merge(other.headlineMedium) ?? other.headlineMedium,
+      headlineSmall:
+          headlineSmall?.merge(other.headlineSmall) ?? other.headlineSmall,
       titleLarge: titleLarge?.merge(other.titleLarge) ?? other.titleLarge,
       titleMedium: titleMedium?.merge(other.titleMedium) ?? other.titleMedium,
       titleSmall: titleSmall?.merge(other.titleSmall) ?? other.titleSmall,
@@ -614,7 +620,8 @@ class TextTheme with Diagnosticable {
   /// See also:
   /// * [TextTheme.of], which returns the [ThemeData.textTheme] property of the ambient
   ///   [Theme] instead.
-  static TextTheme primaryOf(BuildContext context) => Theme.of(context).primaryTextTheme;
+  static TextTheme primaryOf(BuildContext context) =>
+      Theme.of(context).primaryTextTheme;
 
   @override
   bool operator ==(Object other) {
@@ -644,27 +651,28 @@ class TextTheme with Diagnosticable {
 
   @override
   int get hashCode => Object.hash(
-    displayLarge,
-    displayMedium,
-    displaySmall,
-    headlineLarge,
-    headlineMedium,
-    headlineSmall,
-    titleLarge,
-    titleMedium,
-    titleSmall,
-    bodyLarge,
-    bodyMedium,
-    bodySmall,
-    labelLarge,
-    labelMedium,
-    labelSmall,
-  );
+        displayLarge,
+        displayMedium,
+        displaySmall,
+        headlineLarge,
+        headlineMedium,
+        headlineSmall,
+        titleLarge,
+        titleMedium,
+        titleSmall,
+        bodyLarge,
+        bodyMedium,
+        bodySmall,
+        labelLarge,
+        labelMedium,
+        labelSmall,
+      );
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    final TextTheme defaultTheme = Typography.material2018(platform: defaultTargetPlatform).black;
+    final TextTheme defaultTheme =
+        Typography.material2018(platform: defaultTargetPlatform).black;
     properties.add(
       DiagnosticsProperty<TextStyle>(
         'displayLarge',
@@ -729,7 +737,8 @@ class TextTheme with Diagnosticable {
       ),
     );
     properties.add(
-      DiagnosticsProperty<TextStyle>('bodyLarge', bodyLarge, defaultValue: defaultTheme.bodyLarge),
+      DiagnosticsProperty<TextStyle>('bodyLarge', bodyLarge,
+          defaultValue: defaultTheme.bodyLarge),
     );
     properties.add(
       DiagnosticsProperty<TextStyle>(
@@ -739,7 +748,8 @@ class TextTheme with Diagnosticable {
       ),
     );
     properties.add(
-      DiagnosticsProperty<TextStyle>('bodySmall', bodySmall, defaultValue: defaultTheme.bodySmall),
+      DiagnosticsProperty<TextStyle>('bodySmall', bodySmall,
+          defaultValue: defaultTheme.bodySmall),
     );
     properties.add(
       DiagnosticsProperty<TextStyle>(

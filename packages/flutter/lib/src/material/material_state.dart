@@ -428,7 +428,8 @@ abstract class MaterialStateUnderlineInputBorder extends UnderlineInputBorder
 /// be used.
 ///
 /// Used by [MaterialStateTextStyle.resolveWith].
-class _MaterialStateUnderlineInputBorder extends MaterialStateUnderlineInputBorder {
+class _MaterialStateUnderlineInputBorder
+    extends MaterialStateUnderlineInputBorder {
   const _MaterialStateUnderlineInputBorder(this._resolve);
 
   final MaterialPropertyResolver<InputBorder> _resolve;
@@ -468,8 +469,8 @@ abstract interface class WidgetStateInputBorder
   /// [WidgetStateInputBorder], such as [InputDecoration.border]
   /// (if used as a regular [InputBorder], it acts the same as
   /// an empty `OutlineInputBorder()` constructor).
-  const factory WidgetStateInputBorder.resolveWith(WidgetPropertyResolver<InputBorder> callback) =
-      _WidgetStateInputBorder;
+  const factory WidgetStateInputBorder.resolveWith(
+      WidgetPropertyResolver<InputBorder> callback) = _WidgetStateInputBorder;
 
   /// Creates a [WidgetStateOutlinedBorder] from a [WidgetStateMap].
   ///
@@ -479,11 +480,12 @@ abstract interface class WidgetStateInputBorder
   /// (throws an error if used as a regular [OutlinedBorder]).
   ///
   /// {@macro flutter.widgets.WidgetState.any}
-  const factory WidgetStateInputBorder.fromMap(WidgetStateMap<InputBorder> map) =
-      _WidgetInputBorderMapper;
+  const factory WidgetStateInputBorder.fromMap(
+      WidgetStateMap<InputBorder> map) = _WidgetInputBorderMapper;
 }
 
-class _WidgetStateInputBorder extends OutlineInputBorder implements WidgetStateInputBorder {
+class _WidgetStateInputBorder extends OutlineInputBorder
+    implements WidgetStateInputBorder {
   const _WidgetStateInputBorder(this._resolve);
 
   final WidgetPropertyResolver<InputBorder> _resolve;

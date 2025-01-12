@@ -33,7 +33,9 @@ class _SaltedKey<S, V> extends LocalKey {
     if (other.runtimeType != runtimeType) {
       return false;
     }
-    return other is _SaltedKey<S, V> && other.salt == salt && other.value == value;
+    return other is _SaltedKey<S, V> &&
+        other.salt == salt &&
+        other.value == value;
   }
 
   @override
@@ -56,7 +58,8 @@ typedef ExpansionPanelCallback = void Function(int panelIndex, bool isExpanded);
 
 /// Signature for the callback that's called when the header of the
 /// [ExpansionPanel] needs to rebuild.
-typedef ExpansionPanelHeaderBuilder = Widget Function(BuildContext context, bool isExpanded);
+typedef ExpansionPanelHeaderBuilder = Widget Function(
+    BuildContext context, bool isExpanded);
 
 /// A material expansion panel. It has a header and a body and can be either
 /// expanded or collapsed. The body of the panel is only visible when it is
@@ -195,8 +198,8 @@ class ExpansionPanelList extends StatefulWidget {
     this.elevation = 2,
     this.expandIconColor,
     this.materialGapSize = 16.0,
-  }) : _allowOnlyOnePanelOpen = false,
-       initialOpenPanelValue = null;
+  })  : _allowOnlyOnePanelOpen = false,
+        initialOpenPanelValue = null;
 
   /// Creates a radio expansion panel list widget.
   ///
@@ -294,7 +297,8 @@ class _ExpansionPanelListState extends State<ExpansionPanelList> {
   void initState() {
     super.initState();
     if (widget._allowOnlyOnePanelOpen) {
-      assert(_allIdentifiersUnique(), 'All ExpansionPanelRadio identifier values must be unique.');
+      assert(_allIdentifiersUnique(),
+          'All ExpansionPanelRadio identifier values must be unique.');
       if (widget.initialOpenPanelValue != null) {
         _currentOpenPanel = searchPanelByValue(
           widget.children.cast<ExpansionPanelRadio>(),
@@ -309,7 +313,8 @@ class _ExpansionPanelListState extends State<ExpansionPanelList> {
     super.didUpdateWidget(oldWidget);
 
     if (widget._allowOnlyOnePanelOpen) {
-      assert(_allIdentifiersUnique(), 'All ExpansionPanelRadio identifier values must be unique.');
+      assert(_allIdentifiersUnique(),
+          'All ExpansionPanelRadio identifier values must be unique.');
       // If the previous widget was non-radio ExpansionPanelList, initialize the
       // open panel to widget.initialOpenPanelValue
       if (!oldWidget._allowOnlyOnePanelOpen) {
@@ -325,7 +330,8 @@ class _ExpansionPanelListState extends State<ExpansionPanelList> {
 
   bool _allIdentifiersUnique() {
     final Map<Object, bool> identifierMap = <Object, bool>{};
-    for (final ExpansionPanelRadio child in widget.children.cast<ExpansionPanelRadio>()) {
+    for (final ExpansionPanelRadio child
+        in widget.children.cast<ExpansionPanelRadio>()) {
       identifierMap[child.value] = true;
     }
     return identifierMap.length == widget.children.length;
@@ -333,7 +339,8 @@ class _ExpansionPanelListState extends State<ExpansionPanelList> {
 
   bool _isChildExpanded(int index) {
     if (widget._allowOnlyOnePanelOpen) {
-      final ExpansionPanelRadio radioWidget = widget.children[index] as ExpansionPanelRadio;
+      final ExpansionPanelRadio radioWidget =
+          widget.children[index] as ExpansionPanelRadio;
       return _currentOpenPanel?.value == radioWidget.value;
     }
     return widget.children[index].isExpanded;
@@ -341,12 +348,16 @@ class _ExpansionPanelListState extends State<ExpansionPanelList> {
 
   void _handlePressed(bool isExpanded, int index) {
     if (widget._allowOnlyOnePanelOpen) {
-      final ExpansionPanelRadio pressedChild = widget.children[index] as ExpansionPanelRadio;
+      final ExpansionPanelRadio pressedChild =
+          widget.children[index] as ExpansionPanelRadio;
 
       // If another ExpansionPanelRadio was already open, apply its
       // expansionCallback (if any) to false, because it's closing.
-      for (int childIndex = 0; childIndex < widget.children.length; childIndex += 1) {
-        final ExpansionPanelRadio child = widget.children[childIndex] as ExpansionPanelRadio;
+      for (int childIndex = 0;
+          childIndex < widget.children.length;
+          childIndex += 1) {
+        final ExpansionPanelRadio child =
+            widget.children[childIndex] as ExpansionPanelRadio;
         if (widget.expansionCallback != null &&
             childIndex != index &&
             child.value == _currentOpenPanel?.value) {
@@ -362,7 +373,8 @@ class _ExpansionPanelListState extends State<ExpansionPanelList> {
     widget.expansionCallback?.call(index, !isExpanded);
   }
 
-  ExpansionPanelRadio? searchPanelByValue(List<ExpansionPanelRadio> panels, Object? value) {
+  ExpansionPanelRadio? searchPanelByValue(
+      List<ExpansionPanelRadio> panels, Object? value) {
     for (final ExpansionPanelRadio panel in panels) {
       if (panel.value == value) {
         return panel;
@@ -382,7 +394,9 @@ class _ExpansionPanelListState extends State<ExpansionPanelList> {
     final List<MergeableMaterialItem> items = <MergeableMaterialItem>[];
 
     for (int index = 0; index < widget.children.length; index += 1) {
-      if (_isChildExpanded(index) && index != 0 && !_isChildExpanded(index - 1)) {
+      if (_isChildExpanded(index) &&
+          index != 0 &&
+          !_isChildExpanded(index - 1)) {
         items.add(
           MaterialGap(
             key: _SaltedKey<BuildContext, int>(context, index * 2 - 1),
@@ -392,7 +406,8 @@ class _ExpansionPanelListState extends State<ExpansionPanelList> {
       }
 
       final ExpansionPanel child = widget.children[index];
-      final Widget headerWidget = child.headerBuilder(context, _isChildExpanded(index));
+      final Widget headerWidget =
+          child.headerBuilder(context, _isChildExpanded(index));
 
       Widget expandIconPadded = Padding(
         padding: const EdgeInsetsDirectional.only(end: 8.0),
@@ -410,12 +425,12 @@ class _ExpansionPanelListState extends State<ExpansionPanelList> {
       );
 
       if (!child.canTapOnHeader) {
-        final MaterialLocalizations localizations = MaterialLocalizations.of(context);
+        final MaterialLocalizations localizations =
+            MaterialLocalizations.of(context);
         expandIconPadded = Semantics(
-          label:
-              _isChildExpanded(index)
-                  ? localizations.expandedIconTapHint
-                  : localizations.collapsedIconTapHint,
+          label: _isChildExpanded(index)
+              ? localizations.expandedIconTapHint
+              : localizations.collapsedIconTapHint,
           container: true,
           child: expandIconPadded,
         );
@@ -426,9 +441,12 @@ class _ExpansionPanelListState extends State<ExpansionPanelList> {
             child: AnimatedContainer(
               duration: widget.animationDuration,
               curve: Curves.fastOutSlowIn,
-              margin: _isChildExpanded(index) ? widget.expandedHeaderPadding : EdgeInsets.zero,
+              margin: _isChildExpanded(index)
+                  ? widget.expandedHeaderPadding
+                  : EdgeInsets.zero,
               child: ConstrainedBox(
-                constraints: const BoxConstraints(minHeight: _kPanelHeaderCollapsedHeight),
+                constraints: const BoxConstraints(
+                    minHeight: _kPanelHeaderCollapsedHeight),
                 child: headerWidget,
               ),
             ),
@@ -459,11 +477,14 @@ class _ExpansionPanelListState extends State<ExpansionPanelList> {
                   child: SizedBox(width: double.infinity, height: 0),
                 ),
                 secondChild: child.body,
-                firstCurve: const Interval(0.0, 0.6, curve: Curves.fastOutSlowIn),
-                secondCurve: const Interval(0.4, 1.0, curve: Curves.fastOutSlowIn),
+                firstCurve:
+                    const Interval(0.0, 0.6, curve: Curves.fastOutSlowIn),
+                secondCurve:
+                    const Interval(0.4, 1.0, curve: Curves.fastOutSlowIn),
                 sizeCurve: Curves.fastOutSlowIn,
-                crossFadeState:
-                    _isChildExpanded(index) ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+                crossFadeState: _isChildExpanded(index)
+                    ? CrossFadeState.showSecond
+                    : CrossFadeState.showFirst,
                 duration: widget.animationDuration,
               ),
             ],

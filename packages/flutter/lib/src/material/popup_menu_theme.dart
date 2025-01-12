@@ -152,7 +152,8 @@ class PopupMenuThemeData with Diagnosticable {
   /// If both arguments are null, then null is returned.
   ///
   /// {@macro dart.ui.shadow.lerp}
-  static PopupMenuThemeData? lerp(PopupMenuThemeData? a, PopupMenuThemeData? b, double t) {
+  static PopupMenuThemeData? lerp(
+      PopupMenuThemeData? a, PopupMenuThemeData? b, double t) {
     if (identical(a, b)) {
       return a;
     }
@@ -180,20 +181,20 @@ class PopupMenuThemeData with Diagnosticable {
 
   @override
   int get hashCode => Object.hash(
-    color,
-    shape,
-    menuPadding,
-    elevation,
-    shadowColor,
-    surfaceTintColor,
-    textStyle,
-    labelTextStyle,
-    enableFeedback,
-    mouseCursor,
-    position,
-    iconColor,
-    iconSize,
-  );
+        color,
+        shape,
+        menuPadding,
+        elevation,
+        shadowColor,
+        surfaceTintColor,
+        textStyle,
+        labelTextStyle,
+        enableFeedback,
+        mouseCursor,
+        position,
+        iconColor,
+        iconSize,
+      );
 
   @override
   bool operator ==(Object other) {
@@ -223,14 +224,19 @@ class PopupMenuThemeData with Diagnosticable {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(ColorProperty('color', color, defaultValue: null));
-    properties.add(DiagnosticsProperty<ShapeBorder>('shape', shape, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<EdgeInsetsGeometry>('menuPadding', menuPadding, defaultValue: null),
+        DiagnosticsProperty<ShapeBorder>('shape', shape, defaultValue: null));
+    properties.add(
+      DiagnosticsProperty<EdgeInsetsGeometry>('menuPadding', menuPadding,
+          defaultValue: null),
     );
     properties.add(DoubleProperty('elevation', elevation, defaultValue: null));
-    properties.add(ColorProperty('shadowColor', shadowColor, defaultValue: null));
-    properties.add(ColorProperty('surfaceTintColor', surfaceTintColor, defaultValue: null));
-    properties.add(DiagnosticsProperty<TextStyle>('text style', textStyle, defaultValue: null));
+    properties
+        .add(ColorProperty('shadowColor', shadowColor, defaultValue: null));
+    properties.add(ColorProperty('surfaceTintColor', surfaceTintColor,
+        defaultValue: null));
+    properties.add(DiagnosticsProperty<TextStyle>('text style', textStyle,
+        defaultValue: null));
     properties.add(
       DiagnosticsProperty<MaterialStateProperty<TextStyle?>>(
         'labelTextStyle',
@@ -238,7 +244,8 @@ class PopupMenuThemeData with Diagnosticable {
         defaultValue: null,
       ),
     );
-    properties.add(DiagnosticsProperty<bool>('enableFeedback', enableFeedback, defaultValue: null));
+    properties.add(DiagnosticsProperty<bool>('enableFeedback', enableFeedback,
+        defaultValue: null));
     properties.add(
       DiagnosticsProperty<MaterialStateProperty<MouseCursor?>>(
         'mouseCursor',
@@ -246,7 +253,8 @@ class PopupMenuThemeData with Diagnosticable {
         defaultValue: null,
       ),
     );
-    properties.add(EnumProperty<PopupMenuPosition?>('position', position, defaultValue: null));
+    properties.add(EnumProperty<PopupMenuPosition?>('position', position,
+        defaultValue: null));
     properties.add(ColorProperty('iconColor', iconColor, defaultValue: null));
     properties.add(DoubleProperty('iconSize', iconSize, defaultValue: null));
   }

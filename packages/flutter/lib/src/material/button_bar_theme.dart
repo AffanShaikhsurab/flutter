@@ -56,8 +56,8 @@ class ButtonBarThemeData with Diagnosticable {
     this.buttonAlignedDropdown,
     this.layoutBehavior,
     this.overflowDirection,
-  }) : assert(buttonMinWidth == null || buttonMinWidth >= 0.0),
-       assert(buttonHeight == null || buttonHeight >= 0.0);
+  })  : assert(buttonMinWidth == null || buttonMinWidth >= 0.0),
+        assert(buttonHeight == null || buttonHeight >= 0.0);
 
   /// How the children should be placed along the horizontal axis.
   final MainAxisAlignment? alignment;
@@ -147,7 +147,8 @@ class ButtonBarThemeData with Diagnosticable {
       buttonMinWidth: buttonMinWidth ?? this.buttonMinWidth,
       buttonHeight: buttonHeight ?? this.buttonHeight,
       buttonPadding: buttonPadding ?? this.buttonPadding,
-      buttonAlignedDropdown: buttonAlignedDropdown ?? this.buttonAlignedDropdown,
+      buttonAlignedDropdown:
+          buttonAlignedDropdown ?? this.buttonAlignedDropdown,
       layoutBehavior: layoutBehavior ?? this.layoutBehavior,
       overflowDirection: overflowDirection ?? this.overflowDirection,
     );
@@ -158,7 +159,8 @@ class ButtonBarThemeData with Diagnosticable {
   /// If both arguments are null, then null is returned.
   ///
   /// {@macro dart.ui.shadow.lerp}
-  static ButtonBarThemeData? lerp(ButtonBarThemeData? a, ButtonBarThemeData? b, double t) {
+  static ButtonBarThemeData? lerp(
+      ButtonBarThemeData? a, ButtonBarThemeData? b, double t) {
     if (identical(a, b)) {
       return a;
     }
@@ -168,8 +170,10 @@ class ButtonBarThemeData with Diagnosticable {
       buttonTextTheme: t < 0.5 ? a?.buttonTextTheme : b?.buttonTextTheme,
       buttonMinWidth: lerpDouble(a?.buttonMinWidth, b?.buttonMinWidth, t),
       buttonHeight: lerpDouble(a?.buttonHeight, b?.buttonHeight, t),
-      buttonPadding: EdgeInsetsGeometry.lerp(a?.buttonPadding, b?.buttonPadding, t),
-      buttonAlignedDropdown: t < 0.5 ? a?.buttonAlignedDropdown : b?.buttonAlignedDropdown,
+      buttonPadding:
+          EdgeInsetsGeometry.lerp(a?.buttonPadding, b?.buttonPadding, t),
+      buttonAlignedDropdown:
+          t < 0.5 ? a?.buttonAlignedDropdown : b?.buttonAlignedDropdown,
       layoutBehavior: t < 0.5 ? a?.layoutBehavior : b?.layoutBehavior,
       overflowDirection: t < 0.5 ? a?.overflowDirection : b?.overflowDirection,
     );
@@ -177,16 +181,16 @@ class ButtonBarThemeData with Diagnosticable {
 
   @override
   int get hashCode => Object.hash(
-    alignment,
-    mainAxisSize,
-    buttonTextTheme,
-    buttonMinWidth,
-    buttonHeight,
-    buttonPadding,
-    buttonAlignedDropdown,
-    layoutBehavior,
-    overflowDirection,
-  );
+        alignment,
+        mainAxisSize,
+        buttonTextTheme,
+        buttonMinWidth,
+        buttonHeight,
+        buttonPadding,
+        buttonAlignedDropdown,
+        layoutBehavior,
+        overflowDirection,
+      );
 
   @override
   bool operator ==(Object other) {
@@ -212,18 +216,23 @@ class ButtonBarThemeData with Diagnosticable {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(
-      DiagnosticsProperty<MainAxisAlignment>('alignment', alignment, defaultValue: null),
+      DiagnosticsProperty<MainAxisAlignment>('alignment', alignment,
+          defaultValue: null),
     );
     properties.add(
-      DiagnosticsProperty<MainAxisSize>('mainAxisSize', mainAxisSize, defaultValue: null),
+      DiagnosticsProperty<MainAxisSize>('mainAxisSize', mainAxisSize,
+          defaultValue: null),
     );
     properties.add(
-      DiagnosticsProperty<ButtonTextTheme>('textTheme', buttonTextTheme, defaultValue: null),
+      DiagnosticsProperty<ButtonTextTheme>('textTheme', buttonTextTheme,
+          defaultValue: null),
     );
-    properties.add(DoubleProperty('minWidth', buttonMinWidth, defaultValue: null));
+    properties
+        .add(DoubleProperty('minWidth', buttonMinWidth, defaultValue: null));
     properties.add(DoubleProperty('height', buttonHeight, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<EdgeInsetsGeometry>('padding', buttonPadding, defaultValue: null),
+      DiagnosticsProperty<EdgeInsetsGeometry>('padding', buttonPadding,
+          defaultValue: null),
     );
     properties.add(
       FlagProperty(

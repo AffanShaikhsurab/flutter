@@ -38,7 +38,8 @@ import 'theme.dart';
 class DividerThemeData with Diagnosticable {
   /// Creates a theme that can be used for [DividerTheme] or
   /// [ThemeData.dividerTheme].
-  const DividerThemeData({this.color, this.space, this.thickness, this.indent, this.endIndent});
+  const DividerThemeData(
+      {this.color, this.space, this.thickness, this.indent, this.endIndent});
 
   /// The color of [Divider]s and [VerticalDivider]s, also
   /// used between [ListTile]s, between rows in [DataTable]s, and so forth.
@@ -82,7 +83,8 @@ class DividerThemeData with Diagnosticable {
   /// Linearly interpolate between two Divider themes.
   ///
   /// {@macro dart.ui.shadow.lerp}
-  static DividerThemeData lerp(DividerThemeData? a, DividerThemeData? b, double t) {
+  static DividerThemeData lerp(
+      DividerThemeData? a, DividerThemeData? b, double t) {
     if (identical(a, b) && a != null) {
       return a;
     }
@@ -150,7 +152,8 @@ class DividerTheme extends InheritedTheme {
   /// DividerThemeData theme = DividerTheme.of(context);
   /// ```
   static DividerThemeData of(BuildContext context) {
-    final DividerTheme? dividerTheme = context.dependOnInheritedWidgetOfExactType<DividerTheme>();
+    final DividerTheme? dividerTheme =
+        context.dependOnInheritedWidgetOfExactType<DividerTheme>();
     return dividerTheme?.data ?? Theme.of(context).dividerTheme;
   }
 

@@ -350,7 +350,8 @@ class TimePickerThemeData with Diagnosticable {
       inputDecorationTheme: inputDecorationTheme ?? this.inputDecorationTheme,
       padding: padding ?? this.padding,
       shape: shape ?? this.shape,
-      timeSelectorSeparatorColor: timeSelectorSeparatorColor ?? this.timeSelectorSeparatorColor,
+      timeSelectorSeparatorColor:
+          timeSelectorSeparatorColor ?? this.timeSelectorSeparatorColor,
       timeSelectorSeparatorTextStyle:
           timeSelectorSeparatorTextStyle ?? this.timeSelectorSeparatorTextStyle,
     );
@@ -359,7 +360,8 @@ class TimePickerThemeData with Diagnosticable {
   /// Linearly interpolate between two time picker themes.
   ///
   /// {@macro dart.ui.shadow.lerp}
-  static TimePickerThemeData lerp(TimePickerThemeData? a, TimePickerThemeData? b, double t) {
+  static TimePickerThemeData lerp(
+      TimePickerThemeData? a, TimePickerThemeData? b, double t) {
     if (identical(a, b) && a != null) {
       return a;
     }
@@ -372,29 +374,41 @@ class TimePickerThemeData with Diagnosticable {
     } else if (b?.dayPeriodBorderSide == null) {
       lerpedBorderSide = a?.dayPeriodBorderSide;
     } else {
-      lerpedBorderSide = BorderSide.lerp(a!.dayPeriodBorderSide!, b!.dayPeriodBorderSide!, t);
+      lerpedBorderSide =
+          BorderSide.lerp(a!.dayPeriodBorderSide!, b!.dayPeriodBorderSide!, t);
     }
     return TimePickerThemeData(
       backgroundColor: Color.lerp(a?.backgroundColor, b?.backgroundColor, t),
-      cancelButtonStyle: ButtonStyle.lerp(a?.cancelButtonStyle, b?.cancelButtonStyle, t),
-      confirmButtonStyle: ButtonStyle.lerp(a?.confirmButtonStyle, b?.confirmButtonStyle, t),
+      cancelButtonStyle:
+          ButtonStyle.lerp(a?.cancelButtonStyle, b?.cancelButtonStyle, t),
+      confirmButtonStyle:
+          ButtonStyle.lerp(a?.confirmButtonStyle, b?.confirmButtonStyle, t),
       dayPeriodBorderSide: lerpedBorderSide,
       dayPeriodColor: Color.lerp(a?.dayPeriodColor, b?.dayPeriodColor, t),
-      dayPeriodShape: ShapeBorder.lerp(a?.dayPeriodShape, b?.dayPeriodShape, t) as OutlinedBorder?,
-      dayPeriodTextColor: Color.lerp(a?.dayPeriodTextColor, b?.dayPeriodTextColor, t),
-      dayPeriodTextStyle: TextStyle.lerp(a?.dayPeriodTextStyle, b?.dayPeriodTextStyle, t),
-      dialBackgroundColor: Color.lerp(a?.dialBackgroundColor, b?.dialBackgroundColor, t),
+      dayPeriodShape: ShapeBorder.lerp(a?.dayPeriodShape, b?.dayPeriodShape, t)
+          as OutlinedBorder?,
+      dayPeriodTextColor:
+          Color.lerp(a?.dayPeriodTextColor, b?.dayPeriodTextColor, t),
+      dayPeriodTextStyle:
+          TextStyle.lerp(a?.dayPeriodTextStyle, b?.dayPeriodTextStyle, t),
+      dialBackgroundColor:
+          Color.lerp(a?.dialBackgroundColor, b?.dialBackgroundColor, t),
       dialHandColor: Color.lerp(a?.dialHandColor, b?.dialHandColor, t),
       dialTextColor: Color.lerp(a?.dialTextColor, b?.dialTextColor, t),
       dialTextStyle: TextStyle.lerp(a?.dialTextStyle, b?.dialTextStyle, t),
       elevation: lerpDouble(a?.elevation, b?.elevation, t),
-      entryModeIconColor: Color.lerp(a?.entryModeIconColor, b?.entryModeIconColor, t),
+      entryModeIconColor:
+          Color.lerp(a?.entryModeIconColor, b?.entryModeIconColor, t),
       helpTextStyle: TextStyle.lerp(a?.helpTextStyle, b?.helpTextStyle, t),
       hourMinuteColor: Color.lerp(a?.hourMinuteColor, b?.hourMinuteColor, t),
-      hourMinuteShape: ShapeBorder.lerp(a?.hourMinuteShape, b?.hourMinuteShape, t),
-      hourMinuteTextColor: Color.lerp(a?.hourMinuteTextColor, b?.hourMinuteTextColor, t),
-      hourMinuteTextStyle: TextStyle.lerp(a?.hourMinuteTextStyle, b?.hourMinuteTextStyle, t),
-      inputDecorationTheme: t < 0.5 ? a?.inputDecorationTheme : b?.inputDecorationTheme,
+      hourMinuteShape:
+          ShapeBorder.lerp(a?.hourMinuteShape, b?.hourMinuteShape, t),
+      hourMinuteTextColor:
+          Color.lerp(a?.hourMinuteTextColor, b?.hourMinuteTextColor, t),
+      hourMinuteTextStyle:
+          TextStyle.lerp(a?.hourMinuteTextStyle, b?.hourMinuteTextStyle, t),
+      inputDecorationTheme:
+          t < 0.5 ? a?.inputDecorationTheme : b?.inputDecorationTheme,
       padding: EdgeInsetsGeometry.lerp(a?.padding, b?.padding, t),
       shape: ShapeBorder.lerp(a?.shape, b?.shape, t),
       timeSelectorSeparatorColor: MaterialStateProperty.lerp<Color?>(
@@ -414,31 +428,31 @@ class TimePickerThemeData with Diagnosticable {
 
   @override
   int get hashCode => Object.hashAll(<Object?>[
-    backgroundColor,
-    cancelButtonStyle,
-    confirmButtonStyle,
-    dayPeriodBorderSide,
-    dayPeriodColor,
-    dayPeriodShape,
-    dayPeriodTextColor,
-    dayPeriodTextStyle,
-    dialBackgroundColor,
-    dialHandColor,
-    dialTextColor,
-    dialTextStyle,
-    elevation,
-    entryModeIconColor,
-    helpTextStyle,
-    hourMinuteColor,
-    hourMinuteShape,
-    hourMinuteTextColor,
-    hourMinuteTextStyle,
-    inputDecorationTheme,
-    padding,
-    shape,
-    timeSelectorSeparatorColor,
-    timeSelectorSeparatorTextStyle,
-  ]);
+        backgroundColor,
+        cancelButtonStyle,
+        confirmButtonStyle,
+        dayPeriodBorderSide,
+        dayPeriodColor,
+        dayPeriodShape,
+        dayPeriodTextColor,
+        dayPeriodTextStyle,
+        dialBackgroundColor,
+        dialHandColor,
+        dialTextColor,
+        dialTextStyle,
+        elevation,
+        entryModeIconColor,
+        helpTextStyle,
+        hourMinuteColor,
+        hourMinuteShape,
+        hourMinuteTextColor,
+        hourMinuteTextStyle,
+        inputDecorationTheme,
+        padding,
+        shape,
+        timeSelectorSeparatorColor,
+        timeSelectorSeparatorTextStyle,
+      ]);
 
   @override
   bool operator ==(Object other) {
@@ -478,9 +492,11 @@ class TimePickerThemeData with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(ColorProperty('backgroundColor', backgroundColor, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<ButtonStyle>('cancelButtonStyle', cancelButtonStyle, defaultValue: null),
+        ColorProperty('backgroundColor', backgroundColor, defaultValue: null));
+    properties.add(
+      DiagnosticsProperty<ButtonStyle>('cancelButtonStyle', cancelButtonStyle,
+          defaultValue: null),
     );
     properties.add(
       DiagnosticsProperty<ButtonStyle>(
@@ -496,30 +512,43 @@ class TimePickerThemeData with Diagnosticable {
         defaultValue: null,
       ),
     );
-    properties.add(ColorProperty('dayPeriodColor', dayPeriodColor, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<ShapeBorder>('dayPeriodShape', dayPeriodShape, defaultValue: null),
+        ColorProperty('dayPeriodColor', dayPeriodColor, defaultValue: null));
+    properties.add(
+      DiagnosticsProperty<ShapeBorder>('dayPeriodShape', dayPeriodShape,
+          defaultValue: null),
     );
-    properties.add(ColorProperty('dayPeriodTextColor', dayPeriodTextColor, defaultValue: null));
+    properties.add(ColorProperty('dayPeriodTextColor', dayPeriodTextColor,
+        defaultValue: null));
     properties.add(
-      DiagnosticsProperty<TextStyle>('dayPeriodTextStyle', dayPeriodTextStyle, defaultValue: null),
+      DiagnosticsProperty<TextStyle>('dayPeriodTextStyle', dayPeriodTextStyle,
+          defaultValue: null),
     );
-    properties.add(ColorProperty('dialBackgroundColor', dialBackgroundColor, defaultValue: null));
-    properties.add(ColorProperty('dialHandColor', dialHandColor, defaultValue: null));
-    properties.add(ColorProperty('dialTextColor', dialTextColor, defaultValue: null));
+    properties.add(ColorProperty('dialBackgroundColor', dialBackgroundColor,
+        defaultValue: null));
+    properties
+        .add(ColorProperty('dialHandColor', dialHandColor, defaultValue: null));
+    properties
+        .add(ColorProperty('dialTextColor', dialTextColor, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<TextStyle?>('dialTextStyle', dialTextStyle, defaultValue: null),
+      DiagnosticsProperty<TextStyle?>('dialTextStyle', dialTextStyle,
+          defaultValue: null),
     );
     properties.add(DoubleProperty('elevation', elevation, defaultValue: null));
-    properties.add(ColorProperty('entryModeIconColor', entryModeIconColor, defaultValue: null));
+    properties.add(ColorProperty('entryModeIconColor', entryModeIconColor,
+        defaultValue: null));
     properties.add(
-      DiagnosticsProperty<TextStyle>('helpTextStyle', helpTextStyle, defaultValue: null),
+      DiagnosticsProperty<TextStyle>('helpTextStyle', helpTextStyle,
+          defaultValue: null),
     );
-    properties.add(ColorProperty('hourMinuteColor', hourMinuteColor, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<ShapeBorder>('hourMinuteShape', hourMinuteShape, defaultValue: null),
+        ColorProperty('hourMinuteColor', hourMinuteColor, defaultValue: null));
+    properties.add(
+      DiagnosticsProperty<ShapeBorder>('hourMinuteShape', hourMinuteShape,
+          defaultValue: null),
     );
-    properties.add(ColorProperty('hourMinuteTextColor', hourMinuteTextColor, defaultValue: null));
+    properties.add(ColorProperty('hourMinuteTextColor', hourMinuteTextColor,
+        defaultValue: null));
     properties.add(
       DiagnosticsProperty<TextStyle>(
         'hourMinuteTextStyle',
@@ -534,8 +563,10 @@ class TimePickerThemeData with Diagnosticable {
         defaultValue: null,
       ),
     );
-    properties.add(DiagnosticsProperty<EdgeInsetsGeometry>('padding', padding, defaultValue: null));
-    properties.add(DiagnosticsProperty<ShapeBorder>('shape', shape, defaultValue: null));
+    properties.add(DiagnosticsProperty<EdgeInsetsGeometry>('padding', padding,
+        defaultValue: null));
+    properties.add(
+        DiagnosticsProperty<ShapeBorder>('shape', shape, defaultValue: null));
     properties.add(
       DiagnosticsProperty<MaterialStateProperty<Color?>>(
         'timeSelectorSeparatorColor',

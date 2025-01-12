@@ -47,38 +47,38 @@ class DialogTheme extends InheritedTheme with Diagnosticable {
     Clip? clipBehavior,
     DialogThemeData? data,
     Widget? child,
-  }) : assert(
-         data == null ||
-             (backgroundColor ??
-                     elevation ??
-                     shadowColor ??
-                     surfaceTintColor ??
-                     shape ??
-                     alignment ??
-                     iconColor ??
-                     titleTextStyle ??
-                     contentTextStyle ??
-                     actionsPadding ??
-                     barrierColor ??
-                     insetPadding ??
-                     clipBehavior) ==
-                 null,
-       ),
-       _data = data,
-       _backgroundColor = backgroundColor,
-       _elevation = elevation,
-       _shadowColor = shadowColor,
-       _surfaceTintColor = surfaceTintColor,
-       _shape = shape,
-       _alignment = alignment,
-       _iconColor = iconColor,
-       _titleTextStyle = titleTextStyle,
-       _contentTextStyle = contentTextStyle,
-       _actionsPadding = actionsPadding,
-       _barrierColor = barrierColor,
-       _insetPadding = insetPadding,
-       _clipBehavior = clipBehavior,
-       super(child: child ?? const SizedBox());
+  })  : assert(
+          data == null ||
+              (backgroundColor ??
+                      elevation ??
+                      shadowColor ??
+                      surfaceTintColor ??
+                      shape ??
+                      alignment ??
+                      iconColor ??
+                      titleTextStyle ??
+                      contentTextStyle ??
+                      actionsPadding ??
+                      barrierColor ??
+                      insetPadding ??
+                      clipBehavior) ==
+                  null,
+        ),
+        _data = data,
+        _backgroundColor = backgroundColor,
+        _elevation = elevation,
+        _shadowColor = shadowColor,
+        _surfaceTintColor = surfaceTintColor,
+        _shape = shape,
+        _alignment = alignment,
+        _iconColor = iconColor,
+        _titleTextStyle = titleTextStyle,
+        _contentTextStyle = contentTextStyle,
+        _actionsPadding = actionsPadding,
+        _barrierColor = barrierColor,
+        _insetPadding = insetPadding,
+        _clipBehavior = clipBehavior,
+        super(child: child ?? const SizedBox());
 
   final DialogThemeData? _data;
   final Color? _backgroundColor;
@@ -99,7 +99,8 @@ class DialogTheme extends InheritedTheme with Diagnosticable {
   ///
   /// This property is obsolete and will be deprecated in a future release:
   /// please use the [DialogThemeData.backgroundColor] property in [data] instead.
-  Color? get backgroundColor => _data != null ? _data.backgroundColor : _backgroundColor;
+  Color? get backgroundColor =>
+      _data != null ? _data.backgroundColor : _backgroundColor;
 
   /// Overrides the default value for [Dialog.elevation].
   ///
@@ -117,7 +118,8 @@ class DialogTheme extends InheritedTheme with Diagnosticable {
   ///
   /// This property is obsolete and will be deprecated in a future release:
   /// please use the [DialogThemeData.surfaceTintColor] property in [data] instead.
-  Color? get surfaceTintColor => _data != null ? _data.surfaceTintColor : _surfaceTintColor;
+  Color? get surfaceTintColor =>
+      _data != null ? _data.surfaceTintColor : _surfaceTintColor;
 
   /// Overrides the default value for [Dialog.shape].
   ///
@@ -129,27 +131,31 @@ class DialogTheme extends InheritedTheme with Diagnosticable {
   ///
   /// This property is obsolete and will be deprecated in a future release:
   /// please use the [DialogThemeData.alignment] property in [data] instead.
-  AlignmentGeometry? get alignment => _data != null ? _data.alignment : _alignment;
+  AlignmentGeometry? get alignment =>
+      _data != null ? _data.alignment : _alignment;
 
   /// Overrides the default value for [DefaultTextStyle] for [SimpleDialog.title] and
   /// [AlertDialog.title].
   ///
   /// This property is obsolete and will be deprecated in a future release:
   /// please use the [DialogThemeData.titleTextStyle] property in [data] instead.
-  TextStyle? get titleTextStyle => _data != null ? _data.titleTextStyle : _titleTextStyle;
+  TextStyle? get titleTextStyle =>
+      _data != null ? _data.titleTextStyle : _titleTextStyle;
 
   /// Overrides the default value for [DefaultTextStyle] for [SimpleDialog.children] and
   /// [AlertDialog.content].
   ///
   /// This property is obsolete and will be deprecated in a future release:
   /// please use the [DialogThemeData.contentTextStyle] property in [data] instead.
-  TextStyle? get contentTextStyle => _data != null ? _data.contentTextStyle : _contentTextStyle;
+  TextStyle? get contentTextStyle =>
+      _data != null ? _data.contentTextStyle : _contentTextStyle;
 
   /// Overrides the default value for [AlertDialog.actionsPadding].
   ///
   /// This property is obsolete and will be deprecated in a future release:
   /// please use the [DialogThemeData.actionsPadding] property in [data] instead.
-  EdgeInsetsGeometry? get actionsPadding => _data != null ? _data.actionsPadding : _actionsPadding;
+  EdgeInsetsGeometry? get actionsPadding =>
+      _data != null ? _data.actionsPadding : _actionsPadding;
 
   /// Used to configure the [IconTheme] for the [AlertDialog.icon] widget.
   ///
@@ -164,7 +170,8 @@ class DialogTheme extends InheritedTheme with Diagnosticable {
   Color? get barrierColor => _data != null ? _data.barrierColor : _barrierColor;
 
   /// Overrides the default value for [Dialog.insetPadding].
-  EdgeInsets? get insetPadding => _data != null ? _data.insetPadding : _insetPadding;
+  EdgeInsets? get insetPadding =>
+      _data != null ? _data.insetPadding : _insetPadding;
 
   /// Overrides the default value of [Dialog.clipBehavior].
   ///
@@ -194,7 +201,8 @@ class DialogTheme extends InheritedTheme with Diagnosticable {
 
   /// The [ThemeData.dialogTheme] property of the ambient [Theme].
   static DialogThemeData of(BuildContext context) {
-    final DialogTheme? dialogTheme = context.dependOnInheritedWidgetOfExactType<DialogTheme>();
+    final DialogTheme? dialogTheme =
+        context.dependOnInheritedWidgetOfExactType<DialogTheme>();
     return dialogTheme?.data ?? Theme.of(context).dialogTheme;
   }
 
@@ -262,8 +270,10 @@ class DialogTheme extends InheritedTheme with Diagnosticable {
       alignment: AlignmentGeometry.lerp(a?.alignment, b?.alignment, t),
       iconColor: Color.lerp(a?.iconColor, b?.iconColor, t),
       titleTextStyle: TextStyle.lerp(a?.titleTextStyle, b?.titleTextStyle, t),
-      contentTextStyle: TextStyle.lerp(a?.contentTextStyle, b?.contentTextStyle, t),
-      actionsPadding: EdgeInsetsGeometry.lerp(a?.actionsPadding, b?.actionsPadding, t),
+      contentTextStyle:
+          TextStyle.lerp(a?.contentTextStyle, b?.contentTextStyle, t),
+      actionsPadding:
+          EdgeInsetsGeometry.lerp(a?.actionsPadding, b?.actionsPadding, t),
       barrierColor: Color.lerp(a?.barrierColor, b?.barrierColor, t),
       insetPadding: EdgeInsets.lerp(a?.insetPadding, b?.insetPadding, t),
       clipBehavior: t < 0.5 ? a?.clipBehavior : b?.clipBehavior,
@@ -273,29 +283,40 @@ class DialogTheme extends InheritedTheme with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(ColorProperty('backgroundColor', backgroundColor, defaultValue: null));
-    properties.add(DoubleProperty('elevation', elevation, defaultValue: null));
-    properties.add(ColorProperty('shadowColor', shadowColor, defaultValue: null));
-    properties.add(ColorProperty('surfaceTintColor', surfaceTintColor, defaultValue: null));
-    properties.add(DiagnosticsProperty<ShapeBorder>('shape', shape, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<AlignmentGeometry>('alignment', alignment, defaultValue: null),
+        ColorProperty('backgroundColor', backgroundColor, defaultValue: null));
+    properties.add(DoubleProperty('elevation', elevation, defaultValue: null));
+    properties
+        .add(ColorProperty('shadowColor', shadowColor, defaultValue: null));
+    properties.add(ColorProperty('surfaceTintColor', surfaceTintColor,
+        defaultValue: null));
+    properties.add(
+        DiagnosticsProperty<ShapeBorder>('shape', shape, defaultValue: null));
+    properties.add(
+      DiagnosticsProperty<AlignmentGeometry>('alignment', alignment,
+          defaultValue: null),
     );
     properties.add(ColorProperty('iconColor', iconColor, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<TextStyle>('titleTextStyle', titleTextStyle, defaultValue: null),
+      DiagnosticsProperty<TextStyle>('titleTextStyle', titleTextStyle,
+          defaultValue: null),
     );
     properties.add(
-      DiagnosticsProperty<TextStyle>('contentTextStyle', contentTextStyle, defaultValue: null),
+      DiagnosticsProperty<TextStyle>('contentTextStyle', contentTextStyle,
+          defaultValue: null),
     );
     properties.add(
-      DiagnosticsProperty<EdgeInsetsGeometry>('actionsPadding', actionsPadding, defaultValue: null),
+      DiagnosticsProperty<EdgeInsetsGeometry>('actionsPadding', actionsPadding,
+          defaultValue: null),
     );
-    properties.add(ColorProperty('barrierColor', barrierColor, defaultValue: null));
+    properties
+        .add(ColorProperty('barrierColor', barrierColor, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<EdgeInsets>('insetPadding', insetPadding, defaultValue: null),
+      DiagnosticsProperty<EdgeInsets>('insetPadding', insetPadding,
+          defaultValue: null),
     );
-    properties.add(DiagnosticsProperty<Clip>('clipBehavior', clipBehavior, defaultValue: null));
+    properties.add(DiagnosticsProperty<Clip>('clipBehavior', clipBehavior,
+        defaultValue: null));
   }
 }
 
@@ -416,7 +437,8 @@ class DialogThemeData with Diagnosticable {
   /// Linearly interpolate between two [DialogThemeData].
   ///
   /// {@macro dart.ui.shadow.lerp}
-  static DialogThemeData lerp(DialogThemeData? a, DialogThemeData? b, double t) {
+  static DialogThemeData lerp(
+      DialogThemeData? a, DialogThemeData? b, double t) {
     if (identical(a, b) && a != null) {
       return a;
     }
@@ -429,8 +451,10 @@ class DialogThemeData with Diagnosticable {
       alignment: AlignmentGeometry.lerp(a?.alignment, b?.alignment, t),
       iconColor: Color.lerp(a?.iconColor, b?.iconColor, t),
       titleTextStyle: TextStyle.lerp(a?.titleTextStyle, b?.titleTextStyle, t),
-      contentTextStyle: TextStyle.lerp(a?.contentTextStyle, b?.contentTextStyle, t),
-      actionsPadding: EdgeInsetsGeometry.lerp(a?.actionsPadding, b?.actionsPadding, t),
+      contentTextStyle:
+          TextStyle.lerp(a?.contentTextStyle, b?.contentTextStyle, t),
+      actionsPadding:
+          EdgeInsetsGeometry.lerp(a?.actionsPadding, b?.actionsPadding, t),
       barrierColor: Color.lerp(a?.barrierColor, b?.barrierColor, t),
       insetPadding: EdgeInsets.lerp(a?.insetPadding, b?.insetPadding, t),
       clipBehavior: t < 0.5 ? a?.clipBehavior : b?.clipBehavior,
@@ -439,20 +463,20 @@ class DialogThemeData with Diagnosticable {
 
   @override
   int get hashCode => Object.hashAll(<Object?>[
-    backgroundColor,
-    elevation,
-    shadowColor,
-    surfaceTintColor,
-    shape,
-    alignment,
-    iconColor,
-    titleTextStyle,
-    contentTextStyle,
-    actionsPadding,
-    barrierColor,
-    insetPadding,
-    clipBehavior,
-  ]);
+        backgroundColor,
+        elevation,
+        shadowColor,
+        surfaceTintColor,
+        shape,
+        alignment,
+        iconColor,
+        titleTextStyle,
+        contentTextStyle,
+        actionsPadding,
+        barrierColor,
+        insetPadding,
+        clipBehavior,
+      ]);
 
   @override
   bool operator ==(Object other) {
@@ -481,28 +505,39 @@ class DialogThemeData with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(ColorProperty('backgroundColor', backgroundColor, defaultValue: null));
-    properties.add(DoubleProperty('elevation', elevation, defaultValue: null));
-    properties.add(ColorProperty('shadowColor', shadowColor, defaultValue: null));
-    properties.add(ColorProperty('surfaceTintColor', surfaceTintColor, defaultValue: null));
-    properties.add(DiagnosticsProperty<ShapeBorder>('shape', shape, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<AlignmentGeometry>('alignment', alignment, defaultValue: null),
+        ColorProperty('backgroundColor', backgroundColor, defaultValue: null));
+    properties.add(DoubleProperty('elevation', elevation, defaultValue: null));
+    properties
+        .add(ColorProperty('shadowColor', shadowColor, defaultValue: null));
+    properties.add(ColorProperty('surfaceTintColor', surfaceTintColor,
+        defaultValue: null));
+    properties.add(
+        DiagnosticsProperty<ShapeBorder>('shape', shape, defaultValue: null));
+    properties.add(
+      DiagnosticsProperty<AlignmentGeometry>('alignment', alignment,
+          defaultValue: null),
     );
     properties.add(ColorProperty('iconColor', iconColor, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<TextStyle>('titleTextStyle', titleTextStyle, defaultValue: null),
+      DiagnosticsProperty<TextStyle>('titleTextStyle', titleTextStyle,
+          defaultValue: null),
     );
     properties.add(
-      DiagnosticsProperty<TextStyle>('contentTextStyle', contentTextStyle, defaultValue: null),
+      DiagnosticsProperty<TextStyle>('contentTextStyle', contentTextStyle,
+          defaultValue: null),
     );
     properties.add(
-      DiagnosticsProperty<EdgeInsetsGeometry>('actionsPadding', actionsPadding, defaultValue: null),
+      DiagnosticsProperty<EdgeInsetsGeometry>('actionsPadding', actionsPadding,
+          defaultValue: null),
     );
-    properties.add(ColorProperty('barrierColor', barrierColor, defaultValue: null));
+    properties
+        .add(ColorProperty('barrierColor', barrierColor, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<EdgeInsets>('insetPadding', insetPadding, defaultValue: null),
+      DiagnosticsProperty<EdgeInsets>('insetPadding', insetPadding,
+          defaultValue: null),
     );
-    properties.add(DiagnosticsProperty<Clip>('clipBehavior', clipBehavior, defaultValue: null));
+    properties.add(DiagnosticsProperty<Clip>('clipBehavior', clipBehavior,
+        defaultValue: null));
   }
 }

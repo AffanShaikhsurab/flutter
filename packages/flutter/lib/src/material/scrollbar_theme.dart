@@ -157,7 +157,8 @@ class ScrollbarThemeData with Diagnosticable {
   /// Linearly interpolate between two Scrollbar themes.
   ///
   /// {@macro dart.ui.shadow.lerp}
-  static ScrollbarThemeData lerp(ScrollbarThemeData? a, ScrollbarThemeData? b, double t) {
+  static ScrollbarThemeData lerp(
+      ScrollbarThemeData? a, ScrollbarThemeData? b, double t) {
     if (identical(a, b) && a != null) {
       return a;
     }
@@ -168,7 +169,8 @@ class ScrollbarThemeData with Diagnosticable {
         t,
         _lerpBool,
       ),
-      thickness: MaterialStateProperty.lerp<double?>(a?.thickness, b?.thickness, t, lerpDouble),
+      thickness: MaterialStateProperty.lerp<double?>(
+          a?.thickness, b?.thickness, t, lerpDouble),
       trackVisibility: MaterialStateProperty.lerp<bool?>(
         a?.trackVisibility,
         b?.trackVisibility,
@@ -177,8 +179,10 @@ class ScrollbarThemeData with Diagnosticable {
       ),
       interactive: _lerpBool(a?.interactive, b?.interactive, t),
       radius: Radius.lerp(a?.radius, b?.radius, t),
-      thumbColor: MaterialStateProperty.lerp<Color?>(a?.thumbColor, b?.thumbColor, t, Color.lerp),
-      trackColor: MaterialStateProperty.lerp<Color?>(a?.trackColor, b?.trackColor, t, Color.lerp),
+      thumbColor: MaterialStateProperty.lerp<Color?>(
+          a?.thumbColor, b?.thumbColor, t, Color.lerp),
+      trackColor: MaterialStateProperty.lerp<Color?>(
+          a?.trackColor, b?.trackColor, t, Color.lerp),
       trackBorderColor: MaterialStateProperty.lerp<Color?>(
         a?.trackBorderColor,
         b?.trackBorderColor,
@@ -193,18 +197,18 @@ class ScrollbarThemeData with Diagnosticable {
 
   @override
   int get hashCode => Object.hash(
-    thumbVisibility,
-    thickness,
-    trackVisibility,
-    interactive,
-    radius,
-    thumbColor,
-    trackColor,
-    trackBorderColor,
-    crossAxisMargin,
-    mainAxisMargin,
-    minThumbLength,
-  );
+        thumbVisibility,
+        thickness,
+        trackVisibility,
+        interactive,
+        radius,
+        thumbColor,
+        trackColor,
+        trackBorderColor,
+        crossAxisMargin,
+        mainAxisMargin,
+        minThumbLength,
+      );
 
   @override
   bool operator ==(Object other) {
@@ -252,8 +256,10 @@ class ScrollbarThemeData with Diagnosticable {
         defaultValue: null,
       ),
     );
-    properties.add(DiagnosticsProperty<bool>('interactive', interactive, defaultValue: null));
-    properties.add(DiagnosticsProperty<Radius>('radius', radius, defaultValue: null));
+    properties.add(DiagnosticsProperty<bool>('interactive', interactive,
+        defaultValue: null));
+    properties
+        .add(DiagnosticsProperty<Radius>('radius', radius, defaultValue: null));
     properties.add(
       DiagnosticsProperty<MaterialStateProperty<Color?>>(
         'thumbColor',
@@ -276,13 +282,16 @@ class ScrollbarThemeData with Diagnosticable {
       ),
     );
     properties.add(
-      DiagnosticsProperty<double>('crossAxisMargin', crossAxisMargin, defaultValue: null),
+      DiagnosticsProperty<double>('crossAxisMargin', crossAxisMargin,
+          defaultValue: null),
     );
     properties.add(
-      DiagnosticsProperty<double>('mainAxisMargin', mainAxisMargin, defaultValue: null),
+      DiagnosticsProperty<double>('mainAxisMargin', mainAxisMargin,
+          defaultValue: null),
     );
     properties.add(
-      DiagnosticsProperty<double>('minThumbLength', minThumbLength, defaultValue: null),
+      DiagnosticsProperty<double>('minThumbLength', minThumbLength,
+          defaultValue: null),
     );
   }
 }

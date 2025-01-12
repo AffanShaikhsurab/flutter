@@ -147,7 +147,8 @@ class BottomSheetThemeData with Diagnosticable {
   /// If both arguments are null then null is returned.
   ///
   /// {@macro dart.ui.shadow.lerp}
-  static BottomSheetThemeData? lerp(BottomSheetThemeData? a, BottomSheetThemeData? b, double t) {
+  static BottomSheetThemeData? lerp(
+      BottomSheetThemeData? a, BottomSheetThemeData? b, double t) {
     if (identical(a, b)) {
       return a;
     }
@@ -155,8 +156,10 @@ class BottomSheetThemeData with Diagnosticable {
       backgroundColor: Color.lerp(a?.backgroundColor, b?.backgroundColor, t),
       surfaceTintColor: Color.lerp(a?.surfaceTintColor, b?.surfaceTintColor, t),
       elevation: lerpDouble(a?.elevation, b?.elevation, t),
-      modalBackgroundColor: Color.lerp(a?.modalBackgroundColor, b?.modalBackgroundColor, t),
-      modalBarrierColor: Color.lerp(a?.modalBarrierColor, b?.modalBarrierColor, t),
+      modalBackgroundColor:
+          Color.lerp(a?.modalBackgroundColor, b?.modalBackgroundColor, t),
+      modalBarrierColor:
+          Color.lerp(a?.modalBarrierColor, b?.modalBarrierColor, t),
       shadowColor: Color.lerp(a?.shadowColor, b?.shadowColor, t),
       modalElevation: lerpDouble(a?.modalElevation, b?.modalElevation, t),
       shape: ShapeBorder.lerp(a?.shape, b?.shape, t),
@@ -170,20 +173,20 @@ class BottomSheetThemeData with Diagnosticable {
 
   @override
   int get hashCode => Object.hash(
-    backgroundColor,
-    surfaceTintColor,
-    elevation,
-    modalBackgroundColor,
-    modalBarrierColor,
-    shadowColor,
-    modalElevation,
-    shape,
-    showDragHandle,
-    dragHandleColor,
-    dragHandleSize,
-    clipBehavior,
-    constraints,
-  );
+        backgroundColor,
+        surfaceTintColor,
+        elevation,
+        modalBackgroundColor,
+        modalBarrierColor,
+        shadowColor,
+        modalElevation,
+        shape,
+        showDragHandle,
+        dragHandleColor,
+        dragHandleSize,
+        clipBehavior,
+        constraints,
+      );
 
   @override
   bool operator ==(Object other) {
@@ -212,20 +215,32 @@ class BottomSheetThemeData with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(ColorProperty('backgroundColor', backgroundColor, defaultValue: null));
-    properties.add(ColorProperty('surfaceTintColor', surfaceTintColor, defaultValue: null));
-    properties.add(DoubleProperty('elevation', elevation, defaultValue: null));
-    properties.add(ColorProperty('modalBackgroundColor', modalBackgroundColor, defaultValue: null));
-    properties.add(ColorProperty('shadowColor', shadowColor, defaultValue: null));
-    properties.add(ColorProperty('modalBarrierColor', modalBarrierColor, defaultValue: null));
-    properties.add(DoubleProperty('modalElevation', modalElevation, defaultValue: null));
-    properties.add(DiagnosticsProperty<ShapeBorder>('shape', shape, defaultValue: null));
-    properties.add(DiagnosticsProperty<bool>('showDragHandle', showDragHandle, defaultValue: null));
-    properties.add(ColorProperty('dragHandleColor', dragHandleColor, defaultValue: null));
-    properties.add(DiagnosticsProperty<Size>('dragHandleSize', dragHandleSize, defaultValue: null));
-    properties.add(DiagnosticsProperty<Clip>('clipBehavior', clipBehavior, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<BoxConstraints>('constraints', constraints, defaultValue: null),
+        ColorProperty('backgroundColor', backgroundColor, defaultValue: null));
+    properties.add(ColorProperty('surfaceTintColor', surfaceTintColor,
+        defaultValue: null));
+    properties.add(DoubleProperty('elevation', elevation, defaultValue: null));
+    properties.add(ColorProperty('modalBackgroundColor', modalBackgroundColor,
+        defaultValue: null));
+    properties
+        .add(ColorProperty('shadowColor', shadowColor, defaultValue: null));
+    properties.add(ColorProperty('modalBarrierColor', modalBarrierColor,
+        defaultValue: null));
+    properties.add(
+        DoubleProperty('modalElevation', modalElevation, defaultValue: null));
+    properties.add(
+        DiagnosticsProperty<ShapeBorder>('shape', shape, defaultValue: null));
+    properties.add(DiagnosticsProperty<bool>('showDragHandle', showDragHandle,
+        defaultValue: null));
+    properties.add(
+        ColorProperty('dragHandleColor', dragHandleColor, defaultValue: null));
+    properties.add(DiagnosticsProperty<Size>('dragHandleSize', dragHandleSize,
+        defaultValue: null));
+    properties.add(DiagnosticsProperty<Clip>('clipBehavior', clipBehavior,
+        defaultValue: null));
+    properties.add(
+      DiagnosticsProperty<BoxConstraints>('constraints', constraints,
+          defaultValue: null),
     );
   }
 }

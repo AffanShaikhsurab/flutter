@@ -79,8 +79,8 @@ class Card extends StatelessWidget {
     this.clipBehavior,
     this.child,
     this.semanticContainer = true,
-  }) : assert(elevation == null || elevation >= 0.0),
-       _variant = _CardVariant.elevated;
+  })  : assert(elevation == null || elevation >= 0.0),
+        _variant = _CardVariant.elevated;
 
   /// Create a filled variant of Card.
   ///
@@ -98,8 +98,8 @@ class Card extends StatelessWidget {
     this.clipBehavior,
     this.child,
     this.semanticContainer = true,
-  }) : assert(elevation == null || elevation >= 0.0),
-       _variant = _CardVariant.filled;
+  })  : assert(elevation == null || elevation >= 0.0),
+        _variant = _CardVariant.filled;
 
   /// Create an outlined variant of Card.
   ///
@@ -117,8 +117,8 @@ class Card extends StatelessWidget {
     this.clipBehavior,
     this.child,
     this.semanticContainer = true,
-  }) : assert(elevation == null || elevation >= 0.0),
-       _variant = _CardVariant.outlined;
+  })  : assert(elevation == null || elevation >= 0.0),
+        _variant = _CardVariant.outlined;
 
   /// The card's background color.
   ///
@@ -234,14 +234,18 @@ class Card extends StatelessWidget {
         child: Material(
           type: MaterialType.card,
           color: color ?? cardTheme.color ?? defaults.color,
-          shadowColor: shadowColor ?? cardTheme.shadowColor ?? defaults.shadowColor,
-          surfaceTintColor:
-              surfaceTintColor ?? cardTheme.surfaceTintColor ?? defaults.surfaceTintColor,
+          shadowColor:
+              shadowColor ?? cardTheme.shadowColor ?? defaults.shadowColor,
+          surfaceTintColor: surfaceTintColor ??
+              cardTheme.surfaceTintColor ??
+              defaults.surfaceTintColor,
           elevation: elevation ?? cardTheme.elevation ?? defaults.elevation!,
           shape: shape ?? cardTheme.shape ?? defaults.shape,
           borderOnForeground: borderOnForeground,
-          clipBehavior: clipBehavior ?? cardTheme.clipBehavior ?? defaults.clipBehavior!,
-          child: Semantics(explicitChildNodes: !semanticContainer, child: child),
+          clipBehavior:
+              clipBehavior ?? cardTheme.clipBehavior ?? defaults.clipBehavior!,
+          child:
+              Semantics(explicitChildNodes: !semanticContainer, child: child),
         ),
       ),
     );
@@ -251,12 +255,13 @@ class Card extends StatelessWidget {
 // Hand coded defaults based on Material Design 2.
 class _CardDefaultsM2 extends CardThemeData {
   const _CardDefaultsM2(this.context)
-    : super(
-        clipBehavior: Clip.none,
-        elevation: 1.0,
-        margin: const EdgeInsets.all(4.0),
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4.0))),
-      );
+      : super(
+          clipBehavior: Clip.none,
+          elevation: 1.0,
+          margin: const EdgeInsets.all(4.0),
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(4.0))),
+        );
 
   final BuildContext context;
 
@@ -277,11 +282,11 @@ class _CardDefaultsM2 extends CardThemeData {
 // dart format off
 class _CardDefaultsM3 extends CardThemeData {
   _CardDefaultsM3(this.context)
-    : super(
-        clipBehavior: Clip.none,
-        elevation: 1.0,
-        margin: const EdgeInsets.all(4.0),
-      );
+      : super(
+          clipBehavior: Clip.none,
+          elevation: 1.0,
+          margin: const EdgeInsets.all(4.0),
+        );
 
   final BuildContext context;
   late final ColorScheme _colors = Theme.of(context).colorScheme;
@@ -296,7 +301,8 @@ class _CardDefaultsM3 extends CardThemeData {
   Color? get surfaceTintColor => Colors.transparent;
 
   @override
-  ShapeBorder? get shape =>const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12.0)));
+  ShapeBorder? get shape => const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(12.0)));
 }
 // dart format on
 
@@ -312,11 +318,11 @@ class _CardDefaultsM3 extends CardThemeData {
 // dart format off
 class _FilledCardDefaultsM3 extends CardThemeData {
   _FilledCardDefaultsM3(this.context)
-    : super(
-        clipBehavior: Clip.none,
-        elevation: 0.0,
-        margin: const EdgeInsets.all(4.0),
-      );
+      : super(
+          clipBehavior: Clip.none,
+          elevation: 0.0,
+          margin: const EdgeInsets.all(4.0),
+        );
 
   final BuildContext context;
   late final ColorScheme _colors = Theme.of(context).colorScheme;
@@ -331,7 +337,8 @@ class _FilledCardDefaultsM3 extends CardThemeData {
   Color? get surfaceTintColor => Colors.transparent;
 
   @override
-  ShapeBorder? get shape =>const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12.0)));
+  ShapeBorder? get shape => const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(12.0)));
 }
 // dart format on
 
@@ -347,11 +354,11 @@ class _FilledCardDefaultsM3 extends CardThemeData {
 // dart format off
 class _OutlinedCardDefaultsM3 extends CardThemeData {
   _OutlinedCardDefaultsM3(this.context)
-    : super(
-        clipBehavior: Clip.none,
-        elevation: 0.0,
-        margin: const EdgeInsets.all(4.0),
-      );
+      : super(
+          clipBehavior: Clip.none,
+          elevation: 0.0,
+          margin: const EdgeInsets.all(4.0),
+        );
 
   final BuildContext context;
   late final ColorScheme _colors = Theme.of(context).colorScheme;
@@ -366,10 +373,9 @@ class _OutlinedCardDefaultsM3 extends CardThemeData {
   Color? get surfaceTintColor => Colors.transparent;
 
   @override
-  ShapeBorder? get shape =>
-    const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12.0))).copyWith(
-      side: BorderSide(color: _colors.outlineVariant)
-    );
+  ShapeBorder? get shape => const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(12.0)))
+      .copyWith(side: BorderSide(color: _colors.outlineVariant));
 }
 // dart format on
 

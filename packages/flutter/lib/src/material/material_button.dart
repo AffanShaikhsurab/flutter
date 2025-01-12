@@ -90,11 +90,11 @@ class MaterialButton extends StatelessWidget {
     this.height,
     this.enableFeedback = true,
     this.child,
-  }) : assert(elevation == null || elevation >= 0.0),
-       assert(focusElevation == null || focusElevation >= 0.0),
-       assert(hoverElevation == null || hoverElevation >= 0.0),
-       assert(highlightElevation == null || highlightElevation >= 0.0),
-       assert(disabledElevation == null || disabledElevation >= 0.0);
+  })  : assert(elevation == null || elevation >= 0.0),
+        assert(focusElevation == null || focusElevation >= 0.0),
+        assert(hoverElevation == null || hoverElevation >= 0.0),
+        assert(highlightElevation == null || highlightElevation >= 0.0),
+        assert(disabledElevation == null || disabledElevation >= 0.0);
 
   /// The callback that is called when the button is tapped or otherwise activated.
   ///
@@ -401,7 +401,8 @@ class MaterialButton extends StatelessWidget {
       onHighlightChanged: onHighlightChanged,
       mouseCursor: mouseCursor,
       fillColor: buttonTheme.getFillColor(this),
-      textStyle: theme.textTheme.labelLarge!.copyWith(color: buttonTheme.getTextColor(this)),
+      textStyle: theme.textTheme.labelLarge!
+          .copyWith(color: buttonTheme.getTextColor(this)),
       focusColor: focusColor ?? buttonTheme.getFocusColor(this),
       hoverColor: hoverColor ?? buttonTheme.getHoverColor(this),
       highlightColor: highlightColor ?? theme.highlightColor,
@@ -412,13 +413,16 @@ class MaterialButton extends StatelessWidget {
       highlightElevation: buttonTheme.getHighlightElevation(this),
       padding: buttonTheme.getPadding(this),
       visualDensity: visualDensity ?? theme.visualDensity,
-      constraints: buttonTheme.getConstraints(this).copyWith(minWidth: minWidth, minHeight: height),
+      constraints: buttonTheme
+          .getConstraints(this)
+          .copyWith(minWidth: minWidth, minHeight: height),
       shape: buttonTheme.getShape(this),
       clipBehavior: clipBehavior,
       focusNode: focusNode,
       autofocus: autofocus,
       animationDuration: buttonTheme.getAnimationDuration(this),
-      materialTapTargetSize: materialTapTargetSize ?? theme.materialTapTargetSize,
+      materialTapTargetSize:
+          materialTapTargetSize ?? theme.materialTapTargetSize,
       disabledElevation: disabledElevation ?? 0.0,
       child: child,
     );
@@ -427,27 +431,38 @@ class MaterialButton extends StatelessWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(FlagProperty('enabled', value: enabled, ifFalse: 'disabled'));
+    properties
+        .add(FlagProperty('enabled', value: enabled, ifFalse: 'disabled'));
     properties.add(
-      DiagnosticsProperty<ButtonTextTheme>('textTheme', textTheme, defaultValue: null),
+      DiagnosticsProperty<ButtonTextTheme>('textTheme', textTheme,
+          defaultValue: null),
     );
     properties.add(ColorProperty('textColor', textColor, defaultValue: null));
-    properties.add(ColorProperty('disabledTextColor', disabledTextColor, defaultValue: null));
+    properties.add(ColorProperty('disabledTextColor', disabledTextColor,
+        defaultValue: null));
     properties.add(ColorProperty('color', color, defaultValue: null));
-    properties.add(ColorProperty('disabledColor', disabledColor, defaultValue: null));
+    properties
+        .add(ColorProperty('disabledColor', disabledColor, defaultValue: null));
     properties.add(ColorProperty('focusColor', focusColor, defaultValue: null));
     properties.add(ColorProperty('hoverColor', hoverColor, defaultValue: null));
-    properties.add(ColorProperty('highlightColor', highlightColor, defaultValue: null));
-    properties.add(ColorProperty('splashColor', splashColor, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<Brightness>('colorBrightness', colorBrightness, defaultValue: null),
-    );
-    properties.add(DiagnosticsProperty<EdgeInsetsGeometry>('padding', padding, defaultValue: null));
+        ColorProperty('highlightColor', highlightColor, defaultValue: null));
+    properties
+        .add(ColorProperty('splashColor', splashColor, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<VisualDensity>('visualDensity', visualDensity, defaultValue: null),
+      DiagnosticsProperty<Brightness>('colorBrightness', colorBrightness,
+          defaultValue: null),
     );
-    properties.add(DiagnosticsProperty<ShapeBorder>('shape', shape, defaultValue: null));
-    properties.add(DiagnosticsProperty<FocusNode>('focusNode', focusNode, defaultValue: null));
+    properties.add(DiagnosticsProperty<EdgeInsetsGeometry>('padding', padding,
+        defaultValue: null));
+    properties.add(
+      DiagnosticsProperty<VisualDensity>('visualDensity', visualDensity,
+          defaultValue: null),
+    );
+    properties.add(
+        DiagnosticsProperty<ShapeBorder>('shape', shape, defaultValue: null));
+    properties.add(DiagnosticsProperty<FocusNode>('focusNode', focusNode,
+        defaultValue: null));
     properties.add(
       DiagnosticsProperty<MaterialTapTargetSize>(
         'materialTapTargetSize',

@@ -125,12 +125,14 @@ class SearchBarThemeData with Diagnosticable {
   /// Linearly interpolate between two [SearchBarThemeData]s.
   ///
   /// {@macro dart.ui.shadow.lerp}
-  static SearchBarThemeData? lerp(SearchBarThemeData? a, SearchBarThemeData? b, double t) {
+  static SearchBarThemeData? lerp(
+      SearchBarThemeData? a, SearchBarThemeData? b, double t) {
     if (identical(a, b)) {
       return a;
     }
     return SearchBarThemeData(
-      elevation: MaterialStateProperty.lerp<double?>(a?.elevation, b?.elevation, t, lerpDouble),
+      elevation: MaterialStateProperty.lerp<double?>(
+          a?.elevation, b?.elevation, t, lerpDouble),
       backgroundColor: MaterialStateProperty.lerp<Color?>(
         a?.backgroundColor,
         b?.backgroundColor,
@@ -181,25 +183,26 @@ class SearchBarThemeData with Diagnosticable {
         TextStyle.lerp,
       ),
       constraints: BoxConstraints.lerp(a?.constraints, b?.constraints, t),
-      textCapitalization: t < 0.5 ? a?.textCapitalization : b?.textCapitalization,
+      textCapitalization:
+          t < 0.5 ? a?.textCapitalization : b?.textCapitalization,
     );
   }
 
   @override
   int get hashCode => Object.hash(
-    elevation,
-    backgroundColor,
-    shadowColor,
-    surfaceTintColor,
-    overlayColor,
-    side,
-    shape,
-    padding,
-    textStyle,
-    hintStyle,
-    constraints,
-    textCapitalization,
-  );
+        elevation,
+        backgroundColor,
+        shadowColor,
+        surfaceTintColor,
+        overlayColor,
+        side,
+        shape,
+        padding,
+        textStyle,
+        hintStyle,
+        constraints,
+        textCapitalization,
+      );
 
   @override
   bool operator ==(Object other) {
@@ -263,7 +266,8 @@ class SearchBarThemeData with Diagnosticable {
       ),
     );
     properties.add(
-      DiagnosticsProperty<MaterialStateProperty<BorderSide?>>('side', side, defaultValue: null),
+      DiagnosticsProperty<MaterialStateProperty<BorderSide?>>('side', side,
+          defaultValue: null),
     );
     properties.add(
       DiagnosticsProperty<MaterialStateProperty<OutlinedBorder?>>(
@@ -294,7 +298,8 @@ class SearchBarThemeData with Diagnosticable {
       ),
     );
     properties.add(
-      DiagnosticsProperty<BoxConstraints>('constraints', constraints, defaultValue: null),
+      DiagnosticsProperty<BoxConstraints>('constraints', constraints,
+          defaultValue: null),
     );
     properties.add(
       DiagnosticsProperty<TextCapitalization>(

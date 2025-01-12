@@ -331,16 +331,20 @@ class MenuStyle with Diagnosticable {
         t,
         Color.lerp,
       ),
-      elevation: MaterialStateProperty.lerp<double?>(a?.elevation, b?.elevation, t, lerpDouble),
+      elevation: MaterialStateProperty.lerp<double?>(
+          a?.elevation, b?.elevation, t, lerpDouble),
       padding: MaterialStateProperty.lerp<EdgeInsetsGeometry?>(
         a?.padding,
         b?.padding,
         t,
         EdgeInsetsGeometry.lerp,
       ),
-      minimumSize: MaterialStateProperty.lerp<Size?>(a?.minimumSize, b?.minimumSize, t, Size.lerp),
-      fixedSize: MaterialStateProperty.lerp<Size?>(a?.fixedSize, b?.fixedSize, t, Size.lerp),
-      maximumSize: MaterialStateProperty.lerp<Size?>(a?.maximumSize, b?.maximumSize, t, Size.lerp),
+      minimumSize: MaterialStateProperty.lerp<Size?>(
+          a?.minimumSize, b?.minimumSize, t, Size.lerp),
+      fixedSize: MaterialStateProperty.lerp<Size?>(
+          a?.fixedSize, b?.fixedSize, t, Size.lerp),
+      maximumSize: MaterialStateProperty.lerp<Size?>(
+          a?.maximumSize, b?.maximumSize, t, Size.lerp),
       side: MaterialStateBorderSide.lerp(a?.side, b?.side, t),
       shape: MaterialStateProperty.lerp<OutlinedBorder?>(
         a?.shape,
@@ -400,7 +404,8 @@ class MenuStyle with Diagnosticable {
       ),
     );
     properties.add(
-      DiagnosticsProperty<MaterialStateProperty<Size?>>('fixedSize', fixedSize, defaultValue: null),
+      DiagnosticsProperty<MaterialStateProperty<Size?>>('fixedSize', fixedSize,
+          defaultValue: null),
     );
     properties.add(
       DiagnosticsProperty<MaterialStateProperty<Size?>>(
@@ -410,7 +415,8 @@ class MenuStyle with Diagnosticable {
       ),
     );
     properties.add(
-      DiagnosticsProperty<MaterialStateProperty<BorderSide?>>('side', side, defaultValue: null),
+      DiagnosticsProperty<MaterialStateProperty<BorderSide?>>('side', side,
+          defaultValue: null),
     );
     properties.add(
       DiagnosticsProperty<MaterialStateProperty<OutlinedBorder?>>(
@@ -427,10 +433,12 @@ class MenuStyle with Diagnosticable {
       ),
     );
     properties.add(
-      DiagnosticsProperty<VisualDensity>('visualDensity', visualDensity, defaultValue: null),
+      DiagnosticsProperty<VisualDensity>('visualDensity', visualDensity,
+          defaultValue: null),
     );
     properties.add(
-      DiagnosticsProperty<AlignmentGeometry>('alignment', alignment, defaultValue: null),
+      DiagnosticsProperty<AlignmentGeometry>('alignment', alignment,
+          defaultValue: null),
     );
   }
 }

@@ -42,44 +42,44 @@ class TabBarTheme extends InheritedTheme with Diagnosticable {
     TabIndicatorAnimation? indicatorAnimation,
     TabBarThemeData? data,
     Widget? child,
-  }) : assert(
-         data == null ||
-             (indicator ??
-                     indicatorColor ??
-                     indicatorSize ??
-                     dividerColor ??
-                     dividerHeight ??
-                     labelColor ??
-                     labelPadding ??
-                     labelStyle ??
-                     unselectedLabelColor ??
-                     unselectedLabelStyle ??
-                     overlayColor ??
-                     splashFactory ??
-                     mouseCursor ??
-                     tabAlignment ??
-                     textScaler ??
-                     indicatorAnimation) ==
-                 null,
-       ),
-       _indicator = indicator,
-       _indicatorColor = indicatorColor,
-       _indicatorSize = indicatorSize,
-       _dividerColor = dividerColor,
-       _dividerHeight = dividerHeight,
-       _labelColor = labelColor,
-       _labelPadding = labelPadding,
-       _labelStyle = labelStyle,
-       _unselectedLabelColor = unselectedLabelColor,
-       _unselectedLabelStyle = unselectedLabelStyle,
-       _overlayColor = overlayColor,
-       _splashFactory = splashFactory,
-       _mouseCursor = mouseCursor,
-       _tabAlignment = tabAlignment,
-       _textScaler = textScaler,
-       _indicatorAnimation = indicatorAnimation,
-       _data = data,
-       super(child: child ?? const SizedBox());
+  })  : assert(
+          data == null ||
+              (indicator ??
+                      indicatorColor ??
+                      indicatorSize ??
+                      dividerColor ??
+                      dividerHeight ??
+                      labelColor ??
+                      labelPadding ??
+                      labelStyle ??
+                      unselectedLabelColor ??
+                      unselectedLabelStyle ??
+                      overlayColor ??
+                      splashFactory ??
+                      mouseCursor ??
+                      tabAlignment ??
+                      textScaler ??
+                      indicatorAnimation) ==
+                  null,
+        ),
+        _indicator = indicator,
+        _indicatorColor = indicatorColor,
+        _indicatorSize = indicatorSize,
+        _dividerColor = dividerColor,
+        _dividerHeight = dividerHeight,
+        _labelColor = labelColor,
+        _labelPadding = labelPadding,
+        _labelStyle = labelStyle,
+        _unselectedLabelColor = unselectedLabelColor,
+        _unselectedLabelStyle = unselectedLabelStyle,
+        _overlayColor = overlayColor,
+        _splashFactory = splashFactory,
+        _mouseCursor = mouseCursor,
+        _tabAlignment = tabAlignment,
+        _textScaler = textScaler,
+        _indicatorAnimation = indicatorAnimation,
+        _data = data,
+        super(child: child ?? const SizedBox());
 
   final TabBarThemeData? _data;
   final Decoration? _indicator;
@@ -497,24 +497,24 @@ class TabBarThemeData with Diagnosticable {
 
   @override
   int get hashCode => Object.hash(
-    indicator,
-    indicatorColor,
-    indicatorSize,
-    dividerColor,
-    dividerHeight,
-    labelColor,
-    labelPadding,
-    labelStyle,
-    unselectedLabelColor,
-    unselectedLabelStyle,
-    overlayColor,
-    splashFactory,
-    mouseCursor,
-    tabAlignment,
-    textScaler,
-    indicatorAnimation,
-    splashBorderRadius,
-  );
+        indicator,
+        indicatorColor,
+        indicatorSize,
+        dividerColor,
+        dividerHeight,
+        labelColor,
+        labelPadding,
+        labelStyle,
+        unselectedLabelColor,
+        unselectedLabelStyle,
+        overlayColor,
+        splashFactory,
+        mouseCursor,
+        tabAlignment,
+        textScaler,
+        indicatorAnimation,
+        splashBorderRadius,
+      );
 
   @override
   bool operator ==(Object other) {

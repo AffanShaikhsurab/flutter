@@ -122,7 +122,8 @@ class CheckboxThemeData with Diagnosticable {
       checkColor: checkColor ?? this.checkColor,
       overlayColor: overlayColor ?? this.overlayColor,
       splashRadius: splashRadius ?? this.splashRadius,
-      materialTapTargetSize: materialTapTargetSize ?? this.materialTapTargetSize,
+      materialTapTargetSize:
+          materialTapTargetSize ?? this.materialTapTargetSize,
       visualDensity: visualDensity ?? this.visualDensity,
       shape: shape ?? this.shape,
       side: side ?? this.side,
@@ -132,14 +133,17 @@ class CheckboxThemeData with Diagnosticable {
   /// Linearly interpolate between two [CheckboxThemeData]s.
   ///
   /// {@macro dart.ui.shadow.lerp}
-  static CheckboxThemeData lerp(CheckboxThemeData? a, CheckboxThemeData? b, double t) {
+  static CheckboxThemeData lerp(
+      CheckboxThemeData? a, CheckboxThemeData? b, double t) {
     if (identical(a, b) && a != null) {
       return a;
     }
     return CheckboxThemeData(
       mouseCursor: t < 0.5 ? a?.mouseCursor : b?.mouseCursor,
-      fillColor: MaterialStateProperty.lerp<Color?>(a?.fillColor, b?.fillColor, t, Color.lerp),
-      checkColor: MaterialStateProperty.lerp<Color?>(a?.checkColor, b?.checkColor, t, Color.lerp),
+      fillColor: MaterialStateProperty.lerp<Color?>(
+          a?.fillColor, b?.fillColor, t, Color.lerp),
+      checkColor: MaterialStateProperty.lerp<Color?>(
+          a?.checkColor, b?.checkColor, t, Color.lerp),
       overlayColor: MaterialStateProperty.lerp<Color?>(
         a?.overlayColor,
         b?.overlayColor,
@@ -147,7 +151,8 @@ class CheckboxThemeData with Diagnosticable {
         Color.lerp,
       ),
       splashRadius: lerpDouble(a?.splashRadius, b?.splashRadius, t),
-      materialTapTargetSize: t < 0.5 ? a?.materialTapTargetSize : b?.materialTapTargetSize,
+      materialTapTargetSize:
+          t < 0.5 ? a?.materialTapTargetSize : b?.materialTapTargetSize,
       visualDensity: t < 0.5 ? a?.visualDensity : b?.visualDensity,
       shape: ShapeBorder.lerp(a?.shape, b?.shape, t) as OutlinedBorder?,
       side: _lerpSides(a?.side, b?.side, t),
@@ -156,16 +161,16 @@ class CheckboxThemeData with Diagnosticable {
 
   @override
   int get hashCode => Object.hash(
-    mouseCursor,
-    fillColor,
-    checkColor,
-    overlayColor,
-    splashRadius,
-    materialTapTargetSize,
-    visualDensity,
-    shape,
-    side,
-  );
+        mouseCursor,
+        fillColor,
+        checkColor,
+        overlayColor,
+        splashRadius,
+        materialTapTargetSize,
+        visualDensity,
+        shape,
+        side,
+      );
 
   @override
   bool operator ==(Object other) {
@@ -218,7 +223,8 @@ class CheckboxThemeData with Diagnosticable {
         defaultValue: null,
       ),
     );
-    properties.add(DoubleProperty('splashRadius', splashRadius, defaultValue: null));
+    properties
+        .add(DoubleProperty('splashRadius', splashRadius, defaultValue: null));
     properties.add(
       DiagnosticsProperty<MaterialTapTargetSize>(
         'materialTapTargetSize',
@@ -227,10 +233,13 @@ class CheckboxThemeData with Diagnosticable {
       ),
     );
     properties.add(
-      DiagnosticsProperty<VisualDensity>('visualDensity', visualDensity, defaultValue: null),
+      DiagnosticsProperty<VisualDensity>('visualDensity', visualDensity,
+          defaultValue: null),
     );
-    properties.add(DiagnosticsProperty<OutlinedBorder>('shape', shape, defaultValue: null));
-    properties.add(DiagnosticsProperty<BorderSide>('side', side, defaultValue: null));
+    properties.add(DiagnosticsProperty<OutlinedBorder>('shape', shape,
+        defaultValue: null));
+    properties
+        .add(DiagnosticsProperty<BorderSide>('side', side, defaultValue: null));
   }
 
   // Special case because BorderSide.lerp() doesn't support null arguments

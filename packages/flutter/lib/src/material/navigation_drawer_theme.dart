@@ -161,17 +161,17 @@ class NavigationDrawerThemeData with Diagnosticable {
 
   @override
   int get hashCode => Object.hash(
-    tileHeight,
-    backgroundColor,
-    elevation,
-    shadowColor,
-    surfaceTintColor,
-    indicatorColor,
-    indicatorShape,
-    indicatorSize,
-    labelTextStyle,
-    iconTheme,
-  );
+        tileHeight,
+        backgroundColor,
+        elevation,
+        shadowColor,
+        surfaceTintColor,
+        indicatorColor,
+        indicatorShape,
+        indicatorSize,
+        labelTextStyle,
+        iconTheme,
+      );
 
   @override
   bool operator ==(Object other) {
@@ -197,16 +197,23 @@ class NavigationDrawerThemeData with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DoubleProperty('tileHeight', tileHeight, defaultValue: null));
-    properties.add(ColorProperty('backgroundColor', backgroundColor, defaultValue: null));
-    properties.add(DoubleProperty('elevation', elevation, defaultValue: null));
-    properties.add(ColorProperty('shadowColor', shadowColor, defaultValue: null));
-    properties.add(ColorProperty('surfaceTintColor', surfaceTintColor, defaultValue: null));
-    properties.add(ColorProperty('indicatorColor', indicatorColor, defaultValue: null));
+    properties
+        .add(DoubleProperty('tileHeight', tileHeight, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<ShapeBorder>('indicatorShape', indicatorShape, defaultValue: null),
+        ColorProperty('backgroundColor', backgroundColor, defaultValue: null));
+    properties.add(DoubleProperty('elevation', elevation, defaultValue: null));
+    properties
+        .add(ColorProperty('shadowColor', shadowColor, defaultValue: null));
+    properties.add(ColorProperty('surfaceTintColor', surfaceTintColor,
+        defaultValue: null));
+    properties.add(
+        ColorProperty('indicatorColor', indicatorColor, defaultValue: null));
+    properties.add(
+      DiagnosticsProperty<ShapeBorder>('indicatorShape', indicatorShape,
+          defaultValue: null),
     );
-    properties.add(DiagnosticsProperty<Size>('indicatorSize', indicatorSize, defaultValue: null));
+    properties.add(DiagnosticsProperty<Size>('indicatorSize', indicatorSize,
+        defaultValue: null));
     properties.add(
       DiagnosticsProperty<MaterialStateProperty<TextStyle?>>(
         'labelTextStyle',
@@ -237,7 +244,8 @@ class NavigationDrawerThemeData with Diagnosticable {
 class NavigationDrawerTheme extends InheritedTheme {
   /// Creates a navigation rail theme that controls the
   /// [NavigationDrawerThemeData] properties for a [NavigationDrawer].
-  const NavigationDrawerTheme({super.key, required this.data, required super.child});
+  const NavigationDrawerTheme(
+      {super.key, required this.data, required super.child});
 
   /// Specifies the background color, label text style, icon theme, and label
   /// type values for descendant [NavigationDrawer] widgets.
@@ -250,7 +258,8 @@ class NavigationDrawerTheme extends InheritedTheme {
   static NavigationDrawerThemeData of(BuildContext context) {
     final NavigationDrawerTheme? navigationDrawerTheme =
         context.dependOnInheritedWidgetOfExactType<NavigationDrawerTheme>();
-    return navigationDrawerTheme?.data ?? Theme.of(context).navigationDrawerTheme;
+    return navigationDrawerTheme?.data ??
+        Theme.of(context).navigationDrawerTheme;
   }
 
   @override
@@ -259,5 +268,6 @@ class NavigationDrawerTheme extends InheritedTheme {
   }
 
   @override
-  bool updateShouldNotify(NavigationDrawerTheme oldWidget) => data != oldWidget.data;
+  bool updateShouldNotify(NavigationDrawerTheme oldWidget) =>
+      data != oldWidget.data;
 }

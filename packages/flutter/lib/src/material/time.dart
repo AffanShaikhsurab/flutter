@@ -58,7 +58,9 @@ class TimeOfDay implements Comparable<TimeOfDay> {
   ///
   /// The [hour] is set to the time's hour and the [minute] is set to the time's
   /// minute in the timezone of the given [DateTime].
-  TimeOfDay.fromDateTime(DateTime time) : hour = time.hour, minute = time.minute;
+  TimeOfDay.fromDateTime(DateTime time)
+      : hour = time.hour,
+        minute = time.minute;
 
   /// Creates a time of day based on the current time.
   ///
@@ -105,7 +107,8 @@ class TimeOfDay implements Comparable<TimeOfDay> {
   String format(BuildContext context) {
     assert(debugCheckHasMediaQuery(context));
     assert(debugCheckHasMaterialLocalizations(context));
-    final MaterialLocalizations localizations = MaterialLocalizations.of(context);
+    final MaterialLocalizations localizations =
+        MaterialLocalizations.of(context);
     return localizations.formatTimeOfDay(
       this,
       alwaysUse24HourFormat: MediaQuery.alwaysUse24HourFormatOf(context),
@@ -142,7 +145,9 @@ class TimeOfDay implements Comparable<TimeOfDay> {
   @override
   int compareTo(TimeOfDay other) {
     final int hourComparison = hour.compareTo(other.hour);
-    return hourComparison == 0 ? minute.compareTo(other.minute) : hourComparison;
+    return hourComparison == 0
+        ? minute.compareTo(other.minute)
+        : hourComparison;
   }
 
   @override

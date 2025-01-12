@@ -143,7 +143,7 @@ class _TextMagnifierState extends State<TextMagnifier> {
     // exactly at the center of the handle.
     final Rect unadjustedMagnifierRect =
         Offset(magnifierX, selectionInfo.caretRect.center.dy) - basicMagnifierOffset &
-        Magnifier.kDefaultMagnifierSize;
+            Magnifier.kDefaultMagnifierSize;
 
     // Shift the magnifier so that, if we are ever out of the screen, we become in bounds.
     // This probably won't have much of an effect on the X, since it is already bound
@@ -230,10 +230,9 @@ class _TextMagnifierState extends State<TextMagnifier> {
       left: _magnifierPosition!.dx,
       // Material magnifier typically does not animate, unless we jump between lines,
       // in which case we animate between lines.
-      duration:
-          _positionShouldBeAnimated
-              ? TextMagnifier.jumpBetweenLinesAnimationDuration
-              : Duration.zero,
+      duration: _positionShouldBeAnimated
+          ? TextMagnifier.jumpBetweenLinesAnimationDuration
+          : Duration.zero,
       child: Magnifier(additionalFocalPointOffset: _extraFocalPointOffset),
     );
   }
@@ -348,8 +347,7 @@ class Magnifier extends StatelessWidget {
       ),
       clipBehavior: clipBehavior,
       magnificationScale: _magnification,
-      focalPointOffset:
-          additionalFocalPointOffset +
+      focalPointOffset: additionalFocalPointOffset +
           Offset(0, kStandardVerticalFocalPointShift + kDefaultMagnifierSize.height / 2),
       size: size,
       child: ColoredBox(

@@ -177,19 +177,19 @@ class NavigationBarThemeData with Diagnosticable {
 
   @override
   int get hashCode => Object.hash(
-    height,
-    backgroundColor,
-    elevation,
-    shadowColor,
-    surfaceTintColor,
-    indicatorColor,
-    indicatorShape,
-    labelTextStyle,
-    iconTheme,
-    labelBehavior,
-    overlayColor,
-    labelPadding,
-  );
+        height,
+        backgroundColor,
+        elevation,
+        shadowColor,
+        surfaceTintColor,
+        indicatorColor,
+        indicatorShape,
+        labelTextStyle,
+        iconTheme,
+        labelBehavior,
+        overlayColor,
+        labelPadding,
+      );
 
   @override
   bool operator ==(Object other) {

@@ -17,6 +17,7 @@ import 'theme.dart';
 // late BuildContext context;
 
 @immutable
+
 /// Defines the visual properties of [ProgressIndicator] widgets.
 ///
 /// Used by [ProgressIndicatorTheme] to control the visual properties of
@@ -160,7 +161,8 @@ class ProgressIndicatorThemeData with Diagnosticable {
       linearTrackColor: linearTrackColor ?? this.linearTrackColor,
       linearMinHeight: linearMinHeight ?? this.linearMinHeight,
       circularTrackColor: circularTrackColor ?? this.circularTrackColor,
-      refreshBackgroundColor: refreshBackgroundColor ?? this.refreshBackgroundColor,
+      refreshBackgroundColor:
+          refreshBackgroundColor ?? this.refreshBackgroundColor,
       borderRadius: borderRadius ?? this.borderRadius,
       stopIndicatorColor: stopIndicatorColor ?? this.stopIndicatorColor,
       stopIndicatorRadius: stopIndicatorRadius ?? this.stopIndicatorRadius,
@@ -189,11 +191,16 @@ class ProgressIndicatorThemeData with Diagnosticable {
       color: Color.lerp(a?.color, b?.color, t),
       linearTrackColor: Color.lerp(a?.linearTrackColor, b?.linearTrackColor, t),
       linearMinHeight: lerpDouble(a?.linearMinHeight, b?.linearMinHeight, t),
-      circularTrackColor: Color.lerp(a?.circularTrackColor, b?.circularTrackColor, t),
-      refreshBackgroundColor: Color.lerp(a?.refreshBackgroundColor, b?.refreshBackgroundColor, t),
-      borderRadius: BorderRadiusGeometry.lerp(a?.borderRadius, b?.borderRadius, t),
-      stopIndicatorColor: Color.lerp(a?.stopIndicatorColor, b?.stopIndicatorColor, t),
-      stopIndicatorRadius: lerpDouble(a?.stopIndicatorRadius, b?.stopIndicatorRadius, t),
+      circularTrackColor:
+          Color.lerp(a?.circularTrackColor, b?.circularTrackColor, t),
+      refreshBackgroundColor:
+          Color.lerp(a?.refreshBackgroundColor, b?.refreshBackgroundColor, t),
+      borderRadius:
+          BorderRadiusGeometry.lerp(a?.borderRadius, b?.borderRadius, t),
+      stopIndicatorColor:
+          Color.lerp(a?.stopIndicatorColor, b?.stopIndicatorColor, t),
+      stopIndicatorRadius:
+          lerpDouble(a?.stopIndicatorRadius, b?.stopIndicatorRadius, t),
       strokeWidth: lerpDouble(a?.strokeWidth, b?.strokeWidth, t),
       strokeAlign: lerpDouble(a?.strokeAlign, b?.strokeAlign, t),
       strokeCap: t < 0.5 ? a?.strokeCap : b?.strokeCap,
@@ -210,22 +217,22 @@ class ProgressIndicatorThemeData with Diagnosticable {
 
   @override
   int get hashCode => Object.hash(
-    color,
-    linearTrackColor,
-    linearMinHeight,
-    circularTrackColor,
-    refreshBackgroundColor,
-    borderRadius,
-    stopIndicatorColor,
-    stopIndicatorRadius,
-    strokeAlign,
-    strokeWidth,
-    strokeCap,
-    constraints,
-    trackGap,
-    circularTrackPadding,
-    year2023,
-  );
+        color,
+        linearTrackColor,
+        linearMinHeight,
+        circularTrackColor,
+        refreshBackgroundColor,
+        borderRadius,
+        stopIndicatorColor,
+        stopIndicatorRadius,
+        strokeAlign,
+        strokeWidth,
+        strokeCap,
+        constraints,
+        trackGap,
+        circularTrackPadding,
+        year2023,
+      );
 
   @override
   bool operator ==(Object other) {
@@ -257,22 +264,33 @@ class ProgressIndicatorThemeData with Diagnosticable {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(ColorProperty('color', color, defaultValue: null));
-    properties.add(ColorProperty('linearTrackColor', linearTrackColor, defaultValue: null));
-    properties.add(DoubleProperty('linearMinHeight', linearMinHeight, defaultValue: null));
-    properties.add(ColorProperty('circularTrackColor', circularTrackColor, defaultValue: null));
+    properties.add(ColorProperty('linearTrackColor', linearTrackColor,
+        defaultValue: null));
     properties.add(
-      ColorProperty('refreshBackgroundColor', refreshBackgroundColor, defaultValue: null),
+        DoubleProperty('linearMinHeight', linearMinHeight, defaultValue: null));
+    properties.add(ColorProperty('circularTrackColor', circularTrackColor,
+        defaultValue: null));
+    properties.add(
+      ColorProperty('refreshBackgroundColor', refreshBackgroundColor,
+          defaultValue: null),
     );
     properties.add(
-      DiagnosticsProperty<BorderRadiusGeometry>('borderRadius', borderRadius, defaultValue: null),
+      DiagnosticsProperty<BorderRadiusGeometry>('borderRadius', borderRadius,
+          defaultValue: null),
     );
-    properties.add(ColorProperty('stopIndicatorColor', stopIndicatorColor, defaultValue: null));
-    properties.add(DoubleProperty('stopIndicatorRadius', stopIndicatorRadius, defaultValue: null));
-    properties.add(DoubleProperty('strokeWidth', strokeWidth, defaultValue: null));
-    properties.add(DoubleProperty('strokeAlign', strokeAlign, defaultValue: null));
-    properties.add(DiagnosticsProperty<StrokeCap>('strokeCap', strokeCap, defaultValue: null));
+    properties.add(ColorProperty('stopIndicatorColor', stopIndicatorColor,
+        defaultValue: null));
+    properties.add(DoubleProperty('stopIndicatorRadius', stopIndicatorRadius,
+        defaultValue: null));
+    properties
+        .add(DoubleProperty('strokeWidth', strokeWidth, defaultValue: null));
+    properties
+        .add(DoubleProperty('strokeAlign', strokeAlign, defaultValue: null));
+    properties.add(DiagnosticsProperty<StrokeCap>('strokeCap', strokeCap,
+        defaultValue: null));
     properties.add(
-      DiagnosticsProperty<BoxConstraints>('constraints', constraints, defaultValue: null),
+      DiagnosticsProperty<BoxConstraints>('constraints', constraints,
+          defaultValue: null),
     );
     properties.add(DoubleProperty('trackGap', trackGap, defaultValue: null));
     properties.add(
@@ -282,7 +300,8 @@ class ProgressIndicatorThemeData with Diagnosticable {
         defaultValue: null,
       ),
     );
-    properties.add(DiagnosticsProperty<bool>('year2023', year2023, defaultValue: null));
+    properties.add(
+        DiagnosticsProperty<bool>('year2023', year2023, defaultValue: null));
   }
 }
 
@@ -309,7 +328,8 @@ class ProgressIndicatorThemeData with Diagnosticable {
 class ProgressIndicatorTheme extends InheritedTheme {
   /// Creates a theme that controls the configurations for [ProgressIndicator]
   /// widgets.
-  const ProgressIndicatorTheme({super.key, required this.data, required super.child});
+  const ProgressIndicatorTheme(
+      {super.key, required this.data, required super.child});
 
   /// The properties for descendant [ProgressIndicator] widgets.
   final ProgressIndicatorThemeData data;
@@ -325,7 +345,8 @@ class ProgressIndicatorTheme extends InheritedTheme {
   static ProgressIndicatorThemeData of(BuildContext context) {
     final ProgressIndicatorTheme? progressIndicatorTheme =
         context.dependOnInheritedWidgetOfExactType<ProgressIndicatorTheme>();
-    return progressIndicatorTheme?.data ?? Theme.of(context).progressIndicatorTheme;
+    return progressIndicatorTheme?.data ??
+        Theme.of(context).progressIndicatorTheme;
   }
 
   @override
@@ -334,5 +355,6 @@ class ProgressIndicatorTheme extends InheritedTheme {
   }
 
   @override
-  bool updateShouldNotify(ProgressIndicatorTheme oldWidget) => data != oldWidget.data;
+  bool updateShouldNotify(ProgressIndicatorTheme oldWidget) =>
+      data != oldWidget.data;
 }

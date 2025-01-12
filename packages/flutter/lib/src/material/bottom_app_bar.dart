@@ -189,36 +189,38 @@ class _BottomAppBarState extends State<BottomAppBar> {
     final ThemeData theme = Theme.of(context);
     final bool isMaterial3 = theme.useMaterial3;
     final BottomAppBarTheme babTheme = BottomAppBarTheme.of(context);
-    final BottomAppBarTheme defaults =
-        isMaterial3 ? _BottomAppBarDefaultsM3(context) : _BottomAppBarDefaultsM2(context);
+    final BottomAppBarTheme defaults = isMaterial3
+        ? _BottomAppBarDefaultsM3(context)
+        : _BottomAppBarDefaultsM2(context);
 
     final bool hasFab = Scaffold.of(context).hasFloatingActionButton;
-    final NotchedShape? notchedShape = widget.shape ?? babTheme.shape ?? defaults.shape;
-    final CustomClipper<Path> clipper =
-        notchedShape != null && hasFab
-            ? _BottomAppBarClipper(
-              geometry: geometryListenable,
-              shape: notchedShape,
-              materialKey: materialKey,
-              notchMargin: widget.notchMargin,
-            )
-            : const ShapeBorderClipper(shape: RoundedRectangleBorder());
-    final double elevation = widget.elevation ?? babTheme.elevation ?? defaults.elevation!;
+    final NotchedShape? notchedShape =
+        widget.shape ?? babTheme.shape ?? defaults.shape;
+    final CustomClipper<Path> clipper = notchedShape != null && hasFab
+        ? _BottomAppBarClipper(
+            geometry: geometryListenable,
+            shape: notchedShape,
+            materialKey: materialKey,
+            notchMargin: widget.notchMargin,
+          )
+        : const ShapeBorderClipper(shape: RoundedRectangleBorder());
+    final double elevation =
+        widget.elevation ?? babTheme.elevation ?? defaults.elevation!;
     final double? height = widget.height ?? babTheme.height ?? defaults.height;
     final Color color = widget.color ?? babTheme.color ?? defaults.color!;
-    final Color surfaceTintColor =
-        widget.surfaceTintColor ?? babTheme.surfaceTintColor ?? defaults.surfaceTintColor!;
-    final Color effectiveColor =
-        isMaterial3
-            ? ElevationOverlay.applySurfaceTint(color, surfaceTintColor, elevation)
-            : ElevationOverlay.applyOverlay(context, color, elevation);
-    final Color shadowColor = widget.shadowColor ?? babTheme.shadowColor ?? defaults.shadowColor!;
+    final Color surfaceTintColor = widget.surfaceTintColor ??
+        babTheme.surfaceTintColor ??
+        defaults.surfaceTintColor!;
+    final Color effectiveColor = isMaterial3
+        ? ElevationOverlay.applySurfaceTint(color, surfaceTintColor, elevation)
+        : ElevationOverlay.applyOverlay(context, color, elevation);
+    final Color shadowColor =
+        widget.shadowColor ?? babTheme.shadowColor ?? defaults.shadowColor!;
 
     final Widget child = SizedBox(
       height: height,
       child: Padding(
-        padding:
-            widget.padding ??
+        padding: widget.padding ??
             babTheme.padding ??
             (isMaterial3
                 ? const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0)
@@ -263,11 +265,13 @@ class _BottomAppBarClipper extends CustomClipper<Path> {
   // geometry value, otherwise we compute the location based on the AppBar's
   // Material widget.
   double get bottomNavigationBarTop {
-    final double? bottomNavigationBarTop = geometry.value.bottomNavigationBarTop;
+    final double? bottomNavigationBarTop =
+        geometry.value.bottomNavigationBarTop;
     if (bottomNavigationBarTop != null) {
       return bottomNavigationBarTop;
     }
-    final RenderBox? box = materialKey.currentContext?.findRenderObject() as RenderBox?;
+    final RenderBox? box =
+        materialKey.currentContext?.findRenderObject() as RenderBox?;
     return box?.localToGlobal(Offset.zero).dy ?? 0;
   }
 
@@ -297,8 +301,9 @@ class _BottomAppBarDefaultsM2 extends BottomAppBarTheme {
   final BuildContext context;
 
   @override
-  Color? get color =>
-      Theme.of(context).brightness == Brightness.dark ? Colors.grey[800]! : Colors.white;
+  Color? get color => Theme.of(context).brightness == Brightness.dark
+      ? Colors.grey[800]!
+      : Colors.white;
 
   @override
   Color? get surfaceTintColor => Theme.of(context).colorScheme.surfaceTint;
@@ -317,11 +322,11 @@ class _BottomAppBarDefaultsM2 extends BottomAppBarTheme {
 // dart format off
 class _BottomAppBarDefaultsM3 extends BottomAppBarTheme {
   _BottomAppBarDefaultsM3(this.context)
-    : super(
-      elevation: 3.0,
-      height: 80.0,
-      shape: const AutomaticNotchedShape(RoundedRectangleBorder()),
-    );
+      : super(
+          elevation: 3.0,
+          height: 80.0,
+          shape: const AutomaticNotchedShape(RoundedRectangleBorder()),
+        );
 
   final BuildContext context;
   late final ColorScheme _colors = Theme.of(context).colorScheme;

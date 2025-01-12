@@ -50,7 +50,8 @@ class SegmentedButtonThemeData with Diagnosticable {
 
   /// Creates a copy of this object with the given fields replaced with the
   /// new values.
-  SegmentedButtonThemeData copyWith({ButtonStyle? style, Widget? selectedIcon}) {
+  SegmentedButtonThemeData copyWith(
+      {ButtonStyle? style, Widget? selectedIcon}) {
     return SegmentedButtonThemeData(
       style: style ?? this.style,
       selectedIcon: selectedIcon ?? this.selectedIcon,
@@ -91,7 +92,8 @@ class SegmentedButtonThemeData with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<ButtonStyle>('style', style, defaultValue: null));
+    properties.add(
+        DiagnosticsProperty<ButtonStyle>('style', style, defaultValue: null));
   }
 }
 
@@ -103,7 +105,8 @@ class SegmentedButtonThemeData with Diagnosticable {
 class SegmentedButtonTheme extends InheritedTheme {
   /// Creates a [SegmentedButtonTheme] that controls visual parameters for
   /// descendent [SegmentedButton]s.
-  const SegmentedButtonTheme({super.key, required this.data, required super.child});
+  const SegmentedButtonTheme(
+      {super.key, required this.data, required super.child});
 
   /// Specifies the visual properties used by descendant [SegmentedButton]
   /// widgets.
@@ -154,7 +157,9 @@ class SegmentedButtonTheme extends InheritedTheme {
   ///  * [of], which will return [ThemeData.segmentedButtonTheme] if it doesn't
   ///    find a [SegmentedButtonTheme] ancestor, instead of returning null.
   static SegmentedButtonThemeData? maybeOf(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<SegmentedButtonTheme>()?.data;
+    return context
+        .dependOnInheritedWidgetOfExactType<SegmentedButtonTheme>()
+        ?.data;
   }
 
   @override
@@ -163,5 +168,6 @@ class SegmentedButtonTheme extends InheritedTheme {
   }
 
   @override
-  bool updateShouldNotify(SegmentedButtonTheme oldWidget) => data != oldWidget.data;
+  bool updateShouldNotify(SegmentedButtonTheme oldWidget) =>
+      data != oldWidget.data;
 }

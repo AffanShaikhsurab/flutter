@@ -38,7 +38,8 @@ class MaterialTextSelectionHandleControls extends MaterialTextSelectionControls
 class MaterialTextSelectionControls extends TextSelectionControls {
   /// Returns the size of the Material handle.
   @override
-  Size getHandleSize(double textLineHeight) => const Size(_kHandleSize, _kHandleSize);
+  Size getHandleSize(double textLineHeight) =>
+      const Size(_kHandleSize, _kHandleSize);
 
   /// Builder for material-style copy/paste text selection toolbar.
   @Deprecated(
@@ -66,7 +67,8 @@ class MaterialTextSelectionControls extends TextSelectionControls {
       handleCut: canCut(delegate) ? () => handleCut(delegate) : null,
       handleCopy: canCopy(delegate) ? () => handleCopy(delegate) : null,
       handlePaste: canPaste(delegate) ? () => handlePaste(delegate) : null,
-      handleSelectAll: canSelectAll(delegate) ? () => handleSelectAll(delegate) : null,
+      handleSelectAll:
+          canSelectAll(delegate) ? () => handleSelectAll(delegate) : null,
     );
   }
 
@@ -80,13 +82,15 @@ class MaterialTextSelectionControls extends TextSelectionControls {
   ]) {
     final ThemeData theme = Theme.of(context);
     final Color handleColor =
-        TextSelectionTheme.of(context).selectionHandleColor ?? theme.colorScheme.primary;
+        TextSelectionTheme.of(context).selectionHandleColor ??
+            theme.colorScheme.primary;
     final Widget handle = SizedBox(
       width: _kHandleSize,
       height: _kHandleSize,
       child: CustomPaint(
         painter: _TextSelectionHandlePainter(color: handleColor),
-        child: GestureDetector(onTap: onTap, behavior: HitTestBehavior.translucent),
+        child: GestureDetector(
+            onTap: onTap, behavior: HitTestBehavior.translucent),
       ),
     );
 
@@ -95,14 +99,14 @@ class MaterialTextSelectionControls extends TextSelectionControls {
     // straight up or up-right depending on the handle type.
     return switch (type) {
       TextSelectionHandleType.left => Transform.rotate(
-        angle: math.pi / 2.0,
-        child: handle,
-      ), // points up-right
+          angle: math.pi / 2.0,
+          child: handle,
+        ), // points up-right
       TextSelectionHandleType.right => handle, // points up-left
       TextSelectionHandleType.collapsed => Transform.rotate(
-        angle: math.pi / 4.0,
-        child: handle,
-      ), // points up
+          angle: math.pi / 4.0,
+          child: handle,
+        ), // points up
     };
   }
 
@@ -129,13 +133,15 @@ class MaterialTextSelectionControls extends TextSelectionControls {
     final TextEditingValue value = delegate.textEditingValue;
     return delegate.selectAllEnabled &&
         value.text.isNotEmpty &&
-        !(value.selection.start == 0 && value.selection.end == value.text.length);
+        !(value.selection.start == 0 &&
+            value.selection.end == value.text.length);
   }
 }
 
 // The label and callback for the available default text selection menu buttons.
 class _TextSelectionToolbarItemData {
-  const _TextSelectionToolbarItemData({required this.label, required this.onPressed});
+  const _TextSelectionToolbarItemData(
+      {required this.label, required this.onPressed});
 
   final String label;
   final VoidCallback onPressed;
@@ -168,11 +174,12 @@ class _TextSelectionControlsToolbar extends StatefulWidget {
   final double textLineHeight;
 
   @override
-  _TextSelectionControlsToolbarState createState() => _TextSelectionControlsToolbarState();
+  _TextSelectionControlsToolbarState createState() =>
+      _TextSelectionControlsToolbarState();
 }
 
-class _TextSelectionControlsToolbarState extends State<_TextSelectionControlsToolbar>
-    with TickerProviderStateMixin {
+class _TextSelectionControlsToolbarState
+    extends State<_TextSelectionControlsToolbar> with TickerProviderStateMixin {
   void _onChangedClipboardStatus() {
     setState(() {
       // Inform the widget that the value of clipboardStatus has changed.
@@ -211,7 +218,8 @@ class _TextSelectionControlsToolbarState extends State<_TextSelectionControlsToo
     }
     // If the paste button is desired, don't render anything until the state of
     // the clipboard is known, since it's used to determine if paste is shown.
-    if (widget.handlePaste != null && widget.clipboardStatus?.value == ClipboardStatus.unknown) {
+    if (widget.handlePaste != null &&
+        widget.clipboardStatus?.value == ClipboardStatus.unknown) {
       return const SizedBox.shrink();
     }
 
@@ -222,8 +230,7 @@ class _TextSelectionControlsToolbarState extends State<_TextSelectionControlsToo
         widget.endpoints.length > 1 ? widget.endpoints[1] : widget.endpoints[0];
     final double topAmountInEditableRegion =
         startTextSelectionPoint.point.dy - widget.textLineHeight;
-    final double anchorTop =
-        math.max(topAmountInEditableRegion, 0) +
+    final double anchorTop = math.max(topAmountInEditableRegion, 0) +
         widget.globalEditableRegion.top -
         _kToolbarContentDistance;
 
@@ -242,8 +249,10 @@ class _TextSelectionControlsToolbarState extends State<_TextSelectionControlsToo
     // known. A button's position in the menu can slightly affect its
     // appearance.
     assert(debugCheckHasMaterialLocalizations(context));
-    final MaterialLocalizations localizations = MaterialLocalizations.of(context);
-    final List<_TextSelectionToolbarItemData> itemDatas = <_TextSelectionToolbarItemData>[
+    final MaterialLocalizations localizations =
+        MaterialLocalizations.of(context);
+    final List<_TextSelectionToolbarItemData> itemDatas =
+        <_TextSelectionToolbarItemData>[
       if (widget.handleCut != null)
         _TextSelectionToolbarItemData(
           label: localizations.cutButtonLabel,
@@ -254,7 +263,8 @@ class _TextSelectionControlsToolbarState extends State<_TextSelectionControlsToo
           label: localizations.copyButtonLabel,
           onPressed: widget.handleCopy!,
         ),
-      if (widget.handlePaste != null && widget.clipboardStatus?.value == ClipboardStatus.pasteable)
+      if (widget.handlePaste != null &&
+          widget.clipboardStatus?.value == ClipboardStatus.pasteable)
         _TextSelectionToolbarItemData(
           label: localizations.pasteButtonLabel,
           onPressed: widget.handlePaste!,
@@ -274,15 +284,18 @@ class _TextSelectionControlsToolbarState extends State<_TextSelectionControlsToo
     return TextSelectionToolbar(
       anchorAbove: anchorAbove,
       anchorBelow: anchorBelow,
-      children:
-          itemDatas.asMap().entries.map((MapEntry<int, _TextSelectionToolbarItemData> entry) {
-            return TextSelectionToolbarTextButton(
-              padding: TextSelectionToolbarTextButton.getPadding(entry.key, itemDatas.length),
-              alignment: AlignmentDirectional.centerStart,
-              onPressed: entry.value.onPressed,
-              child: Text(entry.value.label),
-            );
-          }).toList(),
+      children: itemDatas
+          .asMap()
+          .entries
+          .map((MapEntry<int, _TextSelectionToolbarItemData> entry) {
+        return TextSelectionToolbarTextButton(
+          padding: TextSelectionToolbarTextButton.getPadding(
+              entry.key, itemDatas.length),
+          alignment: AlignmentDirectional.centerStart,
+          onPressed: entry.value.onPressed,
+          child: Text(entry.value.label),
+        );
+      }).toList(),
     );
   }
 }
@@ -297,12 +310,12 @@ class _TextSelectionHandlePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final Paint paint = Paint()..color = color;
     final double radius = size.width / 2.0;
-    final Rect circle = Rect.fromCircle(center: Offset(radius, radius), radius: radius);
+    final Rect circle =
+        Rect.fromCircle(center: Offset(radius, radius), radius: radius);
     final Rect point = Rect.fromLTWH(0.0, 0.0, radius, radius);
-    final Path path =
-        Path()
-          ..addOval(circle)
-          ..addRect(point);
+    final Path path = Path()
+      ..addOval(circle)
+      ..addRect(point);
     canvas.drawPath(path, paint);
   }
 
@@ -320,4 +333,5 @@ final TextSelectionControls materialTextSelectionHandleControls =
     MaterialTextSelectionHandleControls();
 
 /// Text selection controls that follow the Material Design specification.
-final TextSelectionControls materialTextSelectionControls = MaterialTextSelectionControls();
+final TextSelectionControls materialTextSelectionControls =
+    MaterialTextSelectionControls();

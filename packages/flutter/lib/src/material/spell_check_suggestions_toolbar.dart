@@ -35,7 +35,7 @@ class SpellCheckSuggestionsToolbar extends StatelessWidget {
   /// [buttonItems] must not contain more than four items, generally three
   /// suggestions and one delete button.
   const SpellCheckSuggestionsToolbar({super.key, required this.anchor, required this.buttonItems})
-    : assert(buttonItems.length <= _kMaxSuggestions + 1);
+      : assert(buttonItems.length <= _kMaxSuggestions + 1);
 
   /// Constructs a [SpellCheckSuggestionsToolbar] with the default children for
   /// an [EditableText].
@@ -46,8 +46,8 @@ class SpellCheckSuggestionsToolbar extends StatelessWidget {
   SpellCheckSuggestionsToolbar.editableText({
     super.key,
     required EditableTextState editableTextState,
-  }) : buttonItems = buildButtonItems(editableTextState) ?? <ContextMenuButtonItem>[],
-       anchor = getToolbarAnchor(editableTextState.contextMenuAnchors);
+  })  : buttonItems = buildButtonItems(editableTextState) ?? <ContextMenuButtonItem>[],
+        anchor = getToolbarAnchor(editableTextState.contextMenuAnchors);
 
   /// {@template flutter.material.SpellCheckSuggestionsToolbar.anchor}
   /// The focal point below which the toolbar attempts to position itself.
@@ -153,10 +153,9 @@ class SpellCheckSuggestionsToolbar extends StatelessWidget {
         alignment: Alignment.centerLeft,
         child: Text(
           AdaptiveTextSelectionToolbar.getButtonLabel(context, buttonItem),
-          style:
-              buttonItem.type == ContextMenuButtonType.delete
-                  ? const TextStyle(color: Colors.blue)
-                  : null,
+          style: buttonItem.type == ContextMenuButtonType.delete
+              ? const TextStyle(color: Colors.blue)
+              : null,
         ),
       );
 

@@ -104,18 +104,18 @@ class ReorderableListView extends StatefulWidget {
     this.autoScrollerVelocityScalar,
     this.dragBoundaryProvider,
     this.mouseCursor,
-  }) : assert(
-         (itemExtent == null && prototypeItem == null) ||
-             (itemExtent == null && itemExtentBuilder == null) ||
-             (prototypeItem == null && itemExtentBuilder == null),
-         'You can only pass one of itemExtent, prototypeItem and itemExtentBuilder.',
-       ),
-       assert(
-         children.every((Widget w) => w.key != null),
-         'All children of this widget must have a key.',
-       ),
-       itemBuilder = ((BuildContext context, int index) => children[index]),
-       itemCount = children.length;
+  })  : assert(
+          (itemExtent == null && prototypeItem == null) ||
+              (itemExtent == null && itemExtentBuilder == null) ||
+              (prototypeItem == null && itemExtentBuilder == null),
+          'You can only pass one of itemExtent, prototypeItem and itemExtentBuilder.',
+        ),
+        assert(
+          children.every((Widget w) => w.key != null),
+          'All children of this widget must have a key.',
+        ),
+        itemBuilder = ((BuildContext context, int index) => children[index]),
+        itemCount = children.length;
 
   /// Creates a reorderable list from widget items that are created on demand.
   ///
@@ -175,13 +175,13 @@ class ReorderableListView extends StatefulWidget {
     this.autoScrollerVelocityScalar,
     this.dragBoundaryProvider,
     this.mouseCursor,
-  }) : assert(itemCount >= 0),
-       assert(
-         (itemExtent == null && prototypeItem == null) ||
-             (itemExtent == null && itemExtentBuilder == null) ||
-             (prototypeItem == null && itemExtentBuilder == null),
-         'You can only pass one of itemExtent, prototypeItem and itemExtentBuilder.',
-       );
+  })  : assert(itemCount >= 0),
+        assert(
+          (itemExtent == null && prototypeItem == null) ||
+              (itemExtent == null && itemExtentBuilder == null) ||
+              (prototypeItem == null && itemExtentBuilder == null),
+          'You can only pass one of itemExtent, prototypeItem and itemExtentBuilder.',
+        );
 
   /// {@macro flutter.widgets.reorderable_list.itemBuilder}
   final IndexedWidgetBuilder itemBuilder;
@@ -322,12 +322,14 @@ class _ReorderableListViewState extends State<ReorderableListView> {
     final Widget item = widget.itemBuilder(context, index);
     assert(() {
       if (item.key == null) {
-        throw FlutterError('Every item of ReorderableListView must have a key.');
+        throw FlutterError(
+            'Every item of ReorderableListView must have a key.');
       }
       return true;
     }());
 
-    final Key itemGlobalKey = _ReorderableListViewChildGlobalKey(item.key!, this);
+    final Key itemGlobalKey =
+        _ReorderableListViewChildGlobalKey(item.key!, this);
 
     if (widget.buildDefaultDragHandles) {
       switch (Theme.of(context).platform) {
@@ -337,9 +339,11 @@ class _ReorderableListViewState extends State<ReorderableListView> {
           final ListenableBuilder dragHandle = ListenableBuilder(
             listenable: _dragging,
             builder: (BuildContext context, Widget? child) {
-              final MouseCursor effectiveMouseCursor = WidgetStateProperty.resolveAs<MouseCursor>(
+              final MouseCursor effectiveMouseCursor =
+                  WidgetStateProperty.resolveAs<MouseCursor>(
                 widget.mouseCursor ??
-                    const WidgetStateMouseCursor.fromMap(<WidgetStatesConstraint, MouseCursor>{
+                    const WidgetStateMouseCursor
+                        .fromMap(<WidgetStatesConstraint, MouseCursor>{
                       WidgetState.dragged: SystemMouseCursors.grabbing,
                       WidgetState.any: SystemMouseCursors.grab,
                     }),
@@ -362,7 +366,8 @@ class _ReorderableListViewState extends State<ReorderableListView> {
                     bottom: 8,
                     child: Align(
                       alignment: AlignmentDirectional.bottomCenter,
-                      child: ReorderableDragStartListener(index: index, child: dragHandle),
+                      child: ReorderableDragStartListener(
+                          index: index, child: dragHandle),
                     ),
                   ),
                 ],
@@ -379,7 +384,8 @@ class _ReorderableListViewState extends State<ReorderableListView> {
                     end: 8,
                     child: Align(
                       alignment: AlignmentDirectional.centerEnd,
-                      child: ReorderableDragStartListener(index: index, child: dragHandle),
+                      child: ReorderableDragStartListener(
+                          index: index, child: dragHandle),
                     ),
                   ),
                 ],
@@ -389,7 +395,8 @@ class _ReorderableListViewState extends State<ReorderableListView> {
         case TargetPlatform.iOS:
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
-          return ReorderableDelayedDragStartListener(key: itemGlobalKey, index: index, child: item);
+          return ReorderableDelayedDragStartListener(
+              key: itemGlobalKey, index: index, child: item);
       }
     }
 
@@ -430,21 +437,25 @@ class _ReorderableListViewState extends State<ReorderableListView> {
 
     final EdgeInsets startPadding, endPadding, listPadding;
     (startPadding, endPadding, listPadding) = switch (widget.scrollDirection) {
-      Axis.horizontal ||
-      Axis.vertical when (start ?? end) == null => (EdgeInsets.zero, EdgeInsets.zero, padding),
+      Axis.horizontal || Axis.vertical when (start ?? end) == null => (
+          EdgeInsets.zero,
+          EdgeInsets.zero,
+          padding
+        ),
       Axis.horizontal => (
-        padding.copyWith(left: 0),
-        padding.copyWith(right: 0),
-        padding.copyWith(left: start, right: end),
-      ),
+          padding.copyWith(left: 0),
+          padding.copyWith(right: 0),
+          padding.copyWith(left: start, right: end),
+        ),
       Axis.vertical => (
-        padding.copyWith(top: 0),
-        padding.copyWith(bottom: 0),
-        padding.copyWith(top: start, bottom: end),
-      ),
+          padding.copyWith(top: 0),
+          padding.copyWith(bottom: 0),
+          padding.copyWith(top: start, bottom: end),
+        ),
     };
-    final (EdgeInsets headerPadding, EdgeInsets footerPadding) =
-        widget.reverse ? (startPadding, endPadding) : (endPadding, startPadding);
+    final (EdgeInsets headerPadding, EdgeInsets footerPadding) = widget.reverse
+        ? (startPadding, endPadding)
+        : (endPadding, startPadding);
 
     return CustomScrollView(
       scrollDirection: widget.scrollDirection,
@@ -461,7 +472,9 @@ class _ReorderableListViewState extends State<ReorderableListView> {
       clipBehavior: widget.clipBehavior,
       slivers: <Widget>[
         if (widget.header != null)
-          SliverPadding(padding: headerPadding, sliver: SliverToBoxAdapter(child: widget.header)),
+          SliverPadding(
+              padding: headerPadding,
+              sliver: SliverToBoxAdapter(child: widget.header)),
         SliverPadding(
           padding: listPadding,
           sliver: SliverReorderableList(
@@ -485,7 +498,9 @@ class _ReorderableListViewState extends State<ReorderableListView> {
           ),
         ),
         if (widget.footer != null)
-          SliverPadding(padding: footerPadding, sliver: SliverToBoxAdapter(child: widget.footer)),
+          SliverPadding(
+              padding: footerPadding,
+              sliver: SliverToBoxAdapter(child: widget.footer)),
       ],
     );
   }
@@ -498,7 +513,8 @@ class _ReorderableListViewState extends State<ReorderableListView> {
 // of the objects used to generate widgets.
 @optionalTypeArgs
 class _ReorderableListViewChildGlobalKey extends GlobalObjectKey {
-  const _ReorderableListViewChildGlobalKey(this.subKey, this.state) : super(subKey);
+  const _ReorderableListViewChildGlobalKey(this.subKey, this.state)
+      : super(subKey);
 
   final Key subKey;
   final State state;

@@ -101,7 +101,8 @@ class RadioThemeData with Diagnosticable {
       fillColor: fillColor ?? this.fillColor,
       overlayColor: overlayColor ?? this.overlayColor,
       splashRadius: splashRadius ?? this.splashRadius,
-      materialTapTargetSize: materialTapTargetSize ?? this.materialTapTargetSize,
+      materialTapTargetSize:
+          materialTapTargetSize ?? this.materialTapTargetSize,
       visualDensity: visualDensity ?? this.visualDensity,
     );
   }
@@ -115,8 +116,10 @@ class RadioThemeData with Diagnosticable {
     }
     return RadioThemeData(
       mouseCursor: t < 0.5 ? a?.mouseCursor : b?.mouseCursor,
-      fillColor: MaterialStateProperty.lerp<Color?>(a?.fillColor, b?.fillColor, t, Color.lerp),
-      materialTapTargetSize: t < 0.5 ? a?.materialTapTargetSize : b?.materialTapTargetSize,
+      fillColor: MaterialStateProperty.lerp<Color?>(
+          a?.fillColor, b?.fillColor, t, Color.lerp),
+      materialTapTargetSize:
+          t < 0.5 ? a?.materialTapTargetSize : b?.materialTapTargetSize,
       overlayColor: MaterialStateProperty.lerp<Color?>(
         a?.overlayColor,
         b?.overlayColor,
@@ -130,13 +133,13 @@ class RadioThemeData with Diagnosticable {
 
   @override
   int get hashCode => Object.hash(
-    mouseCursor,
-    fillColor,
-    overlayColor,
-    splashRadius,
-    materialTapTargetSize,
-    visualDensity,
-  );
+        mouseCursor,
+        fillColor,
+        overlayColor,
+        splashRadius,
+        materialTapTargetSize,
+        visualDensity,
+      );
 
   @override
   bool operator ==(Object other) {
@@ -179,7 +182,8 @@ class RadioThemeData with Diagnosticable {
         defaultValue: null,
       ),
     );
-    properties.add(DoubleProperty('splashRadius', splashRadius, defaultValue: null));
+    properties
+        .add(DoubleProperty('splashRadius', splashRadius, defaultValue: null));
     properties.add(
       DiagnosticsProperty<MaterialTapTargetSize>(
         'materialTapTargetSize',
@@ -188,7 +192,8 @@ class RadioThemeData with Diagnosticable {
       ),
     );
     properties.add(
-      DiagnosticsProperty<VisualDensity>('visualDensity', visualDensity, defaultValue: null),
+      DiagnosticsProperty<VisualDensity>('visualDensity', visualDensity,
+          defaultValue: null),
     );
   }
 }
@@ -222,7 +227,8 @@ class RadioTheme extends InheritedWidget {
   /// RadioThemeData theme = RadioTheme.of(context);
   /// ```
   static RadioThemeData of(BuildContext context) {
-    final RadioTheme? radioTheme = context.dependOnInheritedWidgetOfExactType<RadioTheme>();
+    final RadioTheme? radioTheme =
+        context.dependOnInheritedWidgetOfExactType<RadioTheme>();
     return radioTheme?.data ?? Theme.of(context).radioTheme;
   }
 

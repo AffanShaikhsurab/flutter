@@ -51,7 +51,8 @@ class TextButtonThemeData with Diagnosticable {
   final ButtonStyle? style;
 
   /// Linearly interpolate between two text button themes.
-  static TextButtonThemeData? lerp(TextButtonThemeData? a, TextButtonThemeData? b, double t) {
+  static TextButtonThemeData? lerp(
+      TextButtonThemeData? a, TextButtonThemeData? b, double t) {
     if (identical(a, b)) {
       return a;
     }
@@ -75,7 +76,8 @@ class TextButtonThemeData with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<ButtonStyle>('style', style, defaultValue: null));
+    properties.add(
+        DiagnosticsProperty<ButtonStyle>('style', style, defaultValue: null));
   }
 }
 

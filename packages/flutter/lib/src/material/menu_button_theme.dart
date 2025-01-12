@@ -60,7 +60,8 @@ class MenuButtonThemeData with Diagnosticable {
   final ButtonStyle? style;
 
   /// Linearly interpolate between two menu button themes.
-  static MenuButtonThemeData? lerp(MenuButtonThemeData? a, MenuButtonThemeData? b, double t) {
+  static MenuButtonThemeData? lerp(
+      MenuButtonThemeData? a, MenuButtonThemeData? b, double t) {
     if (identical(a, b)) {
       return a;
     }
@@ -84,7 +85,8 @@ class MenuButtonThemeData with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<ButtonStyle>('style', style, defaultValue: null));
+    properties.add(
+        DiagnosticsProperty<ButtonStyle>('style', style, defaultValue: null));
   }
 }
 

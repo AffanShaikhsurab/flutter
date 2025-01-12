@@ -110,24 +110,26 @@ class MaterialBannerThemeData with Diagnosticable {
       surfaceTintColor: Color.lerp(a?.surfaceTintColor, b?.surfaceTintColor, t),
       shadowColor: Color.lerp(a?.shadowColor, b?.shadowColor, t),
       dividerColor: Color.lerp(a?.dividerColor, b?.dividerColor, t),
-      contentTextStyle: TextStyle.lerp(a?.contentTextStyle, b?.contentTextStyle, t),
+      contentTextStyle:
+          TextStyle.lerp(a?.contentTextStyle, b?.contentTextStyle, t),
       elevation: lerpDouble(a?.elevation, b?.elevation, t),
       padding: EdgeInsetsGeometry.lerp(a?.padding, b?.padding, t),
-      leadingPadding: EdgeInsetsGeometry.lerp(a?.leadingPadding, b?.leadingPadding, t),
+      leadingPadding:
+          EdgeInsetsGeometry.lerp(a?.leadingPadding, b?.leadingPadding, t),
     );
   }
 
   @override
   int get hashCode => Object.hash(
-    backgroundColor,
-    surfaceTintColor,
-    shadowColor,
-    dividerColor,
-    contentTextStyle,
-    elevation,
-    padding,
-    leadingPadding,
-  );
+        backgroundColor,
+        surfaceTintColor,
+        shadowColor,
+        dividerColor,
+        contentTextStyle,
+        elevation,
+        padding,
+        leadingPadding,
+      );
 
   @override
   bool operator ==(Object other) {
@@ -151,17 +153,24 @@ class MaterialBannerThemeData with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(ColorProperty('backgroundColor', backgroundColor, defaultValue: null));
-    properties.add(ColorProperty('surfaceTintColor', surfaceTintColor, defaultValue: null));
-    properties.add(ColorProperty('shadowColor', shadowColor, defaultValue: null));
-    properties.add(ColorProperty('dividerColor', dividerColor, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<TextStyle>('contentTextStyle', contentTextStyle, defaultValue: null),
+        ColorProperty('backgroundColor', backgroundColor, defaultValue: null));
+    properties.add(ColorProperty('surfaceTintColor', surfaceTintColor,
+        defaultValue: null));
+    properties
+        .add(ColorProperty('shadowColor', shadowColor, defaultValue: null));
+    properties
+        .add(ColorProperty('dividerColor', dividerColor, defaultValue: null));
+    properties.add(
+      DiagnosticsProperty<TextStyle>('contentTextStyle', contentTextStyle,
+          defaultValue: null),
     );
     properties.add(DoubleProperty('elevation', elevation, defaultValue: null));
-    properties.add(DiagnosticsProperty<EdgeInsetsGeometry>('padding', padding, defaultValue: null));
+    properties.add(DiagnosticsProperty<EdgeInsetsGeometry>('padding', padding,
+        defaultValue: null));
     properties.add(
-      DiagnosticsProperty<EdgeInsetsGeometry>('leadingPadding', leadingPadding, defaultValue: null),
+      DiagnosticsProperty<EdgeInsetsGeometry>('leadingPadding', leadingPadding,
+          defaultValue: null),
     );
   }
 }
@@ -202,5 +211,6 @@ class MaterialBannerTheme extends InheritedTheme {
   }
 
   @override
-  bool updateShouldNotify(MaterialBannerTheme oldWidget) => data != oldWidget.data;
+  bool updateShouldNotify(MaterialBannerTheme oldWidget) =>
+      data != oldWidget.data;
 }

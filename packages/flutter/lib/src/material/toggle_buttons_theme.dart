@@ -173,8 +173,10 @@ class ToggleButtonsThemeData with Diagnosticable {
       hoverColor: Color.lerp(a?.hoverColor, b?.hoverColor, t),
       splashColor: Color.lerp(a?.splashColor, b?.splashColor, t),
       borderColor: Color.lerp(a?.borderColor, b?.borderColor, t),
-      selectedBorderColor: Color.lerp(a?.selectedBorderColor, b?.selectedBorderColor, t),
-      disabledBorderColor: Color.lerp(a?.disabledBorderColor, b?.disabledBorderColor, t),
+      selectedBorderColor:
+          Color.lerp(a?.selectedBorderColor, b?.selectedBorderColor, t),
+      disabledBorderColor:
+          Color.lerp(a?.disabledBorderColor, b?.disabledBorderColor, t),
       borderRadius: BorderRadius.lerp(a?.borderRadius, b?.borderRadius, t),
       borderWidth: lerpDouble(a?.borderWidth, b?.borderWidth, t),
     );
@@ -182,22 +184,22 @@ class ToggleButtonsThemeData with Diagnosticable {
 
   @override
   int get hashCode => Object.hash(
-    textStyle,
-    constraints,
-    color,
-    selectedColor,
-    disabledColor,
-    fillColor,
-    focusColor,
-    highlightColor,
-    hoverColor,
-    splashColor,
-    borderColor,
-    selectedBorderColor,
-    disabledBorderColor,
-    borderRadius,
-    borderWidth,
-  );
+        textStyle,
+        constraints,
+        color,
+        selectedColor,
+        disabledColor,
+        fillColor,
+        focusColor,
+        highlightColor,
+        hoverColor,
+        splashColor,
+        borderColor,
+        selectedBorderColor,
+        disabledBorderColor,
+        borderRadius,
+        borderWidth,
+      );
 
   @override
   bool operator ==(Object other) {
@@ -230,23 +232,33 @@ class ToggleButtonsThemeData with Diagnosticable {
     super.debugFillProperties(properties);
     textStyle?.debugFillProperties(properties, prefix: 'textStyle.');
     properties.add(
-      DiagnosticsProperty<BoxConstraints>('constraints', constraints, defaultValue: null),
+      DiagnosticsProperty<BoxConstraints>('constraints', constraints,
+          defaultValue: null),
     );
     properties.add(ColorProperty('color', color, defaultValue: null));
-    properties.add(ColorProperty('selectedColor', selectedColor, defaultValue: null));
-    properties.add(ColorProperty('disabledColor', disabledColor, defaultValue: null));
+    properties
+        .add(ColorProperty('selectedColor', selectedColor, defaultValue: null));
+    properties
+        .add(ColorProperty('disabledColor', disabledColor, defaultValue: null));
     properties.add(ColorProperty('fillColor', fillColor, defaultValue: null));
     properties.add(ColorProperty('focusColor', focusColor, defaultValue: null));
-    properties.add(ColorProperty('highlightColor', highlightColor, defaultValue: null));
-    properties.add(ColorProperty('hoverColor', hoverColor, defaultValue: null));
-    properties.add(ColorProperty('splashColor', splashColor, defaultValue: null));
-    properties.add(ColorProperty('borderColor', borderColor, defaultValue: null));
-    properties.add(ColorProperty('selectedBorderColor', selectedBorderColor, defaultValue: null));
-    properties.add(ColorProperty('disabledBorderColor', disabledBorderColor, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<BorderRadius>('borderRadius', borderRadius, defaultValue: null),
+        ColorProperty('highlightColor', highlightColor, defaultValue: null));
+    properties.add(ColorProperty('hoverColor', hoverColor, defaultValue: null));
+    properties
+        .add(ColorProperty('splashColor', splashColor, defaultValue: null));
+    properties
+        .add(ColorProperty('borderColor', borderColor, defaultValue: null));
+    properties.add(ColorProperty('selectedBorderColor', selectedBorderColor,
+        defaultValue: null));
+    properties.add(ColorProperty('disabledBorderColor', disabledBorderColor,
+        defaultValue: null));
+    properties.add(
+      DiagnosticsProperty<BorderRadius>('borderRadius', borderRadius,
+          defaultValue: null),
     );
-    properties.add(DoubleProperty('borderWidth', borderWidth, defaultValue: null));
+    properties
+        .add(DoubleProperty('borderWidth', borderWidth, defaultValue: null));
   }
 }
 
@@ -258,7 +270,8 @@ class ToggleButtonsThemeData with Diagnosticable {
 class ToggleButtonsTheme extends InheritedTheme {
   /// Creates a toggle buttons theme that controls the color and border
   /// parameters for [ToggleButtons].
-  const ToggleButtonsTheme({super.key, required this.data, required super.child});
+  const ToggleButtonsTheme(
+      {super.key, required this.data, required super.child});
 
   /// Specifies the color and border values for descendant [ToggleButtons] widgets.
   final ToggleButtonsThemeData data;
@@ -285,5 +298,6 @@ class ToggleButtonsTheme extends InheritedTheme {
   }
 
   @override
-  bool updateShouldNotify(ToggleButtonsTheme oldWidget) => data != oldWidget.data;
+  bool updateShouldNotify(ToggleButtonsTheme oldWidget) =>
+      data != oldWidget.data;
 }

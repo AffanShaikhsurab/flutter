@@ -145,12 +145,12 @@ class AboutListTile extends StatelessWidget {
     assert(debugCheckHasMaterialLocalizations(context));
     return ListTile(
       leading: icon,
-      title:
-          child ??
+      title: child ??
           Text(
             MaterialLocalizations.of(
               context,
-            ).aboutListTileTitle(applicationName ?? _defaultApplicationName(context)),
+            ).aboutListTileTitle(
+                applicationName ?? _defaultApplicationName(context)),
           ),
       dense: dense,
       onTap: () {
@@ -303,13 +303,12 @@ void showLicensePage({
 }) {
   Navigator.of(context, rootNavigator: useRootNavigator).push(
     MaterialPageRoute<void>(
-      builder:
-          (BuildContext context) => LicensePage(
-            applicationName: applicationName,
-            applicationVersion: applicationVersion,
-            applicationIcon: applicationIcon,
-            applicationLegalese: applicationLegalese,
-          ),
+      builder: (BuildContext context) => LicensePage(
+        applicationName: applicationName,
+        applicationVersion: applicationVersion,
+        applicationIcon: applicationIcon,
+        applicationLegalese: applicationLegalese,
+      ),
     ),
   );
 }
@@ -410,17 +409,20 @@ class AboutDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     assert(debugCheckHasMaterialLocalizations(context));
     final String name = applicationName ?? _defaultApplicationName(context);
-    final String version = applicationVersion ?? _defaultApplicationVersion(context);
+    final String version =
+        applicationVersion ?? _defaultApplicationVersion(context);
     final Widget? icon = applicationIcon ?? _defaultApplicationIcon(context);
     final ThemeData themeData = Theme.of(context);
-    final MaterialLocalizations localizations = MaterialLocalizations.of(context);
+    final MaterialLocalizations localizations =
+        MaterialLocalizations.of(context);
     return AlertDialog(
       content: ListBody(
         children: <Widget>[
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              if (icon != null) IconTheme(data: themeData.iconTheme, child: icon),
+              if (icon != null)
+                IconTheme(data: themeData.iconTheme, child: icon),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -429,7 +431,8 @@ class AboutDialog extends StatelessWidget {
                       Text(name, style: themeData.textTheme.headlineSmall),
                       Text(version, style: themeData.textTheme.bodyMedium),
                       const SizedBox(height: _textVerticalSeparation),
-                      Text(applicationLegalese ?? '', style: themeData.textTheme.bodySmall),
+                      Text(applicationLegalese ?? '',
+                          style: themeData.textTheme.bodySmall),
                     ],
                   ),
                 ),
@@ -484,7 +487,8 @@ class _AdaptiveAboutDialog extends AboutDialog {
 
   List<Widget>? _actions(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
-    final MaterialLocalizations localizations = MaterialLocalizations.of(context);
+    final MaterialLocalizations localizations =
+        MaterialLocalizations.of(context);
 
     switch (themeData.platform) {
       case TargetPlatform.iOS:
@@ -557,7 +561,8 @@ class _AdaptiveAboutDialog extends AboutDialog {
     super.build(context);
 
     final String name = applicationName ?? _defaultApplicationName(context);
-    final String version = applicationVersion ?? _defaultApplicationVersion(context);
+    final String version =
+        applicationVersion ?? _defaultApplicationVersion(context);
     final Widget? icon = applicationIcon ?? _defaultApplicationIcon(context);
     final ThemeData themeData = Theme.of(context);
     final List<Widget>? actions = _actions(context);
@@ -568,7 +573,8 @@ class _AdaptiveAboutDialog extends AboutDialog {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              if (icon != null) IconTheme(data: themeData.iconTheme, child: icon),
+              if (icon != null)
+                IconTheme(data: themeData.iconTheme, child: icon),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -577,7 +583,8 @@ class _AdaptiveAboutDialog extends AboutDialog {
                       Text(name, style: themeData.textTheme.headlineSmall),
                       Text(version, style: themeData.textTheme.bodyMedium),
                       const SizedBox(height: _textVerticalSeparation),
-                      Text(applicationLegalese ?? '', style: themeData.textTheme.bodySmall),
+                      Text(applicationLegalese ?? '',
+                          style: themeData.textTheme.bodySmall),
                     ],
                   ),
                 ),
@@ -670,7 +677,8 @@ class _LicensePageState extends State<LicensePage> {
     );
   }
 
-  Widget _packageLicensePage(BuildContext _, Object? args, ScrollController? scrollController) {
+  Widget _packageLicensePage(
+      BuildContext _, Object? args, ScrollController? scrollController) {
     assert(args is _DetailArguments);
     final _DetailArguments detailArguments = args! as _DetailArguments;
     return _PackageLicensePage(
@@ -687,12 +695,14 @@ class _LicensePageState extends State<LicensePage> {
       version: widget.applicationVersion ?? _defaultApplicationVersion(context),
       legalese: widget.applicationLegalese,
     );
-    return _PackagesView(about: about, isLateral: isLateral, selectedId: selectedId);
+    return _PackagesView(
+        about: about, isLateral: isLateral, selectedId: selectedId);
   }
 }
 
 class _AboutProgram extends StatelessWidget {
-  const _AboutProgram({required this.name, required this.version, this.icon, this.legalese});
+  const _AboutProgram(
+      {required this.name, required this.version, this.icon, this.legalese});
 
   final String name;
   final String version;
@@ -702,11 +712,15 @@ class _AboutProgram extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: _getGutterSize(context), vertical: 24.0),
+      padding: EdgeInsets.symmetric(
+          horizontal: _getGutterSize(context), vertical: 24.0),
       child: Column(
         children: <Widget>[
-          Text(name, style: Theme.of(context).textTheme.headlineSmall, textAlign: TextAlign.center),
-          if (icon != null) IconTheme(data: Theme.of(context).iconTheme, child: icon!),
+          Text(name,
+              style: Theme.of(context).textTheme.headlineSmall,
+              textAlign: TextAlign.center),
+          if (icon != null)
+            IconTheme(data: Theme.of(context).iconTheme, child: icon!),
           if (version != '')
             Padding(
               padding: const EdgeInsets.only(bottom: _textVerticalSeparation),
@@ -735,7 +749,8 @@ class _AboutProgram extends StatelessWidget {
 }
 
 class _PackagesView extends StatefulWidget {
-  const _PackagesView({required this.about, required this.isLateral, required this.selectedId});
+  const _PackagesView(
+      {required this.about, required this.isLateral, required this.selectedId});
 
   final Widget about;
   final bool isLateral;
@@ -769,7 +784,8 @@ class _PackagesViewState extends State<_PackagesView> {
                       FlutterErrorDetails(
                         exception: snapshot.error!,
                         stack: snapshot.stackTrace,
-                        context: ErrorDescription('while decoding the license file'),
+                        context:
+                            ErrorDescription('while decoding the license file'),
                       ),
                     );
                     return true;
@@ -855,7 +871,9 @@ class _PackagesViewState extends State<_PackagesView> {
             _MasterDetailFlow.of(context).openDetailPage(
               _DetailArguments(
                 packageName,
-                bindings.map((int i) => data.licenses[i]).toList(growable: false),
+                bindings
+                    .map((int i) => data.licenses[i])
+                    .toList(growable: false),
               ),
             );
           },
@@ -883,10 +901,13 @@ class _PackageListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Ink(
-      color: isSelected ? Theme.of(context).highlightColor : Theme.of(context).cardColor,
+      color: isSelected
+          ? Theme.of(context).highlightColor
+          : Theme.of(context).cardColor,
       child: ListTile(
         title: Text(packageName),
-        subtitle: Text(MaterialLocalizations.of(context).licensesPackageDetailText(numberLicenses)),
+        subtitle: Text(MaterialLocalizations.of(context)
+            .licensesPackageDetailText(numberLicenses)),
         selected: isSelected,
         onTap: onTap,
       ),
@@ -1009,20 +1030,22 @@ class _PackageLicensePageState extends State<_PackageLicensePage> {
         return;
       }
       assert(() {
-        Timeline.timeSync('_initLicenses()', () {}, flow: Flow.step(debugFlowId));
+        Timeline.timeSync('_initLicenses()', () {},
+            flow: Flow.step(debugFlowId));
         return true;
       }());
-      final List<LicenseParagraph> paragraphs = await SchedulerBinding.instance
-          .scheduleTask<List<LicenseParagraph>>(
-            license.paragraphs.toList,
-            Priority.animation,
-            debugLabel: 'License',
-          );
+      final List<LicenseParagraph> paragraphs =
+          await SchedulerBinding.instance.scheduleTask<List<LicenseParagraph>>(
+        license.paragraphs.toList,
+        Priority.animation,
+        debugLabel: 'License',
+      );
       if (!mounted) {
         return;
       }
       setState(() {
-        _licenses.add(const Padding(padding: EdgeInsets.all(18.0), child: Divider()));
+        _licenses.add(
+            const Padding(padding: EdgeInsets.all(18.0), child: Divider()));
         for (final LicenseParagraph paragraph in paragraphs) {
           if (paragraph.indent == LicenseParagraph.centeredIndent) {
             _licenses.add(
@@ -1039,7 +1062,8 @@ class _PackageLicensePageState extends State<_PackageLicensePage> {
             assert(paragraph.indent >= 0);
             _licenses.add(
               Padding(
-                padding: EdgeInsetsDirectional.only(top: 8.0, start: 16.0 * paragraph.indent),
+                padding: EdgeInsetsDirectional.only(
+                    top: 8.0, start: 16.0 * paragraph.indent),
                 child: Text(paragraph.text),
               ),
             );
@@ -1059,12 +1083,15 @@ class _PackageLicensePageState extends State<_PackageLicensePage> {
   @override
   Widget build(BuildContext context) {
     assert(debugCheckHasMaterialLocalizations(context));
-    final MaterialLocalizations localizations = MaterialLocalizations.of(context);
+    final MaterialLocalizations localizations =
+        MaterialLocalizations.of(context);
     final ThemeData theme = Theme.of(context);
     final String title = widget.packageName;
-    final String subtitle = localizations.licensesPackageDetailText(widget.licenseEntries.length);
+    final String subtitle =
+        localizations.licensesPackageDetailText(widget.licenseEntries.length);
     final double pad = _getGutterSize(context);
-    final EdgeInsets padding = EdgeInsets.only(left: pad, right: pad, bottom: pad);
+    final EdgeInsets padding =
+        EdgeInsets.only(left: pad, right: pad, bottom: pad);
     final List<Widget> listWidgets = <Widget>[
       ..._licenses,
       if (!_loaded)
@@ -1081,7 +1108,8 @@ class _PackageLicensePageState extends State<_PackageLicensePage> {
           title: _PackageLicensePageTitle(
             title: title,
             subtitle: subtitle,
-            theme: theme.useMaterial3 ? theme.textTheme : theme.primaryTextTheme,
+            theme:
+                theme.useMaterial3 ? theme.textTheme : theme.primaryTextTheme,
             titleTextStyle: theme.appBarTheme.titleTextStyle,
             foregroundColor: theme.appBarTheme.foregroundColor,
           ),
@@ -1097,9 +1125,11 @@ class _PackageLicensePageState extends State<_PackageLicensePage> {
                 context: context,
                 child: ScrollConfiguration(
                   // A Scrollbar is built-in below.
-                  behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+                  behavior: ScrollConfiguration.of(context)
+                      .copyWith(scrollbars: false),
                   child: Scrollbar(
-                    child: ListView(primary: true, padding: padding, children: listWidgets),
+                    child: ListView(
+                        primary: true, padding: padding, children: listWidgets),
                   ),
                 ),
               ),
@@ -1159,13 +1189,16 @@ class _PackageLicensePageTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle? effectiveTitleTextStyle = titleTextStyle ?? theme.titleLarge;
+    final TextStyle? effectiveTitleTextStyle =
+        titleTextStyle ?? theme.titleLarge;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(title, style: effectiveTitleTextStyle?.copyWith(color: foregroundColor)),
-        Text(subtitle, style: theme.titleSmall?.copyWith(color: foregroundColor)),
+        Text(title,
+            style: effectiveTitleTextStyle?.copyWith(color: foregroundColor)),
+        Text(subtitle,
+            style: theme.titleSmall?.copyWith(color: foregroundColor)),
       ],
     );
   }
@@ -1179,7 +1212,8 @@ String _defaultApplicationName(BuildContext context) {
   // can provide an explicit applicationName to the widgets defined in this
   // file, instead of relying on the default.
   final Title? ancestorTitle = context.findAncestorWidgetOfExactType<Title>();
-  return ancestorTitle?.title ?? Platform.resolvedExecutable.split(Platform.pathSeparator).last;
+  return ancestorTitle?.title ??
+      Platform.resolvedExecutable.split(Platform.pathSeparator).last;
 }
 
 String _defaultApplicationVersion(BuildContext context) {
@@ -1202,21 +1236,23 @@ double _getGutterSize(BuildContext context) =>
         : _narrowGutterSize;
 
 /// Signature for the builder callback used by [_MasterDetailFlow].
-typedef _MasterViewBuilder = Widget Function(BuildContext context, bool isLateralUI);
+typedef _MasterViewBuilder = Widget Function(
+    BuildContext context, bool isLateralUI);
 
 /// Signature for the builder callback used by [_MasterDetailFlow.detailPageBuilder].
 ///
 /// scrollController is provided when the page destination is the draggable
 /// sheet in the lateral UI. Otherwise, it is null.
-typedef _DetailPageBuilder =
-    Widget Function(BuildContext context, Object? arguments, ScrollController? scrollController);
+typedef _DetailPageBuilder = Widget Function(BuildContext context,
+    Object? arguments, ScrollController? scrollController);
 
 /// Signature for the builder callback used by [_MasterDetailScaffold.actionBuilder].
 ///
 /// Builds the actions that go in the app bars constructed for the master and
 /// lateral UI pages. actionLevel indicates the intended destination of the
 /// return actions.
-typedef _ActionBuilder = List<Widget> Function(BuildContext context, _ActionLevel actionLevel);
+typedef _ActionBuilder = List<Widget> Function(
+    BuildContext context, _ActionLevel actionLevel);
 
 /// Describes which type of app bar the actions are intended for.
 enum _ActionLevel {
@@ -1292,7 +1328,8 @@ class _MasterDetailFlow extends StatefulWidget {
   // _MasterDetailFlow.of(context).openDetailPage(arguments);
   // ```
   static _MasterDetailFlowProxy of(BuildContext context) {
-    _PageOpener? pageOpener = context.findAncestorStateOfType<_MasterDetailScaffoldState>();
+    _PageOpener? pageOpener =
+        context.findAncestorStateOfType<_MasterDetailScaffoldState>();
     pageOpener ??= context.findAncestorStateOfType<_MasterDetailFlowState>();
     assert(() {
       if (pageOpener == null) {
@@ -1316,12 +1353,14 @@ class _MasterDetailFlowProxy implements _PageOpener {
 
   /// Open detail page with arguments.
   @override
-  void openDetailPage(Object arguments) => _pageOpener.openDetailPage(arguments);
+  void openDetailPage(Object arguments) =>
+      _pageOpener.openDetailPage(arguments);
 
   /// Set the initial page to be open for the lateral layout. This can be set at any time, but
   /// will have no effect after any calls to openDetailPage.
   @override
-  void setInitialDetailPage(Object arguments) => _pageOpener.setInitialDetailPage(arguments);
+  void setInitialDetailPage(Object arguments) =>
+      _pageOpener.setInitialDetailPage(arguments);
 }
 
 abstract class _PageOpener {
@@ -1332,7 +1371,8 @@ abstract class _PageOpener {
 
 const int _materialWideDisplayThreshold = 840;
 
-class _MasterDetailFlowState extends State<_MasterDetailFlow> implements _PageOpener {
+class _MasterDetailFlowState extends State<_MasterDetailFlow>
+    implements _PageOpener {
   /// Tracks whether focus is on the detail or master views. Determines behavior when switching
   /// from lateral to nested navigation.
   _Focus focus = _Focus.master;
@@ -1386,13 +1426,14 @@ class _MasterDetailFlowState extends State<_MasterDetailFlow> implements _PageOp
       child: Navigator(
         key: _navigatorKey,
         initialRoute: 'initial',
-        onGenerateInitialRoutes: (NavigatorState navigator, String initialRoute) {
+        onGenerateInitialRoutes:
+            (NavigatorState navigator, String initialRoute) {
           return switch (focus) {
             _Focus.master => <Route<void>>[masterPageRoute],
             _Focus.detail => <Route<void>>[
-              masterPageRoute,
-              _detailPageRoute(_cachedDetailArguments),
-            ],
+                masterPageRoute,
+                _detailPageRoute(_cachedDetailArguments),
+              ],
           };
         },
         onGenerateRoute: (RouteSettings settings) {
@@ -1420,14 +1461,13 @@ class _MasterDetailFlowState extends State<_MasterDetailFlow> implements _PageOp
       builder: (BuildContext c) {
         return BlockSemantics(
           child: _MasterPage(
-            leading:
-                Navigator.of(context).canPop()
-                    ? BackButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    )
-                    : null,
+            leading: Navigator.of(context).canPop()
+                ? BackButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  )
+                : null,
             title: widget.title,
             masterViewBuilder: widget.masterViewBuilder,
           ),
@@ -1444,7 +1484,8 @@ class _MasterDetailFlowState extends State<_MasterDetailFlow> implements _PageOp
             // No need for setState() as rebuild happens on navigation pop.
             focus = _Focus.master;
           },
-          child: BlockSemantics(child: widget.detailPageBuilder(context, arguments, null)),
+          child: BlockSemantics(
+              child: widget.detailPageBuilder(context, arguments, null)),
         );
       },
     );
@@ -1454,13 +1495,14 @@ class _MasterDetailFlowState extends State<_MasterDetailFlow> implements _PageOp
     _builtLayout = _LayoutMode.lateral;
     return _MasterDetailScaffold(
       actionBuilder: (_, __) => const <Widget>[],
-      detailPageBuilder:
-          (BuildContext context, Object? args, ScrollController? scrollController) =>
-              widget.detailPageBuilder(context, args ?? _cachedDetailArguments, scrollController),
+      detailPageBuilder: (BuildContext context, Object? args,
+              ScrollController? scrollController) =>
+          widget.detailPageBuilder(
+              context, args ?? _cachedDetailArguments, scrollController),
       detailPageFABlessGutterWidth: widget.detailPageFABlessGutterWidth,
       initialArguments: _cachedDetailArguments,
-      masterViewBuilder:
-          (BuildContext context, bool isLateral) => widget.masterViewBuilder(context, isLateral),
+      masterViewBuilder: (BuildContext context, bool isLateral) =>
+          widget.masterViewBuilder(context, isLateral),
       title: widget.title,
     );
   }
@@ -1514,7 +1556,8 @@ class _MasterDetailScaffold extends StatefulWidget {
   _MasterDetailScaffoldState createState() => _MasterDetailScaffoldState();
 }
 
-class _MasterDetailScaffoldState extends State<_MasterDetailScaffold> implements _PageOpener {
+class _MasterDetailScaffoldState extends State<_MasterDetailScaffold>
+    implements _PageOpener {
   late FloatingActionButtonLocation floatingActionButtonLocation;
   late double detailPageFABGutterWidth;
   late double detailPageFABlessGutterWidth;
@@ -1540,13 +1583,15 @@ class _MasterDetailScaffoldState extends State<_MasterDetailScaffold> implements
 
   @override
   void openDetailPage(Object arguments) {
-    SchedulerBinding.instance.addPostFrameCallback((_) => _detailArguments.value = arguments);
+    SchedulerBinding.instance
+        .addPostFrameCallback((_) => _detailArguments.value = arguments);
     _MasterDetailFlow.of(context).openDetailPage(arguments);
   }
 
   @override
   void setInitialDetailPage(Object arguments) {
-    SchedulerBinding.instance.addPostFrameCallback((_) => _detailArguments.value = arguments);
+    SchedulerBinding.instance
+        .addPostFrameCallback((_) => _detailArguments.value = arguments);
     _MasterDetailFlow.of(context).setInitialDetailPage(arguments);
   }
 
@@ -1574,7 +1619,8 @@ class _MasterDetailScaffoldState extends State<_MasterDetailScaffold> implements
                           child: OverflowBar(
                             spacing: 8,
                             overflowAlignment: OverflowBarAlignment.end,
-                            children: widget.actionBuilder!(context, _ActionLevel.view),
+                            children: widget.actionBuilder!(
+                                context, _ActionLevel.view),
                           ),
                         ),
                       ),
@@ -1584,7 +1630,9 @@ class _MasterDetailScaffoldState extends State<_MasterDetailScaffold> implements
               ),
             ),
           ),
-          body: Align(alignment: AlignmentDirectional.centerStart, child: _masterPanel(context)),
+          body: Align(
+              alignment: AlignmentDirectional.centerStart,
+              child: _masterPanel(context)),
         ),
         // Detail view stacked above main scaffold and master view.
         SafeArea(
@@ -1599,13 +1647,14 @@ class _MasterDetailScaffoldState extends State<_MasterDetailScaffold> implements
                 return AnimatedSwitcher(
                   transitionBuilder:
                       (Widget child, Animation<double> animation) =>
-                          const FadeUpwardsPageTransitionsBuilder().buildTransitions<void>(
-                            null,
-                            null,
-                            animation,
-                            null,
-                            child,
-                          ),
+                          const FadeUpwardsPageTransitionsBuilder()
+                              .buildTransitions<void>(
+                    null,
+                    null,
+                    animation,
+                    null,
+                    child,
+                  ),
                   duration: const Duration(milliseconds: 500),
                   child: SizedBox.expand(
                     key: ValueKey<Object?>(value ?? widget.initialArguments),
@@ -1623,27 +1672,27 @@ class _MasterDetailScaffoldState extends State<_MasterDetailScaffold> implements
     );
   }
 
-  ConstrainedBox _masterPanel(BuildContext context, {bool needsScaffold = false}) {
+  ConstrainedBox _masterPanel(BuildContext context,
+      {bool needsScaffold = false}) {
     return ConstrainedBox(
       constraints: BoxConstraints(maxWidth: masterViewWidth),
-      child:
-          needsScaffold
-              ? Scaffold(
-                appBar: AppBar(
-                  title: widget.title,
-                  actions: widget.actionBuilder!(context, _ActionLevel.top),
-                ),
-                body: widget.masterViewBuilder(context, true),
-              )
-              : widget.masterViewBuilder(context, true),
+      child: needsScaffold
+          ? Scaffold(
+              appBar: AppBar(
+                title: widget.title,
+                actions: widget.actionBuilder!(context, _ActionLevel.top),
+              ),
+              body: widget.masterViewBuilder(context, true),
+            )
+          : widget.masterViewBuilder(context, true),
     );
   }
 }
 
 class _DetailView extends StatelessWidget {
   const _DetailView({required _DetailPageBuilder builder, Object? arguments})
-    : _builder = builder,
-      _arguments = arguments;
+      : _builder = builder,
+        _arguments = arguments;
 
   final _DetailPageBuilder _builder;
   final Object? _arguments;
@@ -1667,7 +1716,8 @@ class _DetailView extends StatelessWidget {
             color: Theme.of(context).cardColor,
             elevation: _kCardElevation,
             clipBehavior: Clip.antiAlias,
-            margin: const EdgeInsets.fromLTRB(_kCardElevation, 0.0, _kCardElevation, 0.0),
+            margin: const EdgeInsets.fromLTRB(
+                _kCardElevation, 0.0, _kCardElevation, 0.0),
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(top: Radius.circular(3.0)),
             ),

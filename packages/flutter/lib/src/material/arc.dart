@@ -59,7 +59,8 @@ class MaterialPointArcTween extends Tween<Offset> {
 
     if (deltaX > _kOnAxisDelta && deltaY > _kOnAxisDelta) {
       if (deltaX < deltaY) {
-        _radius = distanceFromAtoB * distanceFromAtoB / (c - begin).distance / 2.0;
+        _radius =
+            distanceFromAtoB * distanceFromAtoB / (c - begin).distance / 2.0;
         _center = Offset(end.dx + _radius! * (begin.dx - end.dx).sign, end.dy);
         if (begin.dx < end.dx) {
           _beginAngle = sweepAngle() * (begin.dy - end.dy).sign;
@@ -69,8 +70,10 @@ class MaterialPointArcTween extends Tween<Offset> {
           _endAngle = math.pi;
         }
       } else {
-        _radius = distanceFromAtoB * distanceFromAtoB / (c - end).distance / 2.0;
-        _center = Offset(begin.dx, begin.dy + (end.dy - begin.dy).sign * _radius!);
+        _radius =
+            distanceFromAtoB * distanceFromAtoB / (c - end).distance / 2.0;
+        _center =
+            Offset(begin.dx, begin.dy + (end.dy - begin.dy).sign * _radius!);
         if (begin.dy < end.dy) {
           _beginAngle = -math.pi / 2.0;
           _endAngle = _beginAngle! + sweepAngle() * (end.dx - begin.dx).sign;
@@ -272,9 +275,11 @@ class MaterialRectArcTween extends RectTween {
   }
 
   double _diagonalSupport(Offset centersVector, _Diagonal diagonal) {
-    final Offset delta = _cornerFor(begin!, diagonal.endId) - _cornerFor(begin!, diagonal.beginId);
+    final Offset delta = _cornerFor(begin!, diagonal.endId) -
+        _cornerFor(begin!, diagonal.beginId);
     final double length = delta.distance;
-    return centersVector.dx * delta.dx / length + centersVector.dy * delta.dy / length;
+    return centersVector.dx * delta.dx / length +
+        centersVector.dy * delta.dy / length;
   }
 
   Offset _cornerFor(Rect rect, _CornerId id) {
@@ -427,7 +432,8 @@ class MaterialRectCenterArcTween extends RectTween {
     final Offset center = _centerArc.lerp(t);
     final double width = lerpDouble(begin!.width, end!.width, t)!;
     final double height = lerpDouble(begin!.height, end!.height, t)!;
-    return Rect.fromLTWH(center.dx - width / 2.0, center.dy - height / 2.0, width, height);
+    return Rect.fromLTWH(
+        center.dx - width / 2.0, center.dy - height / 2.0, width, height);
   }
 
   @override

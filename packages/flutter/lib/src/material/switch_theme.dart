@@ -120,7 +120,8 @@ class SwitchThemeData with Diagnosticable {
       trackColor: trackColor ?? this.trackColor,
       trackOutlineColor: trackOutlineColor ?? this.trackOutlineColor,
       trackOutlineWidth: trackOutlineWidth ?? this.trackOutlineWidth,
-      materialTapTargetSize: materialTapTargetSize ?? this.materialTapTargetSize,
+      materialTapTargetSize:
+          materialTapTargetSize ?? this.materialTapTargetSize,
       mouseCursor: mouseCursor ?? this.mouseCursor,
       overlayColor: overlayColor ?? this.overlayColor,
       splashRadius: splashRadius ?? this.splashRadius,
@@ -132,13 +133,16 @@ class SwitchThemeData with Diagnosticable {
   /// Linearly interpolate between two [SwitchThemeData]s.
   ///
   /// {@macro dart.ui.shadow.lerp}
-  static SwitchThemeData lerp(SwitchThemeData? a, SwitchThemeData? b, double t) {
+  static SwitchThemeData lerp(
+      SwitchThemeData? a, SwitchThemeData? b, double t) {
     if (identical(a, b) && a != null) {
       return a;
     }
     return SwitchThemeData(
-      thumbColor: MaterialStateProperty.lerp<Color?>(a?.thumbColor, b?.thumbColor, t, Color.lerp),
-      trackColor: MaterialStateProperty.lerp<Color?>(a?.trackColor, b?.trackColor, t, Color.lerp),
+      thumbColor: MaterialStateProperty.lerp<Color?>(
+          a?.thumbColor, b?.thumbColor, t, Color.lerp),
+      trackColor: MaterialStateProperty.lerp<Color?>(
+          a?.trackColor, b?.trackColor, t, Color.lerp),
       trackOutlineColor: MaterialStateProperty.lerp<Color?>(
         a?.trackOutlineColor,
         b?.trackOutlineColor,
@@ -151,7 +155,8 @@ class SwitchThemeData with Diagnosticable {
         t,
         lerpDouble,
       ),
-      materialTapTargetSize: t < 0.5 ? a?.materialTapTargetSize : b?.materialTapTargetSize,
+      materialTapTargetSize:
+          t < 0.5 ? a?.materialTapTargetSize : b?.materialTapTargetSize,
       mouseCursor: t < 0.5 ? a?.mouseCursor : b?.mouseCursor,
       overlayColor: MaterialStateProperty.lerp<Color?>(
         a?.overlayColor,
@@ -167,17 +172,17 @@ class SwitchThemeData with Diagnosticable {
 
   @override
   int get hashCode => Object.hash(
-    thumbColor,
-    trackColor,
-    trackOutlineColor,
-    trackOutlineWidth,
-    materialTapTargetSize,
-    mouseCursor,
-    overlayColor,
-    splashRadius,
-    thumbIcon,
-    padding,
-  );
+        thumbColor,
+        trackColor,
+        trackOutlineColor,
+        trackOutlineWidth,
+        materialTapTargetSize,
+        mouseCursor,
+        overlayColor,
+        splashRadius,
+        thumbIcon,
+        padding,
+      );
 
   @override
   bool operator ==(Object other) {
@@ -252,11 +257,14 @@ class SwitchThemeData with Diagnosticable {
         defaultValue: null,
       ),
     );
-    properties.add(DoubleProperty('splashRadius', splashRadius, defaultValue: null));
+    properties
+        .add(DoubleProperty('splashRadius', splashRadius, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<MaterialStateProperty<Icon?>>('thumbIcon', thumbIcon, defaultValue: null),
+      DiagnosticsProperty<MaterialStateProperty<Icon?>>('thumbIcon', thumbIcon,
+          defaultValue: null),
     );
-    properties.add(DiagnosticsProperty<EdgeInsetsGeometry>('padding', padding, defaultValue: null));
+    properties.add(DiagnosticsProperty<EdgeInsetsGeometry>('padding', padding,
+        defaultValue: null));
   }
 }
 
@@ -289,7 +297,8 @@ class SwitchTheme extends InheritedWidget {
   /// SwitchThemeData theme = SwitchTheme.of(context);
   /// ```
   static SwitchThemeData of(BuildContext context) {
-    final SwitchTheme? switchTheme = context.dependOnInheritedWidgetOfExactType<SwitchTheme>();
+    final SwitchTheme? switchTheme =
+        context.dependOnInheritedWidgetOfExactType<SwitchTheme>();
     return switchTheme?.data ?? Theme.of(context).switchTheme;
   }
 

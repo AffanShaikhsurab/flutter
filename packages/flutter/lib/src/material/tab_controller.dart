@@ -112,15 +112,15 @@ class TabController extends ChangeNotifier {
     Duration? animationDuration,
     required this.length,
     required TickerProvider vsync,
-  }) : assert(length >= 0),
-       assert(initialIndex >= 0 && (length == 0 || initialIndex < length)),
-       _index = initialIndex,
-       _previousIndex = initialIndex,
-       _animationDuration = animationDuration ?? kTabScrollDuration,
-       _animationController = AnimationController.unbounded(
-         value: initialIndex.toDouble(),
-         vsync: vsync,
-       ) {
+  })  : assert(length >= 0),
+        assert(initialIndex >= 0 && (length == 0 || initialIndex < length)),
+        _index = initialIndex,
+        _previousIndex = initialIndex,
+        _animationDuration = animationDuration ?? kTabScrollDuration,
+        _animationController = AnimationController.unbounded(
+          value: initialIndex.toDouble(),
+          vsync: vsync,
+        ) {
     if (kFlutterMemoryAllocationsEnabled) {
       ChangeNotifier.maybeDispatchObjectCreation(this);
     }
@@ -134,10 +134,10 @@ class TabController extends ChangeNotifier {
     required AnimationController? animationController,
     required Duration animationDuration,
     required this.length,
-  }) : _index = index,
-       _previousIndex = previousIndex,
-       _animationController = animationController,
-       _animationDuration = animationDuration {
+  })  : _index = index,
+        _previousIndex = previousIndex,
+        _animationController = animationController,
+        _animationDuration = animationDuration {
     if (kFlutterMemoryAllocationsEnabled) {
       ChangeNotifier.maybeDispatchObjectCreation(this);
     }
@@ -213,12 +213,12 @@ class TabController extends ChangeNotifier {
       _animationController!
           .animateTo(_index.toDouble(), duration: duration, curve: curve!)
           .whenCompleteOrCancel(() {
-            if (_animationController != null) {
-              // don't notify if we've been disposed
-              _indexIsChangingCount -= 1;
-              notifyListeners();
-            }
-          });
+        if (_animationController != null) {
+          // don't notify if we've been disposed
+          _indexIsChangingCount -= 1;
+          notifyListeners();
+        }
+      });
     } else {
       _indexIsChangingCount += 1;
       _animationController!.value = _index.toDouble();
@@ -367,8 +367,8 @@ class DefaultTabController extends StatefulWidget {
     this.initialIndex = 0,
     required this.child,
     this.animationDuration,
-  }) : assert(length >= 0),
-       assert(length == 0 || (initialIndex >= 0 && initialIndex < length));
+  })  : assert(length >= 0),
+        assert(length == 0 || (initialIndex >= 0 && initialIndex < length));
 
   /// The total number of tabs.
   ///
@@ -411,7 +411,9 @@ class DefaultTabController extends StatefulWidget {
   /// * [DefaultTabController.of], which is similar to this method, but asserts
   ///   if no [DefaultTabController] ancestor is found.
   static TabController? maybeOf(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<_TabControllerScope>()?.controller;
+    return context
+        .dependOnInheritedWidgetOfExactType<_TabControllerScope>()
+        ?.controller;
   }
 
   /// The closest instance of [DefaultTabController] that encloses the given

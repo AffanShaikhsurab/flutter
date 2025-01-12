@@ -51,11 +51,13 @@ class FilledButtonThemeData with Diagnosticable {
   final ButtonStyle? style;
 
   /// Linearly interpolate between two filled button themes.
-  static FilledButtonThemeData? lerp(FilledButtonThemeData? a, FilledButtonThemeData? b, double t) {
+  static FilledButtonThemeData? lerp(
+      FilledButtonThemeData? a, FilledButtonThemeData? b, double t) {
     if (identical(a, b)) {
       return a;
     }
-    return FilledButtonThemeData(style: ButtonStyle.lerp(a?.style, b?.style, t));
+    return FilledButtonThemeData(
+        style: ButtonStyle.lerp(a?.style, b?.style, t));
   }
 
   @override
@@ -75,7 +77,8 @@ class FilledButtonThemeData with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<ButtonStyle>('style', style, defaultValue: null));
+    properties.add(
+        DiagnosticsProperty<ButtonStyle>('style', style, defaultValue: null));
   }
 }
 
@@ -92,7 +95,8 @@ class FilledButtonThemeData with Diagnosticable {
 ///    [ButtonStyle] for [FilledButton]s below the overall [Theme].
 class FilledButtonTheme extends InheritedTheme {
   /// Create a [FilledButtonTheme].
-  const FilledButtonTheme({super.key, required this.data, required super.child});
+  const FilledButtonTheme(
+      {super.key, required this.data, required super.child});
 
   /// The configuration of this theme.
   final FilledButtonThemeData data;
@@ -119,5 +123,6 @@ class FilledButtonTheme extends InheritedTheme {
   }
 
   @override
-  bool updateShouldNotify(FilledButtonTheme oldWidget) => data != oldWidget.data;
+  bool updateShouldNotify(FilledButtonTheme oldWidget) =>
+      data != oldWidget.data;
 }

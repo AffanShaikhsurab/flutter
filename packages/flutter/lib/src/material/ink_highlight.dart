@@ -53,12 +53,11 @@ class InkHighlight extends InteractiveInkFeature {
     RectCallback? rectCallback,
     super.onRemoved,
     Duration fadeDuration = _kDefaultHighlightFadeDuration,
-  }) : _shape = shape,
-       _radius = radius,
-       _borderRadius = borderRadius ?? BorderRadius.zero,
-
-       _textDirection = textDirection,
-       _rectCallback = rectCallback {
+  })  : _shape = shape,
+        _radius = radius,
+        _borderRadius = borderRadius ?? BorderRadius.zero,
+        _textDirection = textDirection,
+        _rectCallback = rectCallback {
     _alphaController =
         AnimationController(duration: fadeDuration, vsync: controller.vsync)
           ..addListener(controller.markNeedsPaint)
@@ -109,11 +108,13 @@ class InkHighlight extends InteractiveInkFeature {
   void _paintHighlight(Canvas canvas, Rect rect, Paint paint) {
     canvas.save();
     if (customBorder != null) {
-      canvas.clipPath(customBorder!.getOuterPath(rect, textDirection: _textDirection));
+      canvas.clipPath(
+          customBorder!.getOuterPath(rect, textDirection: _textDirection));
     }
     switch (_shape) {
       case BoxShape.circle:
-        canvas.drawCircle(rect.center, _radius ?? Material.defaultSplashRadius, paint);
+        canvas.drawCircle(
+            rect.center, _radius ?? Material.defaultSplashRadius, paint);
       case BoxShape.rectangle:
         if (_borderRadius != BorderRadius.zero) {
           final RRect clipRRect = RRect.fromRectAndCorners(
@@ -135,7 +136,9 @@ class InkHighlight extends InteractiveInkFeature {
   void paintFeature(Canvas canvas, Matrix4 transform) {
     final Paint paint = Paint()..color = color.withAlpha(_alpha.value);
     final Offset? originOffset = MatrixUtils.getAsTranslation(transform);
-    final Rect rect = _rectCallback != null ? _rectCallback() : Offset.zero & referenceBox.size;
+    final Rect rect = _rectCallback != null
+        ? _rectCallback()
+        : Offset.zero & referenceBox.size;
     if (originOffset == null) {
       canvas.save();
       canvas.transform(transform.storage);

@@ -59,7 +59,8 @@ class OutlinedButtonThemeData with Diagnosticable {
     if (identical(a, b)) {
       return a;
     }
-    return OutlinedButtonThemeData(style: ButtonStyle.lerp(a?.style, b?.style, t));
+    return OutlinedButtonThemeData(
+        style: ButtonStyle.lerp(a?.style, b?.style, t));
   }
 
   @override
@@ -79,7 +80,8 @@ class OutlinedButtonThemeData with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<ButtonStyle>('style', style, defaultValue: null));
+    properties.add(
+        DiagnosticsProperty<ButtonStyle>('style', style, defaultValue: null));
   }
 }
 
@@ -96,7 +98,8 @@ class OutlinedButtonThemeData with Diagnosticable {
 ///    [ButtonStyle] for [OutlinedButton]s below the overall [Theme].
 class OutlinedButtonTheme extends InheritedTheme {
   /// Create a [OutlinedButtonTheme].
-  const OutlinedButtonTheme({super.key, required this.data, required super.child});
+  const OutlinedButtonTheme(
+      {super.key, required this.data, required super.child});
 
   /// The configuration of this theme.
   final OutlinedButtonThemeData data;
@@ -123,5 +126,6 @@ class OutlinedButtonTheme extends InheritedTheme {
   }
 
   @override
-  bool updateShouldNotify(OutlinedButtonTheme oldWidget) => data != oldWidget.data;
+  bool updateShouldNotify(OutlinedButtonTheme oldWidget) =>
+      data != oldWidget.data;
 }

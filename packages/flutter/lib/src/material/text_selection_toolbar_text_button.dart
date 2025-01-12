@@ -83,8 +83,10 @@ class TextSelectionToolbarTextButton extends StatelessWidget {
   /// padding depending on their position in the toolbar.
   static EdgeInsets getPadding(int index, int total) {
     assert(total > 0 && index >= 0 && index < total);
-    final _TextSelectionToolbarItemPosition position = _getPosition(index, total);
-    return EdgeInsets.only(left: _getLeftPadding(position), right: _getRightPadding(position));
+    final _TextSelectionToolbarItemPosition position =
+        _getPosition(index, total);
+    return EdgeInsets.only(
+        left: _getLeftPadding(position), right: _getRightPadding(position));
   }
 
   static double _getLeftPadding(_TextSelectionToolbarItemPosition position) {
@@ -144,8 +146,10 @@ class TextSelectionToolbarTextButton extends StatelessWidget {
 
   static Color _getForegroundColor(ColorScheme colorScheme) {
     final bool isDefaultOnSurface = switch (colorScheme.brightness) {
-      Brightness.light => identical(ThemeData().colorScheme.onSurface, colorScheme.onSurface),
-      Brightness.dark => identical(ThemeData.dark().colorScheme.onSurface, colorScheme.onSurface),
+      Brightness.light =>
+        identical(ThemeData().colorScheme.onSurface, colorScheme.onSurface),
+      Brightness.dark => identical(
+          ThemeData.dark().colorScheme.onSurface, colorScheme.onSurface),
     };
     if (!isDefaultOnSurface) {
       return colorScheme.onSurface;
@@ -164,7 +168,8 @@ class TextSelectionToolbarTextButton extends StatelessWidget {
         backgroundColor: _defaultBackgroundColorTransparent,
         foregroundColor: _getForegroundColor(colorScheme),
         shape: const RoundedRectangleBorder(),
-        minimumSize: const Size(kMinInteractiveDimension, kMinInteractiveDimension),
+        minimumSize:
+            const Size(kMinInteractiveDimension, kMinInteractiveDimension),
         padding: padding,
         alignment: alignment,
         textStyle: const TextStyle(

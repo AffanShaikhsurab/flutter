@@ -51,7 +51,8 @@ class IconButtonThemeData with Diagnosticable {
   final ButtonStyle? style;
 
   /// Linearly interpolate between two icon button themes.
-  static IconButtonThemeData? lerp(IconButtonThemeData? a, IconButtonThemeData? b, double t) {
+  static IconButtonThemeData? lerp(
+      IconButtonThemeData? a, IconButtonThemeData? b, double t) {
     if (identical(a, b)) {
       return a;
     }
@@ -75,7 +76,8 @@ class IconButtonThemeData with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<ButtonStyle>('style', style, defaultValue: null));
+    properties.add(
+        DiagnosticsProperty<ButtonStyle>('style', style, defaultValue: null));
   }
 }
 

@@ -32,7 +32,8 @@ import 'theme.dart';
 class DropdownMenuThemeData with Diagnosticable {
   /// Creates a [DropdownMenuThemeData] that can be used to override default properties
   /// in a [DropdownMenuTheme] widget.
-  const DropdownMenuThemeData({this.textStyle, this.inputDecorationTheme, this.menuStyle});
+  const DropdownMenuThemeData(
+      {this.textStyle, this.inputDecorationTheme, this.menuStyle});
 
   /// Overrides the default value for [DropdownMenu.textStyle].
   final TextStyle? textStyle;
@@ -63,13 +64,15 @@ class DropdownMenuThemeData with Diagnosticable {
   }
 
   /// Linearly interpolates between two dropdown menu themes.
-  static DropdownMenuThemeData lerp(DropdownMenuThemeData? a, DropdownMenuThemeData? b, double t) {
+  static DropdownMenuThemeData lerp(
+      DropdownMenuThemeData? a, DropdownMenuThemeData? b, double t) {
     if (identical(a, b) && a != null) {
       return a;
     }
     return DropdownMenuThemeData(
       textStyle: TextStyle.lerp(a?.textStyle, b?.textStyle, t),
-      inputDecorationTheme: t < 0.5 ? a?.inputDecorationTheme : b?.inputDecorationTheme,
+      inputDecorationTheme:
+          t < 0.5 ? a?.inputDecorationTheme : b?.inputDecorationTheme,
       menuStyle: MenuStyle.lerp(a?.menuStyle, b?.menuStyle, t),
     );
   }
@@ -94,7 +97,8 @@ class DropdownMenuThemeData with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<TextStyle>('textStyle', textStyle, defaultValue: null));
+    properties.add(DiagnosticsProperty<TextStyle>('textStyle', textStyle,
+        defaultValue: null));
     properties.add(
       DiagnosticsProperty<InputDecorationTheme>(
         'inputDecorationTheme',
@@ -102,7 +106,8 @@ class DropdownMenuThemeData with Diagnosticable {
         defaultValue: null,
       ),
     );
-    properties.add(DiagnosticsProperty<MenuStyle>('menuStyle', menuStyle, defaultValue: null));
+    properties.add(DiagnosticsProperty<MenuStyle>('menuStyle', menuStyle,
+        defaultValue: null));
   }
 }
 
@@ -113,7 +118,8 @@ class DropdownMenuThemeData with Diagnosticable {
 class DropdownMenuTheme extends InheritedTheme {
   /// Creates a [DropdownMenuTheme] that controls visual parameters for
   /// descendant [DropdownMenu]s.
-  const DropdownMenuTheme({super.key, required this.data, required super.child});
+  const DropdownMenuTheme(
+      {super.key, required this.data, required super.child});
 
   /// Specifies the visual properties used by descendant [DropdownMenu]
   /// widgets.
@@ -163,7 +169,9 @@ class DropdownMenuTheme extends InheritedTheme {
   ///  * [of], which will return [ThemeData.dropdownMenuTheme] if it doesn't
   ///    find a [DropdownMenuTheme] ancestor, instead of returning null.
   static DropdownMenuThemeData? maybeOf(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<DropdownMenuTheme>()?.data;
+    return context
+        .dependOnInheritedWidgetOfExactType<DropdownMenuTheme>()
+        ?.data;
   }
 
   @override
@@ -172,5 +180,6 @@ class DropdownMenuTheme extends InheritedTheme {
   }
 
   @override
-  bool updateShouldNotify(DropdownMenuTheme oldWidget) => data != oldWidget.data;
+  bool updateShouldNotify(DropdownMenuTheme oldWidget) =>
+      data != oldWidget.data;
 }

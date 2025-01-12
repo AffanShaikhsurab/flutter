@@ -33,8 +33,8 @@ import 'theme_data.dart';
 /// current applied filter.
 ///
 /// Used by [DropdownMenu.filterCallback].
-typedef FilterCallback<T> =
-    List<DropdownMenuEntry<T>> Function(List<DropdownMenuEntry<T>> entries, String filter);
+typedef FilterCallback<T> = List<DropdownMenuEntry<T>> Function(
+    List<DropdownMenuEntry<T>> entries, String filter);
 
 /// A callback function that returns the index of the item that matches the
 /// current contents of a text field.
@@ -42,7 +42,8 @@ typedef FilterCallback<T> =
 /// If a match doesn't exist then null must be returned.
 ///
 /// Used by [DropdownMenu.searchCallback].
-typedef SearchCallback<T> = int? Function(List<DropdownMenuEntry<T>> entries, String query);
+typedef SearchCallback<T> = int? Function(
+    List<DropdownMenuEntry<T>> entries, String query);
 
 const double _kMinimumWidth = 112.0;
 
@@ -531,15 +532,18 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
     }
     _enableSearch = widget.enableSearch;
     filteredEntries = widget.dropdownMenuEntries;
-    buttonItemKeys = List<GlobalKey>.generate(filteredEntries.length, (int index) => GlobalKey());
-    _menuHasEnabledItem = filteredEntries.any((DropdownMenuEntry<T> entry) => entry.enabled);
+    buttonItemKeys = List<GlobalKey>.generate(
+        filteredEntries.length, (int index) => GlobalKey());
+    _menuHasEnabledItem =
+        filteredEntries.any((DropdownMenuEntry<T> entry) => entry.enabled);
     final int index = filteredEntries.indexWhere(
       (DropdownMenuEntry<T> entry) => entry.value == widget.initialSelection,
     );
     if (index != -1) {
       _localTextEditingController?.value = TextEditingValue(
         text: filteredEntries[index].label,
-        selection: TextSelection.collapsed(offset: filteredEntries[index].label.length),
+        selection: TextSelection.collapsed(
+            offset: filteredEntries[index].label.length),
       );
     }
     refreshLeadingPadding();
@@ -562,7 +566,8 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
       if (widget.controller != null) {
         _localTextEditingController?.dispose();
       }
-      _localTextEditingController = widget.controller ?? TextEditingController();
+      _localTextEditingController =
+          widget.controller ?? TextEditingController();
     }
     if (oldWidget.enableFilter != widget.enableFilter) {
       if (!widget.enableFilter) {
@@ -578,8 +583,10 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
     if (oldWidget.dropdownMenuEntries != widget.dropdownMenuEntries) {
       currentHighlight = null;
       filteredEntries = widget.dropdownMenuEntries;
-      buttonItemKeys = List<GlobalKey>.generate(filteredEntries.length, (int index) => GlobalKey());
-      _menuHasEnabledItem = filteredEntries.any((DropdownMenuEntry<T> entry) => entry.enabled);
+      buttonItemKeys = List<GlobalKey>.generate(
+          filteredEntries.length, (int index) => GlobalKey());
+      _menuHasEnabledItem =
+          filteredEntries.any((DropdownMenuEntry<T> entry) => entry.enabled);
     }
     if (oldWidget.leadingIcon != widget.leadingIcon) {
       refreshLeadingPadding();
@@ -591,7 +598,8 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
       if (index != -1) {
         _localTextEditingController?.value = TextEditingValue(
           text: filteredEntries[index].label,
-          selection: TextSelection.collapsed(offset: filteredEntries[index].label.length),
+          selection: TextSelection.collapsed(
+              offset: filteredEntries[index].label.length),
         );
       }
     }
@@ -601,8 +609,14 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
     return widget.focusNode?.canRequestFocus ??
         widget.requestFocusOnTap ??
         switch (Theme.of(context).platform) {
-          TargetPlatform.iOS || TargetPlatform.android || TargetPlatform.fuchsia => false,
-          TargetPlatform.macOS || TargetPlatform.linux || TargetPlatform.windows => true,
+          TargetPlatform.iOS ||
+          TargetPlatform.android ||
+          TargetPlatform.fuchsia =>
+            false,
+          TargetPlatform.macOS ||
+          TargetPlatform.linux ||
+          TargetPlatform.windows =>
+            true,
         };
   }
 
@@ -624,7 +638,8 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
 
   void scrollToHighlight() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final BuildContext? highlightContext = buttonItemKeys[currentHighlight!].currentContext;
+      final BuildContext? highlightContext =
+          buttonItemKeys[currentHighlight!].currentContext;
       if (highlightContext != null) {
         Scrollable.of(
           highlightContext,
@@ -648,12 +663,14 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
   ) {
     final String filterText = textEditingController.text.toLowerCase();
     return entries
-        .where((DropdownMenuEntry<T> entry) => entry.label.toLowerCase().contains(filterText))
+        .where((DropdownMenuEntry<T> entry) =>
+            entry.label.toLowerCase().contains(filterText))
         .toList();
   }
 
   bool _shouldUpdateCurrentHighlight(List<DropdownMenuEntry<T>> entries) {
-    final String searchText = _localTextEditingController!.value.text.toLowerCase();
+    final String searchText =
+        _localTextEditingController!.value.text.toLowerCase();
     if (searchText.isEmpty) {
       return true;
     }
@@ -670,14 +687,16 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
     return true;
   }
 
-  int? search(List<DropdownMenuEntry<T>> entries, TextEditingController textEditingController) {
+  int? search(List<DropdownMenuEntry<T>> entries,
+      TextEditingController textEditingController) {
     final String searchText = textEditingController.value.text.toLowerCase();
     if (searchText.isEmpty) {
       return null;
     }
 
     final int index = entries.indexWhere(
-      (DropdownMenuEntry<T> entry) => entry.label.toLowerCase().contains(searchText),
+      (DropdownMenuEntry<T> entry) =>
+          entry.label.toLowerCase().contains(searchText),
     );
 
     return index != -1 ? index : null;
@@ -700,19 +719,19 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
       // menu entry have leading icons, the menu entry should remove the extra
       // paddings so its leading icon will be aligned with the leading icon of
       // the text field.
-      final double padding =
-          entry.leadingIcon == null
-              ? (leadingPadding ?? _kDefaultHorizontalPadding)
-              : (_kDefaultHorizontalPadding + _kLeadingIconToInputPadding);
-      ButtonStyle effectiveStyle =
-          entry.style ??
+      final double padding = entry.leadingIcon == null
+          ? (leadingPadding ?? _kDefaultHorizontalPadding)
+          : (_kDefaultHorizontalPadding + _kLeadingIconToInputPadding);
+      ButtonStyle effectiveStyle = entry.style ??
           switch (textDirection) {
             TextDirection.rtl => MenuItemButton.styleFrom(
-              padding: EdgeInsets.only(left: _kDefaultHorizontalPadding, right: padding),
-            ),
+                padding: EdgeInsets.only(
+                    left: _kDefaultHorizontalPadding, right: padding),
+              ),
             TextDirection.ltr => MenuItemButton.styleFrom(
-              padding: EdgeInsets.only(left: padding, right: _kDefaultHorizontalPadding),
-            ),
+                padding: EdgeInsets.only(
+                    left: padding, right: _kDefaultHorizontalPadding),
+              ),
           };
 
       final ButtonStyle? themeStyle = MenuButtonTheme.of(context).style;
@@ -733,27 +752,32 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
         // Query the Material 3 default style.
         // TODO(bleroux): replace once a standard way for accessing defaults will be defined.
         // See: https://github.com/flutter/flutter/issues/130135.
-        final ButtonStyle defaultStyle = const MenuItemButton().defaultStyleOf(context);
+        final ButtonStyle defaultStyle =
+            const MenuItemButton().defaultStyleOf(context);
 
-        Color? resolveFocusedColor(WidgetStateProperty<Color?>? colorStateProperty) {
-          return colorStateProperty?.resolve(<MaterialState>{MaterialState.focused});
+        Color? resolveFocusedColor(
+            WidgetStateProperty<Color?>? colorStateProperty) {
+          return colorStateProperty
+              ?.resolve(<MaterialState>{MaterialState.focused});
         }
 
-        final Color focusedForegroundColor =
-            resolveFocusedColor(effectiveForegroundColor ?? defaultStyle.foregroundColor!)!;
+        final Color focusedForegroundColor = resolveFocusedColor(
+            effectiveForegroundColor ?? defaultStyle.foregroundColor!)!;
         final Color focusedIconColor =
             resolveFocusedColor(effectiveIconColor ?? defaultStyle.iconColor!)!;
-        final Color focusedOverlayColor =
-            resolveFocusedColor(effectiveOverlayColor ?? defaultStyle.overlayColor!)!;
+        final Color focusedOverlayColor = resolveFocusedColor(
+            effectiveOverlayColor ?? defaultStyle.overlayColor!)!;
         // For the background color we can't rely on the default style which is transparent.
         // Defaults to onSurface.withOpacity(0.12).
         final Color focusedBackgroundColor =
             resolveFocusedColor(effectiveBackgroundColor) ??
-            Theme.of(context).colorScheme.onSurface.withOpacity(0.12);
+                Theme.of(context).colorScheme.onSurface.withOpacity(0.12);
 
         effectiveStyle = effectiveStyle.copyWith(
-          backgroundColor: MaterialStatePropertyAll<Color>(focusedBackgroundColor),
-          foregroundColor: MaterialStatePropertyAll<Color>(focusedForegroundColor),
+          backgroundColor:
+              MaterialStatePropertyAll<Color>(focusedBackgroundColor),
+          foregroundColor:
+              MaterialStatePropertyAll<Color>(focusedForegroundColor),
           iconColor: MaterialStatePropertyAll<Color>(focusedIconColor),
           overlayColor: MaterialStatePropertyAll<Color>(focusedOverlayColor),
         );
@@ -770,7 +794,8 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
       if (widget.width != null) {
         final double horizontalPadding = padding + _kDefaultHorizontalPadding;
         label = ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: widget.width! - horizontalPadding),
+          constraints:
+              BoxConstraints(maxWidth: widget.width! - horizontalPadding),
           child: label,
         );
       }
@@ -782,22 +807,23 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
           style: effectiveStyle,
           leadingIcon: entry.leadingIcon,
           trailingIcon: entry.trailingIcon,
-          closeOnActivate: widget.closeBehavior == DropdownMenuCloseBehavior.all,
-          onPressed:
-              entry.enabled && widget.enabled
-                  ? () {
-                    _localTextEditingController?.value = TextEditingValue(
-                      text: entry.label,
-                      selection: TextSelection.collapsed(offset: entry.label.length),
-                    );
-                    currentHighlight = widget.enableSearch ? i : null;
-                    widget.onSelected?.call(entry.value);
-                    _enableFilter = false;
-                    if (widget.closeBehavior == DropdownMenuCloseBehavior.self) {
-                      _controller.close();
-                    }
+          closeOnActivate:
+              widget.closeBehavior == DropdownMenuCloseBehavior.all,
+          onPressed: entry.enabled && widget.enabled
+              ? () {
+                  _localTextEditingController?.value = TextEditingValue(
+                    text: entry.label,
+                    selection:
+                        TextSelection.collapsed(offset: entry.label.length),
+                  );
+                  currentHighlight = widget.enableSearch ? i : null;
+                  widget.onSelected?.call(entry.value);
+                  _enableFilter = false;
+                  if (widget.closeBehavior == DropdownMenuCloseBehavior.self) {
+                    _controller.close();
                   }
-                  : null,
+                }
+              : null,
           requestFocusOnHover: false,
           child: label,
         ),
@@ -898,13 +924,14 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
     final DropdownMenuThemeData defaults = _DropdownMenuDefaultsM3(context);
 
     if (_enableFilter) {
-      filteredEntries =
-          widget.filterCallback?.call(filteredEntries, _localTextEditingController!.text) ??
+      filteredEntries = widget.filterCallback
+              ?.call(filteredEntries, _localTextEditingController!.text) ??
           filter(widget.dropdownMenuEntries, _localTextEditingController!);
     } else {
       filteredEntries = widget.dropdownMenuEntries;
     }
-    _menuHasEnabledItem = filteredEntries.any((DropdownMenuEntry<T> entry) => entry.enabled);
+    _menuHasEnabledItem =
+        filteredEntries.any((DropdownMenuEntry<T> entry) => entry.enabled);
 
     if (_enableSearch) {
       if (widget.searchCallback != null) {
@@ -913,9 +940,11 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
           _localTextEditingController!.text,
         );
       } else {
-        final bool shouldUpdateCurrentHighlight = _shouldUpdateCurrentHighlight(filteredEntries);
+        final bool shouldUpdateCurrentHighlight =
+            _shouldUpdateCurrentHighlight(filteredEntries);
         if (shouldUpdateCurrentHighlight) {
-          currentHighlight = search(filteredEntries, _localTextEditingController!);
+          currentHighlight =
+              search(filteredEntries, _localTextEditingController!);
         }
       }
       if (currentHighlight != null) {
@@ -929,9 +958,11 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
       focusedIndex: currentHighlight,
     );
 
-    final TextStyle? effectiveTextStyle = widget.textStyle ?? theme.textStyle ?? defaults.textStyle;
+    final TextStyle? effectiveTextStyle =
+        widget.textStyle ?? theme.textStyle ?? defaults.textStyle;
 
-    MenuStyle? effectiveMenuStyle = widget.menuStyle ?? theme.menuStyle ?? defaults.menuStyle!;
+    MenuStyle? effectiveMenuStyle =
+        widget.menuStyle ?? theme.menuStyle ?? defaults.menuStyle!;
 
     final double? anchorWidth = getWidth(_anchorKey);
     if (widget.width != null) {
@@ -946,14 +977,18 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
 
     if (widget.menuHeight != null) {
       effectiveMenuStyle = effectiveMenuStyle.copyWith(
-        maximumSize: MaterialStatePropertyAll<Size>(Size(double.infinity, widget.menuHeight!)),
+        maximumSize: MaterialStatePropertyAll<Size>(
+            Size(double.infinity, widget.menuHeight!)),
       );
     }
     final InputDecorationTheme effectiveInputDecorationTheme =
-        widget.inputDecorationTheme ?? theme.inputDecorationTheme ?? defaults.inputDecorationTheme!;
+        widget.inputDecorationTheme ??
+            theme.inputDecorationTheme ??
+            defaults.inputDecorationTheme!;
 
     final MouseCursor? effectiveMouseCursor = switch (widget.enabled) {
-      true => canRequestFocus() ? SystemMouseCursors.text : SystemMouseCursors.click,
+      true =>
+        canRequestFocus() ? SystemMouseCursors.text : SystemMouseCursors.click,
       false => null,
     };
 
@@ -963,20 +998,21 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
       controller: _controller,
       menuChildren: menu,
       crossAxisUnconstrained: false,
-      builder: (BuildContext context, MenuController controller, Widget? child) {
+      builder:
+          (BuildContext context, MenuController controller, Widget? child) {
         assert(_initialMenu != null);
         final Widget trailingButton = Padding(
           padding: const EdgeInsets.all(4.0),
           child: IconButton(
             isSelected: controller.isOpen,
             icon: widget.trailingIcon ?? const Icon(Icons.arrow_drop_down),
-            selectedIcon: widget.selectedTrailingIcon ?? const Icon(Icons.arrow_drop_up),
-            onPressed:
-                !widget.enabled
-                    ? null
-                    : () {
-                      handlePressed(controller);
-                    },
+            selectedIcon:
+                widget.selectedTrailingIcon ?? const Icon(Icons.arrow_drop_up),
+            onPressed: !widget.enabled
+                ? null
+                : () {
+                    handlePressed(controller);
+                  },
           ),
         );
 
@@ -999,12 +1035,11 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
           style: effectiveTextStyle,
           controller: _localTextEditingController,
           onEditingComplete: _handleEditingComplete,
-          onTap:
-              !widget.enabled
-                  ? null
-                  : () {
-                    handlePressed(controller);
-                  },
+          onTap: !widget.enabled
+              ? null
+              : () {
+                  handlePressed(controller);
+                },
           onChanged: (String text) {
             controller.open();
             setState(() {
@@ -1019,10 +1054,9 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
             hintText: widget.hintText,
             helperText: widget.helperText,
             errorText: widget.errorText,
-            prefixIcon:
-                widget.leadingIcon != null
-                    ? SizedBox(key: _leadingKey, child: widget.leadingIcon)
-                    : null,
+            prefixIcon: widget.leadingIcon != null
+                ? SizedBox(key: _leadingKey, child: widget.leadingIcon)
+                : null,
             suffixIcon: trailingButton,
           ).applyDefaults(effectiveInputDecorationTheme),
         );
@@ -1030,28 +1064,30 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
         // If [expandedInsets] is not null, the width of the text field should depend
         // on its parent width. So we don't need to use `_DropdownMenuBody` to
         // calculate the children's width.
-        final Widget body =
-            widget.expandedInsets != null
-                ? textField
-                : _DropdownMenuBody(
-                  width: widget.width,
-                  children: <Widget>[
-                    textField,
-                    ..._initialMenu!.map(
-                      (Widget item) => ExcludeFocus(excluding: !controller.isOpen, child: item),
-                    ),
-                    trailingButton,
-                    leadingButton,
-                  ],
-                );
+        final Widget body = widget.expandedInsets != null
+            ? textField
+            : _DropdownMenuBody(
+                width: widget.width,
+                children: <Widget>[
+                  textField,
+                  ..._initialMenu!.map(
+                    (Widget item) => ExcludeFocus(
+                        excluding: !controller.isOpen, child: item),
+                  ),
+                  trailingButton,
+                  leadingButton,
+                ],
+              );
 
         return Shortcuts(
           shortcuts: const <ShortcutActivator, Intent>{
-            SingleActivator(LogicalKeyboardKey.arrowLeft): ExtendSelectionByCharacterIntent(
+            SingleActivator(LogicalKeyboardKey.arrowLeft):
+                ExtendSelectionByCharacterIntent(
               forward: false,
               collapseSelection: true,
             ),
-            SingleActivator(LogicalKeyboardKey.arrowRight): ExtendSelectionByCharacterIntent(
+            SingleActivator(LogicalKeyboardKey.arrowRight):
+                ExtendSelectionByCharacterIntent(
               forward: true,
               collapseSelection: true,
             ),
@@ -1071,7 +1107,8 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
           const EdgeInsets.only(
             left: double.infinity,
             right: double.infinity,
-          ).add(const EdgeInsetsDirectional.only(end: double.infinity, start: double.infinity)),
+          ).add(const EdgeInsetsDirectional.only(
+              end: double.infinity, start: double.infinity)),
         ),
         child: menuAnchor,
       );
@@ -1090,9 +1127,12 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
 
     return Actions(
       actions: <Type, Action<Intent>>{
-        _ArrowUpIntent: CallbackAction<_ArrowUpIntent>(onInvoke: handleUpKeyInvoke),
-        _ArrowDownIntent: CallbackAction<_ArrowDownIntent>(onInvoke: handleDownKeyInvoke),
-        _EnterIntent: CallbackAction<_EnterIntent>(onInvoke: (_) => _handleEditingComplete()),
+        _ArrowUpIntent:
+            CallbackAction<_ArrowUpIntent>(onInvoke: handleUpKeyInvoke),
+        _ArrowDownIntent:
+            CallbackAction<_ArrowDownIntent>(onInvoke: handleDownKeyInvoke),
+        _EnterIntent: CallbackAction<_EnterIntent>(
+            onInvoke: (_) => _handleEditingComplete()),
       },
       child: Stack(
         children: <Widget>[
@@ -1145,7 +1185,8 @@ class _DropdownMenuBody extends MultiChildRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, _RenderDropdownMenuBody renderObject) {
+  void updateRenderObject(
+      BuildContext context, _RenderDropdownMenuBody renderObject) {
     renderObject.width = width;
   }
 }
@@ -1155,7 +1196,8 @@ class _DropdownMenuBodyParentData extends ContainerBoxParentData<RenderBox> {}
 class _RenderDropdownMenuBody extends RenderBox
     with
         ContainerRenderObjectMixin<RenderBox, _DropdownMenuBodyParentData>,
-        RenderBoxContainerDefaultsMixin<RenderBox, _DropdownMenuBodyParentData> {
+        RenderBoxContainerDefaultsMixin<RenderBox,
+            _DropdownMenuBodyParentData> {
   _RenderDropdownMenuBody({double? width}) : _width = width;
 
   double? get width => _width;
@@ -1182,8 +1224,10 @@ class _RenderDropdownMenuBody extends RenderBox
     double? maxHeight;
     RenderBox? child = firstChild;
 
-    final double intrinsicWidth = width ?? getMaxIntrinsicWidth(constraints.maxHeight);
-    final double widthConstraint = math.min(intrinsicWidth, constraints.maxWidth);
+    final double intrinsicWidth =
+        width ?? getMaxIntrinsicWidth(constraints.maxHeight);
+    final double widthConstraint =
+        math.min(intrinsicWidth, constraints.maxWidth);
     final BoxConstraints innerConstraints = BoxConstraints(
       maxWidth: widthConstraint,
       maxHeight: getMaxIntrinsicHeight(widthConstraint),
@@ -1229,8 +1273,10 @@ class _RenderDropdownMenuBody extends RenderBox
     double maxWidth = 0.0;
     double? maxHeight;
     RenderBox? child = firstChild;
-    final double intrinsicWidth = width ?? getMaxIntrinsicWidth(constraints.maxHeight);
-    final double widthConstraint = math.min(intrinsicWidth, constraints.maxWidth);
+    final double intrinsicWidth =
+        width ?? getMaxIntrinsicWidth(constraints.maxHeight);
+    final double widthConstraint =
+        math.min(intrinsicWidth, constraints.maxWidth);
     final BoxConstraints innerConstraints = BoxConstraints(
       maxWidth: widthConstraint,
       maxHeight: getMaxIntrinsicHeight(widthConstraint),

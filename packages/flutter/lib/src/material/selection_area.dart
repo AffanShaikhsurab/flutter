@@ -114,20 +114,25 @@ class SelectionArea extends StatefulWidget {
 
 /// State for a [SelectionArea].
 class SelectionAreaState extends State<SelectionArea> {
-  final GlobalKey<SelectableRegionState> _selectableRegionKey = GlobalKey<SelectableRegionState>();
+  final GlobalKey<SelectableRegionState> _selectableRegionKey =
+      GlobalKey<SelectableRegionState>();
 
   /// The [State] of the [SelectableRegion] for which this [SelectionArea] wraps.
-  SelectableRegionState get selectableRegion => _selectableRegionKey.currentState!;
+  SelectableRegionState get selectableRegion =>
+      _selectableRegionKey.currentState!;
 
   @protected
   @override
   Widget build(BuildContext context) {
     assert(debugCheckHasMaterialLocalizations(context));
-    final TextSelectionControls controls =
-        widget.selectionControls ??
+    final TextSelectionControls controls = widget.selectionControls ??
         switch (Theme.of(context).platform) {
-          TargetPlatform.android || TargetPlatform.fuchsia => materialTextSelectionHandleControls,
-          TargetPlatform.linux || TargetPlatform.windows => desktopTextSelectionHandleControls,
+          TargetPlatform.android ||
+          TargetPlatform.fuchsia =>
+            materialTextSelectionHandleControls,
+          TargetPlatform.linux ||
+          TargetPlatform.windows =>
+            desktopTextSelectionHandleControls,
           TargetPlatform.iOS => cupertinoTextSelectionHandleControls,
           TargetPlatform.macOS => cupertinoDesktopTextSelectionHandleControls,
         };
@@ -136,8 +141,8 @@ class SelectionAreaState extends State<SelectionArea> {
       selectionControls: controls,
       focusNode: widget.focusNode,
       contextMenuBuilder: widget.contextMenuBuilder,
-      magnifierConfiguration:
-          widget.magnifierConfiguration ?? TextMagnifier.adaptiveMagnifierConfiguration,
+      magnifierConfiguration: widget.magnifierConfiguration ??
+          TextMagnifier.adaptiveMagnifierConfiguration,
       onSelectionChanged: widget.onSelectionChanged,
       child: widget.child,
     );

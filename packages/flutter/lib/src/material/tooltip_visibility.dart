@@ -26,7 +26,8 @@ class _TooltipVisibilityScope extends InheritedWidget {
 /// continues to provide any semantic information that is provided.
 class TooltipVisibility extends StatelessWidget {
   /// Creates a widget that configures the visibility of [Tooltip].
-  const TooltipVisibility({super.key, required this.visible, required this.child});
+  const TooltipVisibility(
+      {super.key, required this.visible, required this.child});
 
   /// The widget below this widget in the tree.
   ///

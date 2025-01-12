@@ -40,26 +40,29 @@ class _AccountPictures extends StatelessWidget {
           top: 0.0,
           end: 0.0,
           child: Row(
-            children:
-                (otherAccountsPictures ?? <Widget>[]).take(3).map<Widget>((Widget picture) {
-                  return Padding(
-                    padding: const EdgeInsetsDirectional.only(start: 8.0),
-                    child: Semantics(
-                      container: true,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
-                        child: SizedBox.fromSize(size: otherAccountsPicturesSize, child: picture),
-                      ),
-                    ),
-                  );
-                }).toList(),
+            children: (otherAccountsPictures ?? <Widget>[])
+                .take(3)
+                .map<Widget>((Widget picture) {
+              return Padding(
+                padding: const EdgeInsetsDirectional.only(start: 8.0),
+                child: Semantics(
+                  container: true,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
+                    child: SizedBox.fromSize(
+                        size: otherAccountsPicturesSize, child: picture),
+                  ),
+                ),
+              );
+            }).toList(),
           ),
         ),
         Positioned(
           top: 0.0,
           child: Semantics(
             explicitChildNodes: true,
-            child: SizedBox.fromSize(size: currentAccountPictureSize, child: currentAccountPicture),
+            child: SizedBox.fromSize(
+                size: currentAccountPictureSize, child: currentAccountPicture),
           ),
         ),
       ],
@@ -86,7 +89,8 @@ class _AccountDetails extends StatefulWidget {
   _AccountDetailsState createState() => _AccountDetailsState();
 }
 
-class _AccountDetailsState extends State<_AccountDetails> with SingleTickerProviderStateMixin {
+class _AccountDetailsState extends State<_AccountDetails>
+    with SingleTickerProviderStateMixin {
   late final CurvedAnimation _animation;
   late final AnimationController _controller;
   @override
@@ -102,10 +106,10 @@ class _AccountDetailsState extends State<_AccountDetails> with SingleTickerProvi
       curve: Curves.fastOutSlowIn,
       reverseCurve: Curves.fastOutSlowIn.flipped,
     )..addListener(
-      () => setState(() {
-        // [animation]'s value has changed here.
-      }),
-    );
+        () => setState(() {
+          // [animation]'s value has changed here.
+        }),
+      );
   }
 
   @override
@@ -137,10 +141,12 @@ class _AccountDetailsState extends State<_AccountDetails> with SingleTickerProvi
     assert(debugCheckHasMaterialLocalizations(context));
 
     final ThemeData theme = Theme.of(context);
-    final MaterialLocalizations localizations = MaterialLocalizations.of(context);
+    final MaterialLocalizations localizations =
+        MaterialLocalizations.of(context);
 
     Widget accountDetails = CustomMultiChildLayout(
-      delegate: _AccountDetailsLayout(textDirection: Directionality.of(context)),
+      delegate:
+          _AccountDetailsLayout(textDirection: Directionality.of(context)),
       children: <Widget>[
         if (widget.accountName != null)
           LayoutId(
@@ -182,10 +188,9 @@ class _AccountDetailsState extends State<_AccountDetails> with SingleTickerProvi
                     child: Icon(
                       Icons.arrow_drop_down,
                       color: widget.arrowColor,
-                      semanticLabel:
-                          widget.isOpen
-                              ? localizations.hideAccountsLabel
-                              : localizations.showAccountsLabel,
+                      semanticLabel: widget.isOpen
+                          ? localizations.hideAccountsLabel
+                          : localizations.showAccountsLabel,
                     ),
                   ),
                 ),
@@ -227,23 +232,29 @@ class _AccountDetailsLayout extends MultiChildLayoutDelegate {
       positionChild(dropdownIcon, _offsetForIcon(size, iconSize));
     }
 
-    final String? bottomLine =
-        hasChild(accountEmail) ? accountEmail : (hasChild(accountName) ? accountName : null);
+    final String? bottomLine = hasChild(accountEmail)
+        ? accountEmail
+        : (hasChild(accountName) ? accountName : null);
 
     if (bottomLine != null) {
-      final Size constraintSize =
-          iconSize == null ? size : Size(size.width - iconSize.width, size.height);
+      final Size constraintSize = iconSize == null
+          ? size
+          : Size(size.width - iconSize.width, size.height);
       iconSize ??= const Size(_kAccountDetailsHeight, _kAccountDetailsHeight);
 
       // place bottom line center at same height as icon center
-      final Size bottomLineSize = layoutChild(bottomLine, BoxConstraints.loose(constraintSize));
-      final Offset bottomLineOffset = _offsetForBottomLine(size, iconSize, bottomLineSize);
+      final Size bottomLineSize =
+          layoutChild(bottomLine, BoxConstraints.loose(constraintSize));
+      final Offset bottomLineOffset =
+          _offsetForBottomLine(size, iconSize, bottomLineSize);
       positionChild(bottomLine, bottomLineOffset);
 
       // place account name above account email
       if (bottomLine == accountEmail && hasChild(accountName)) {
-        final Size nameSize = layoutChild(accountName, BoxConstraints.loose(constraintSize));
-        positionChild(accountName, _offsetForName(size, nameSize, bottomLineOffset));
+        final Size nameSize =
+            layoutChild(accountName, BoxConstraints.loose(constraintSize));
+        positionChild(
+            accountName, _offsetForName(size, nameSize, bottomLineOffset));
       }
     }
   }
@@ -253,13 +264,15 @@ class _AccountDetailsLayout extends MultiChildLayoutDelegate {
 
   Offset _offsetForIcon(Size size, Size iconSize) {
     return switch (textDirection) {
-      TextDirection.ltr => Offset(size.width - iconSize.width, size.height - iconSize.height),
+      TextDirection.ltr =>
+        Offset(size.width - iconSize.width, size.height - iconSize.height),
       TextDirection.rtl => Offset(0.0, size.height - iconSize.height),
     };
   }
 
   Offset _offsetForBottomLine(Size size, Size iconSize, Size bottomLineSize) {
-    final double y = size.height - 0.5 * iconSize.height - 0.5 * bottomLineSize.height;
+    final double y =
+        size.height - 0.5 * iconSize.height - 0.5 * bottomLineSize.height;
     return switch (textDirection) {
       TextDirection.ltr => Offset(0.0, y),
       TextDirection.rtl => Offset(size.width - bottomLineSize.width, y),
@@ -339,7 +352,8 @@ class UserAccountsDrawerHeader extends StatefulWidget {
   final Color arrowColor;
 
   @override
-  State<UserAccountsDrawerHeader> createState() => _UserAccountsDrawerHeaderState();
+  State<UserAccountsDrawerHeader> createState() =>
+      _UserAccountsDrawerHeaderState();
 }
 
 class _UserAccountsDrawerHeaderState extends State<UserAccountsDrawerHeader> {
@@ -360,8 +374,8 @@ class _UserAccountsDrawerHeaderState extends State<UserAccountsDrawerHeader> {
       container: true,
       label: MaterialLocalizations.of(context).signedInLabel,
       child: DrawerHeader(
-        decoration:
-            widget.decoration ?? BoxDecoration(color: Theme.of(context).colorScheme.primary),
+        decoration: widget.decoration ??
+            BoxDecoration(color: Theme.of(context).colorScheme.primary),
         margin: widget.margin,
         padding: const EdgeInsetsDirectional.only(top: 16.0, start: 16.0),
         child: SafeArea(
@@ -384,7 +398,9 @@ class _UserAccountsDrawerHeaderState extends State<UserAccountsDrawerHeader> {
                 accountName: widget.accountName,
                 accountEmail: widget.accountEmail,
                 isOpen: _isOpen,
-                onTap: widget.onDetailsPressed == null ? null : _handleDetailsPressed,
+                onTap: widget.onDetailsPressed == null
+                    ? null
+                    : _handleDetailsPressed,
                 arrowColor: widget.arrowColor,
               ),
             ],
